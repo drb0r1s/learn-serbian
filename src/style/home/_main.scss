@@ -1,0 +1,42 @@
+.home-section {
+    height: 100vh;
+    @include center(column);
+    align-items: flex-start;
+    background-size: cover;
+    padding: 0 100px;
+}
+
+.home-hero {
+    background-image: url("../images/hero-background.png");
+
+    .home-hero-block {
+        width: 60%;
+        @include center(column);
+        align-items: flex-start;
+        gap: 25px;
+        
+        h1 {
+            color: white;
+            font-family: learn-serbian-medium;
+            font-size: set-size(miniheading);
+            margin: 0;
+        }
+
+        p {
+            color: white;
+            font-family: learn-serbian-light;
+            font-size: set-size(md);
+            margin: 0;
+        }
+
+        button {
+            color: white;
+            font-family: learn-serbian-medium;
+            font-size: set-size(lg);
+            background-color: $blue;
+            border: none;
+            border-radius: 15px;
+            padding: 15px;
+        }
+    }
+}

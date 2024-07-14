@@ -1,46 +1,52 @@
 header {
-    @include center;
-    justify-content: space-between;
-    background-color: $transparent-dark-grey;
-    box-shadow: 0px 1px 5px 0px rgba($color: white, $alpha: .4);
-    padding: 5px 50px;
-    
-    .header-title-block #header-title {
-        color: white;
-        font-family: learn-serbian-bold-italic;
-        font-size: set-size(xl);
-        text-transform: capitalize;
-        margin: 0;
-    }
+    width: 100vw;
+    position: fixed;
+    top: 0;
 
-    nav ul {
+    .header-holder {
         @include center;
-        gap: 50px;
-        list-style-type: none;
+        justify-content: space-between;
+        background-color: $transparent-dark-grey;
+        box-shadow: 0px 1px 5px 0px rgba($color: white, $alpha: .4);
+        padding: 5px 50px;
 
-        li a {
-            color: $grey;
-            font-family: learn-serbian-light;
-            font-size: set-size(md);
+        .header-title-block #header-title {
+            color: white;
+            font-family: learn-serbian-bold-italic;
+            font-size: set-size(xl);
             text-transform: capitalize;
-            text-decoration: none;
-            transition: 300ms;
+            margin: 0;
+        }
 
-            &:hover {
+        nav ul {
+            @include center;
+            gap: 50px;
+            list-style-type: none;
+
+            li a {
+                color: $grey;
+                font-family: learn-serbian-light;
+                font-size: set-size(md);
+                text-transform: capitalize;
+                text-decoration: none;
+                transition: 300ms;
+
+                &:hover {
+                    color: white;
+                }
+            }
+
+            .nav-li-active a {
                 color: white;
+                font-weight: bold;
             }
         }
 
-        .nav-li-active a {
-            color: white;
-            font-weight: bold;
+        .header-user-block img {
+            height: 55px;
+            width: 55px;
+            object-fit: contain;
+            border-radius: 50%;
         }
-    }
-
-    .header-user-block img {
-        height: 55px;
-        width: 55px;
-        object-fit: contain;
-        border-radius: 50%;
     }
 }

@@ -40,6 +40,11 @@ body {
 }
 
 header {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+}
+header .header-holder {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,14 +54,14 @@ header {
   box-shadow: 0px 1px 5px 0px rgba(255, 255, 255, 0.4);
   padding: 5px 50px;
 }
-header .header-title-block #header-title {
+header .header-holder .header-title-block #header-title {
   color: white;
   font-family: learn-serbian-bold-italic;
   font-size: 30px;
   text-transform: capitalize;
   margin: 0;
 }
-header nav ul {
+header .header-holder nav ul {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +69,7 @@ header nav ul {
   gap: 50px;
   list-style-type: none;
 }
-header nav ul li a {
+header .header-holder nav ul li a {
   color: #ccc;
   font-family: learn-serbian-light;
   font-size: 20px;
@@ -72,17 +77,62 @@ header nav ul li a {
   text-decoration: none;
   transition: 300ms;
 }
-header nav ul li a:hover {
+header .header-holder nav ul li a:hover {
   color: white;
 }
-header nav ul .nav-li-active a {
+header .header-holder nav ul .nav-li-active a {
   color: white;
   font-weight: bold;
 }
-header .header-user-block img {
+header .header-holder .header-user-block img {
   height: 55px;
   width: 55px;
   -o-object-fit: contain;
      object-fit: contain;
   border-radius: 50%;
+}
+
+.home-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  background-size: cover;
+  padding: 0 100px;
+}
+
+.home-hero {
+  background-image: url("../images/hero-background.png");
+}
+.home-hero .home-hero-block {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 25px;
+}
+.home-hero .home-hero-block h1 {
+  color: white;
+  font-family: learn-serbian-medium;
+  font-size: 40px;
+  margin: 0;
+}
+.home-hero .home-hero-block p {
+  color: white;
+  font-family: learn-serbian-light;
+  font-size: 20px;
+  margin: 0;
+}
+.home-hero .home-hero-block button {
+  color: white;
+  font-family: learn-serbian-medium;
+  font-size: 25px;
+  background-color: #1466c7;
+  border: none;
+  border-radius: 15px;
+  padding: 15px;
 }/*# sourceMappingURL=main.css.map */

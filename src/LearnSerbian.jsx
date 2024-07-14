@@ -1,11 +1,10 @@
 import React from "react";
-import Header from "./components/Header";
+import Home from "./home/Home";
 
 const LearnSerbian = () => {
     return(
         <main>
-            <Header currentPage="home" />
-            
+            <Home /> 
         </main>
     );
 }

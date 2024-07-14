@@ -1,0 +1,12 @@
+@import "./additional/main";
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: learn-serbian;
+    box-sizing: border-box;
+    height: 100vh;
+    background: linear-gradient($gradient-first, $gradient-second);
+}
+
+@import "./components/main";

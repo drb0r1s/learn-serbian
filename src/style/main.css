@@ -1,0 +1,88 @@
+@font-face {
+  font-family: learn-serbian;
+  src: url("../fonts/MontserratAlternates-Black.ttf");
+}
+@font-face {
+  font-family: learn-serbian-medium;
+  src: url("../fonts/MontserratAlternates-Medium.ttf");
+}
+@font-face {
+  font-family: learn-serbian-medium-italic;
+  src: url("../fonts/MontserratAlternates-MediumItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-bold;
+  src: url("../fonts/MontserratAlternates-Bold.ttf");
+}
+@font-face {
+  font-family: learn-serbian-bold-italic;
+  src: url("../fonts/MontserratAlternates-BoldItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-light;
+  src: url("../fonts/MontserratAlternates-Light.ttf");
+}
+@font-face {
+  font-family: learn-serbian-thin;
+  src: url("../fonts/MontserratAlternates-Thin.ttf");
+}
+@font-face {
+  font-family: learn-serbian-thin-italic;
+  src: url("../fonts/MontserratAlternates-ThinItalic.ttf");
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: learn-serbian;
+  box-sizing: border-box;
+  height: 100vh;
+  background: linear-gradient(#1a1632, #170925);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(45, 42, 56, 0.7);
+  box-shadow: 0px 1px 5px 0px rgba(255, 255, 255, 0.4);
+  padding: 5px 50px;
+}
+header .header-title-block #header-title {
+  color: white;
+  font-family: learn-serbian-bold-italic;
+  font-size: 30px;
+  text-transform: capitalize;
+  margin: 0;
+}
+header nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 50px;
+  list-style-type: none;
+}
+header nav ul li a {
+  color: #ccc;
+  font-family: learn-serbian-light;
+  font-size: 20px;
+  text-transform: capitalize;
+  text-decoration: none;
+  transition: 300ms;
+}
+header nav ul li a:hover {
+  color: white;
+}
+header nav ul .nav-li-active a {
+  color: white;
+  font-weight: bold;
+}
+header .header-user-block img {
+  height: 55px;
+  width: 55px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 50%;
+}/*# sourceMappingURL=main.css.map */

@@ -1,9 +1,11 @@
 import React from "react";
+import Header from "./components/Header";
 
 const LearnSerbian = () => {
     return(
         <main>
-            <h1>LEARN SERBIAN</h1>
+            <Header currentPage="home" />
+            
         </main>
     );
 }

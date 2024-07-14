@@ -1,0 +1,33 @@
+$fontSizes: (
+    "xxs": 5px,
+    "xs": 10px,
+    "sm": 15px,
+    "md": 20px,
+    "lg": 25px,
+    "xl": 30px,
+    "xxl": 35px,
+    "miniheading": 40px,
+    "heading": 50px,
+    "xheading": 60px,
+    "xxheading": 70px,
+    "superheading": 100px
+);
+
+$grey: #ccc;
+$blue: #1466c7;
+$purple: #282088;
+$dark-purple: #0e1153;
+$pale-blue: #1a1632;
+$pale-red: #170925;
+$red: #b50c0c;
+$yellow: #d1be18;
+
+$transparent-light-grey: rgba($color: $grey, $alpha: .25);
+$transparent-black: rgba($color: black, $alpha: .25);
+$transparent-grey: rgba($color: #606060, $alpha: .5);
+$transparent-dark-grey: rgba($color: #2d2a38, $alpha: .7);
+$transparent-blue: rgba($color: $blue, $alpha: .5);
+$transparent-red: rgba($color: $red, $alpha: .55);
+
+$gradient-first: #1a1632;
+$gradient-second: #170925;

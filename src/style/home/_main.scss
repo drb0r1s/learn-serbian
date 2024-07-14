@@ -2,20 +2,15 @@
     height: 100vh;
     @include center(column);
     align-items: flex-start;
-    background-size: cover;
     padding: 0 100px;
-}
 
-.home-hero {
-    background-image: url("../images/hero-background.png");
-
-    .home-hero-block {
+    .home-block {
         width: 60%;
         @include center(column);
         align-items: flex-start;
         gap: 25px;
         
-        h1 {
+        h2 {
             color: white;
             font-family: learn-serbian-medium;
             font-size: set-size(miniheading);
@@ -36,7 +31,41 @@
             background-color: $blue;
             border: none;
             border-radius: 15px;
+            cursor: pointer;
             padding: 15px;
         }
     }
+
+    .home-inner-section {
+        @include center;
+        justify-content: space-between;
+
+        img {
+            height: 400px;
+            width: 400px;
+            object-fit: contain;
+        }
+    }
+
+    .home-inner-section .home-block {
+        width: 50%;
+    }
+
+    .home-lessons .home-block {
+        align-items: flex-end;
+        
+        h2, p {
+            text-align: right;
+        }
+    }
+}
+
+.home-hero {
+    background-image: url("../images/hero-background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.home-info {
+    gap: 100px;
 }

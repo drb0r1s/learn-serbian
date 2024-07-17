@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/footer/Footer";
 import HomeBlock from "./HomeBlock";
@@ -6,6 +6,13 @@ import { images } from "../data/images";
 import { content } from "../data/content/home";
 
 const Home = () => {
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    
+    useEffect(() => {
+        const checkIsMobile = () => { setIsMobile(window.innerWidth <= 768) }
+        window.addEventListener("resize", checkIsMobile);
+    }, []);
+
     return(
         <section>
             <Header currentPage="home" />
@@ -16,6 +23,8 @@ const Home = () => {
                     info={content.P_HERO_INFO}
                     button={content.BUTTON_HERO_EXPLORE}
                 />
+
+                {isMobile ? <img src={images.heroBackground} alt="GREETINGS"></img> : <></>}
             </div>
 
             <div className="home-section home-info">

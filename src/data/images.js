@@ -1,3 +1,5 @@
+import heroBackground from "../images/hero-background.png";
+
 import userPlaceholder from "../images/user-placeholder.png";
 
 import star from "../images/star.png";
@@ -8,4 +10,4 @@ import youtubeGrey from "../images/youtube-grey.png";
 import redditGrey from "../images/reddit-grey.png";
 import instagramGrey from "../images/instagram-grey.png";
 
-export const images = { userPlaceholder, star, forum, discordGrey, youtubeGrey, redditGrey, instagramGrey };
+export const images = { heroBackground, userPlaceholder, star, forum, discordGrey, youtubeGrey, redditGrey, instagramGrey };

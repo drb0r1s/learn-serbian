@@ -39,7 +39,6 @@ body {
   padding: 0;
   font-family: learn-serbian;
   box-sizing: border-box;
-  height: 100vh;
   background: linear-gradient(#1a1632, #170925);
 }
 
@@ -251,4 +250,84 @@ footer .footer-copyright span {
   gap: 100px;
   background: linear-gradient(#1a1632, #170925);
   padding: 50px 100px;
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1699px) {
+  .home-hero {
+    background-size: contain;
+    background-position-y: 50%;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+  .home-block h2 {
+    font-size: 35px !important;
+  }
+  .home-block p {
+    font-size: 16px !important;
+  }
+  .home-inner-section img {
+    height: 300px !important;
+    width: 300px !important;
+  }
+  .home-hero {
+    background-size: contain;
+    background-position-y: 50%;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .home-block h2 {
+    font-size: 35px !important;
+  }
+  .home-block p {
+    font-size: 16px !important;
+  }
+  .home-inner-section img {
+    height: 300px !important;
+    width: 300px !important;
+  }
+  .home-hero {
+    background-size: contain;
+    background-position-y: 50%;
+  }
+  .home-info {
+    padding: 50px 75px !important;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .home-section {
+    align-items: center;
+  }
+  .home-section .home-block {
+    width: auto;
+    align-items: center !important;
+  }
+  .home-section .home-block h2 {
+    font-size: 35px !important;
+    text-align: center;
+  }
+  .home-section .home-block p {
+    font-size: 20px !important;
+    text-align: center;
+  }
+  .home-section .home-block button {
+    font-size: 30px;
+  }
+  .home-section .home-inner-section img {
+    height: 300px !important;
+    width: 300px !important;
+  }
+  .home-hero {
+    height: auto;
+    background: none;
+    overflow: hidden;
+  }
+  .home-hero img {
+    height: 1000px;
+    width: 1000px;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .home-info {
+    padding: 50px 75px !important;
+  }
 }/*# sourceMappingURL=main.css.map */

@@ -1,5 +1,5 @@
 import React from "react";
-import { headerNav } from "../data/header";
+import { content } from "../data/content/header";
 import { images } from "../data/images";
 
 const Header = ({ currentPage }) => {
@@ -10,7 +10,7 @@ const Header = ({ currentPage }) => {
                     <p id="header-title">learn serbian</p>
                 </div>
 
-                <nav><ul>{headerNav.map((link, index) => {
+                <nav><ul>{Object.values(content).map((link, index) => {
                     return <li
                         key={index}
                         className={link === currentPage ? "nav-li-active" : ""}

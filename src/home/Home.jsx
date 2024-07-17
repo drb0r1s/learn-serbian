@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
+import Footer from "../components/footer/Footer";
 import HomeBlock from "./HomeBlock";
 import { images } from "../data/images";
 import { content } from "../data/content/home";
@@ -38,6 +39,8 @@ const Home = () => {
                     <img src={images.forum} alt="FORUM" />
                 </div>
             </div>
+
+            <Footer />
         </section>
     );
 }

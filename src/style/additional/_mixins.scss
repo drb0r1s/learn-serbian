@@ -4,3 +4,11 @@
     justify-content: center;
     flex-direction: $direction;
 }
+
+@mixin learn-serbian-title($title: xl) {
+    color: white;
+    font-family: learn-serbian-bold-italic;
+    font-size: set-size($title);
+    text-transform: capitalize;
+    margin: 0;
+}

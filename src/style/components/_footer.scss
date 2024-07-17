@@ -1,0 +1,68 @@
+footer {
+    @include center(column);
+    align-items: flex-start;
+    gap: 20px;
+    background-color: $transparent-dark-grey;
+    box-shadow: 0px -1px 5px 0px rgba($color: white, $alpha: .4);
+    padding: 30px 200px;
+
+    .footer-title {
+        @include learn-serbian-title(lg);
+        color: $grey;
+    }
+
+    .footer-block-holder {
+        width: 100%;
+        @include center;
+        justify-content: space-between;
+
+        .footer-block {
+            @include center(column);
+            align-items: flex-start;
+            gap: 10px;
+            
+            strong {
+                color: $grey;
+                font-family: learn-serbian-light;
+                font-size: 16px;
+            }
+            
+            ul {
+                @include center(column);
+                align-items: flex-start;
+                gap: 10px;
+                list-style-type: none;
+                padding: 0;
+
+                li a {
+                    color: $grey;
+                    font-family: learn-serbian-light;
+                    font-size: 14px;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .footer-image-holder {
+        @include center;
+        gap: 25px;
+
+        img {
+            height: 25px;
+            width: 25px;
+            object-fit: contain;
+        }
+    }
+
+    .footer-copyright {
+        width: 100%;
+        @include center;
+
+        span {
+            color: $grey;
+            font-family: learn-serbian-light-italic;
+            font-size: set-size(sm);
+        }
+    }
+}

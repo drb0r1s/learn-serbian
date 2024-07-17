@@ -1,5 +1,4 @@
 .home-section {
-    height: 100vh;
     @include center(column);
     align-items: flex-start;
     padding: 0 100px;
@@ -61,6 +60,7 @@
 }
 
 .home-hero {
+    height: 100vh;
     background-image: url("../images/hero-background.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -68,4 +68,6 @@
 
 .home-info {
     gap: 100px;
+    background: linear-gradient($gradient-first, $gradient-second);
+    padding: 50px 100px;
 }

@@ -23,6 +23,10 @@
   src: url("../fonts/MontserratAlternates-Light.ttf");
 }
 @font-face {
+  font-family: learn-serbian-light-italic;
+  src: url("../fonts/MontserratAlternates-LightItalic.ttf");
+}
+@font-face {
   font-family: learn-serbian-thin;
   src: url("../fonts/MontserratAlternates-Thin.ttf");
 }
@@ -92,8 +96,89 @@ header .header-holder .header-user-block img {
   border-radius: 50%;
 }
 
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: rgba(45, 42, 56, 0.7);
+  box-shadow: 0px -1px 5px 0px rgba(255, 255, 255, 0.4);
+  padding: 30px 200px;
+}
+footer .footer-title {
+  color: white;
+  font-family: learn-serbian-bold-italic;
+  font-size: 25px;
+  text-transform: capitalize;
+  margin: 0;
+  color: #ccc;
+}
+footer .footer-block-holder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+footer .footer-block-holder .footer-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+footer .footer-block-holder .footer-block strong {
+  color: #ccc;
+  font-family: learn-serbian-light;
+  font-size: 16px;
+}
+footer .footer-block-holder .footer-block ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  list-style-type: none;
+  padding: 0;
+}
+footer .footer-block-holder .footer-block ul li a {
+  color: #ccc;
+  font-family: learn-serbian-light;
+  font-size: 14px;
+  text-decoration: none;
+}
+footer .footer-image-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 25px;
+}
+footer .footer-image-holder img {
+  height: 25px;
+  width: 25px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+footer .footer-copyright {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+footer .footer-copyright span {
+  color: #ccc;
+  font-family: learn-serbian-light-italic;
+  font-size: 15px;
+}
+
 .home-section {
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,6 +241,7 @@ header .header-holder .header-user-block img {
 }
 
 .home-hero {
+  height: 100vh;
   background-image: url("../images/hero-background.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -163,4 +249,6 @@ header .header-holder .header-user-block img {
 
 .home-info {
   gap: 100px;
+  background: linear-gradient(#1a1632, #170925);
+  padding: 50px 100px;
 }/*# sourceMappingURL=main.css.map */

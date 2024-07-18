@@ -60,19 +60,25 @@
 @media screen and (min-width: 481px) and (max-width: 768px) {
     .home-section {
         align-items: center;
-        
+
         .home-block {
-            width: auto;
+            width: auto !important;
             align-items: center !important;
-            
+
             h2 {
                 font-size: set-size(xxl) !important;
-                text-align: center;
+                text-align: center !important;
+            }
+
+            img {
+                height: auto;
+                width: 100vw;
+                object-fit: contain;
             }
     
             p {
                 font-size: set-size(md) !important;
-                text-align: center;
+                text-align: center !important;
             }
 
             button {
@@ -80,9 +86,17 @@
             }
         }
         
-        .home-inner-section img {
-            height: 300px !important;
-            width: 300px !important;
+        .home-inner-section {
+            justify-content: center;
+            
+            h2 {
+                font-size: set-size(heading) !important;
+            }
+            
+            img {
+                height: 300px !important;
+                width: 300px !important;
+            }
         }
     }
     
@@ -90,23 +104,134 @@
         height: auto;
         background: none;
         overflow: hidden;
+        padding: 0 50px !important;
+        padding-top: 30px !important;
 
         img {
-            height: 1000px;
-            width: 1000px;
+            height: auto;
+            width: 100vw;
             object-fit: contain;
+            margin-top: 50px;
         }
     }
 
     .home-info {
-        padding: 50px 75px !important;
+        padding: 30px 50px !important;
     }
 }
 
 @media screen and (min-width: 320px) and (max-width: 480px) {
+    .home-section {
+        align-items: center;
+
+        .home-block {
+            width: auto !important;
+            align-items: center !important;
+
+            h2 {
+                font-size: set-size(xl) !important;
+                text-align: center !important;
+            }
+
+            img {
+                height: auto;
+                width: 80vw;
+                object-fit: contain;
+            }
     
+            p {
+                font-size: set-size(md) !important;
+                text-align: center !important;
+            }
+
+            button {
+                font-size: set-size(xl);
+            }
+        }
+        
+        .home-inner-section {
+            justify-content: center;
+            
+            h2 {
+                font-size: set-size(xxl) !important;
+            }
+        }
+    }
+    
+    .home-hero {
+        height: auto;
+        background: none;
+        overflow: hidden;
+        padding: 0 50px !important;
+        padding-top: 30px !important;
+
+        img {
+            height: auto;
+            width: 100vw;
+            object-fit: contain;
+            margin-top: 50px;
+        }
+    }
+
+    .home-info {
+        padding: 30px 50px !important;
+    }
 }
 
 @media screen and (max-width: 319px) {
+    .home-section {
+        align-items: center;
+
+        .home-block {
+            width: auto !important;
+            align-items: center !important;
+
+            h2 {
+                font-size: set-size(md) !important;
+                text-align: center !important;
+            }
+
+            img {
+                height: auto;
+                width: 100vw;
+                object-fit: contain;
+            }
     
+            p {
+                font-size: set-size(sm) !important;
+                text-align: center !important;
+            }
+
+            button {
+                font-size: set-size(md);
+            }
+        }
+        
+        .home-inner-section {
+            justify-content: center;
+            
+            h2 {
+                font-size: set-size(md) !important;
+            }
+        }
+    }
+    
+    .home-hero {
+        height: auto;
+        background: none;
+        overflow: hidden;
+        padding: 0 50px !important;
+        padding-top: 30px !important;
+
+        img {
+            height: auto;
+            width: 100vw;
+            object-fit: contain;
+            margin-top: 50px;
+        }
+    }
+
+    .home-info {
+        padding: 30px 50px !important;
+    }
 }

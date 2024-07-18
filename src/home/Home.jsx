@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/footer/Footer";
 import HomeBlock from "./HomeBlock";
+import useMobile from "../hooks/useMobile";
 import { images } from "../data/images";
 import { content } from "../data/content/home";
 
 const Home = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-    
-    useEffect(() => {
-        const checkIsMobile = () => { setIsMobile(window.innerWidth <= 768) }
-        window.addEventListener("resize", checkIsMobile);
-    }, []);
+    const { isMobile } = useMobile();
 
     return(
         <section>

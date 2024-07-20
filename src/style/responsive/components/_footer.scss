@@ -7,12 +7,14 @@
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     footer {
         padding: 30px 50px;
+        padding-bottom: 80px;
     }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
     footer {
         padding: 30px;
+        padding-bottom: 80px;
         
         .footer-block-holder {
             flex-direction: column;
@@ -34,6 +36,7 @@
 @media screen and (min-width: 320px) and (max-width: 480px) {
     footer {
         padding: 30px;
+        padding-bottom: 80px;
         
         .footer-block-holder {
             flex-direction: column;
@@ -55,6 +58,7 @@
 @media screen and (max-width: 319px) {
     footer {
         padding: 30px;
+        padding-bottom: 80px;
         
         .footer-block-holder {
             flex-direction: column;

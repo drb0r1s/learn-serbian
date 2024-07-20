@@ -43,8 +43,7 @@ body {
 }
 
 header {
-  width: 100vw;
-  position: fixed;
+  position: sticky;
   top: 0;
 }
 header .header-holder {
@@ -334,11 +333,13 @@ footer .footer-copyright span {
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   footer {
     padding: 30px 50px;
+    padding-bottom: 80px;
   }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
   footer {
     padding: 30px;
+    padding-bottom: 80px;
   }
   footer .footer-block-holder {
     flex-direction: column;
@@ -356,6 +357,7 @@ footer .footer-copyright span {
 @media screen and (min-width: 320px) and (max-width: 480px) {
   footer {
     padding: 30px;
+    padding-bottom: 80px;
   }
   footer .footer-block-holder {
     flex-direction: column;
@@ -373,6 +375,7 @@ footer .footer-copyright span {
 @media screen and (max-width: 319px) {
   footer {
     padding: 30px;
+    padding-bottom: 80px;
   }
   footer .footer-block-holder {
     flex-direction: column;

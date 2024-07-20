@@ -65,6 +65,7 @@ header {
 
         .header-bottom-link {
             @include center(column);
+            cursor: pointer;
 
             img {
                 height: 30px;

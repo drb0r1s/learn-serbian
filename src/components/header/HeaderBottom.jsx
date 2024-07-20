@@ -10,7 +10,7 @@ const HeaderBottom = () => {
             <div className="header-bottom-link-holder">
                 {Object.values(content).map((link, index) => {
                     return(
-                        <div className="header-bottom-link">
+                        <div className="header-bottom-link" key={index}>
                             <img src={imageArray[index]} alt="LINK" />
                             <p>{link}</p>
                         </div>

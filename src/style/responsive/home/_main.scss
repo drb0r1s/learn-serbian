@@ -6,19 +6,21 @@
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
-    .home-block {
-        h2 {
-            font-size: set-size(xxl) !important;
+    .home-section {
+        .home-block {
+            h2 {
+                font-size: set-size(xxl);
+            }
+    
+            p {
+                font-size: 16px;
+            }
         }
 
-        p {
-            font-size: 16px !important;
+        .home-section .home-inner-section img {
+            height: 300px;
+            width: 300px;
         }
-    }
-    
-    .home-inner-section img {
-        height: 300px !important;
-        width: 300px !important;
     }
     
     .home-hero {
@@ -28,19 +30,21 @@
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-    .home-block {
-        h2 {
-            font-size: set-size(xxl) !important;
+    .home-section {
+        .home-block {
+            h2 {
+                font-size: set-size(xxl);
+            }
+    
+            p {
+                font-size: 16px;
+            }
         }
 
-        p {
-            font-size: 16px !important;
+        .home-inner-section img {
+            height: 300px;
+            width: 300px;
         }
-    }
-    
-    .home-inner-section img {
-        height: 300px !important;
-        width: 300px !important;
     }
     
     .home-hero {
@@ -49,7 +53,7 @@
     }
 
     .home-info {
-        padding: 50px 75px !important;
+        padding: 50px 75px;
     }
 }
 

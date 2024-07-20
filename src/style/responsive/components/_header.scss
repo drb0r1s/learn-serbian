@@ -1,0 +1,39 @@
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    header .header-holder {
+        padding: 5px 30px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    header .header-holder {
+        padding: 5px 15px;
+
+        .header-title-block #header-title {
+            font-size: set-size(lg);
+        }
+
+        .header-user-block img {
+            height: 45px;
+            width: 45px;
+        }
+    }
+}
+
+@media screen and (max-width: 319px) {
+    header .header-holder {
+        padding: 5px 15px;
+
+        .header-title-block #header-title {
+            font-size: set-size(md);
+        }
+
+        .header-user-block img {
+            height: 40px;
+            width: 40px;
+        }
+    }
+
+    .header-bottom {
+        flex-wrap: wrap;
+    }
+}

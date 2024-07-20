@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import HomeBlock from "./HomeBlock";
 import useMobile from "../hooks/useMobile";
@@ -21,7 +21,7 @@ const Home = () => {
                     isMobile={false}
                 />
 
-                {isMobile ? <img src={images.hero} alt="GREETINGS"></img> : <></>}
+                {isMobile ? <img src={images.hero} alt="GREETINGS" /> : <></>}
             </div>
 
             <div className="home-section home-info">

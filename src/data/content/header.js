@@ -1,6 +1,6 @@
 export const content = {
-    LI_HOME: "home",
-    LI_LESSONS: "lessons",
-    LI_FORUM: "forum",
-    LI_LINK: "link"
+    LI_HOME: "Home",
+    LI_LESSONS: "Lessons",
+    LI_FORUM: "Forum",
+    LI_LINK: "Link"
 };

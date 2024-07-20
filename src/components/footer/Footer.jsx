@@ -29,10 +29,10 @@ const Footer = () => {
             </div>
 
             <div className="footer-image-holder">
-                <img src={images.discordGrey} alt="DISCORD" />
-                <img src={images.youtubeGrey} alt="YOUTUBE" />
-                <img src={images.redditGrey} alt="REDDIT" />
-                <img src={images.instagramGrey} alt="INSTAGRAM" />
+                <img src={images.discordIcon} alt="DISCORD" />
+                <img src={images.youtubeIcon} alt="YOUTUBE" />
+                <img src={images.redditIcon} alt="REDDIT" />
+                <img src={images.instagramIcon} alt="INSTAGRAM" />
             </div>
 
             <div className="footer-copyright">

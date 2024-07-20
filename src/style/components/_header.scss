@@ -9,6 +9,7 @@ header {
         background-color: $transparent-dark-grey;
         box-shadow: 0px 1px 5px 0px rgba($color: white, $alpha: .4);
         padding: 5px 50px;
+        position: relative;
 
         .header-title-block #header-title {
             @include learn-serbian-title;
@@ -43,6 +44,40 @@ header {
             width: 55px;
             object-fit: contain;
             border-radius: 50%;
+        }
+    }
+}
+
+.header-bottom {
+    height: 60px;
+    width: 100vw;
+    @include center;
+    background-color: $transparent-dark-grey;
+    box-shadow: 0px -1px 5px 0px rgba($color: white, $alpha: .4);
+    position: fixed;
+    top: calc(100% - 60px);
+
+    .header-bottom-link-holder {
+        width: 100%;
+        @include center;
+        justify-content: space-between;
+        padding: 10px 30px;
+
+        .header-bottom-link {
+            @include center(column);
+
+            img {
+                height: 30px;
+                width: 30px;
+                object-fit: contain;
+            }
+
+            p {
+                color: $grey;
+                font-family: learn-serbian-light;
+                font-size: set-size(sm);
+                margin: 0;
+            }
         }
     }
 }

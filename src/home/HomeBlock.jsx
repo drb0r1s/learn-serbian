@@ -4,7 +4,7 @@ const HomeBlock = ({ title, image, info, button, isMobile }) => {
     return(
         <div className="home-block">
             <h2>{title}</h2>
-            {isMobile ? <img src={image} alt="BLOCK"></img> : <></>}
+            {isMobile ? <img src={image} alt="BLOCK" /> : <></>}
             <p>{info}</p>
             {button ? <button>{button}</button> : <></>}
         </div>

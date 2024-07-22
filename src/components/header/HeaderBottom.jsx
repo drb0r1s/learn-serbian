@@ -1,14 +1,15 @@
 import React from "react";
-import { content } from "../../data/content/header";
+import useContent from "../../hooks/useContent";
 import { images } from "../../data/images";
 
 const HeaderBottom = () => {
+    const linksContent = useContent("header", ["li"]);
     const imageArray = [images.homeIcon, images.lessonsIcon, images.forumIcon, images.linkIcon];
     
     return(
         <div className="header-bottom">
             <div className="header-bottom-link-holder">
-                {Object.values(content).map((link, index) => {
+                {Object.values(linksContent).map((link, index) => {
                     return(
                         <div className="header-bottom-link" key={index}>
                             <img src={imageArray[index]} alt="LINK" />

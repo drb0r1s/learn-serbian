@@ -2,12 +2,16 @@ import React from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import HomeBlock from "./HomeBlock";
+import useContent from "../../hooks/useContent";
 import useMobile from "../../hooks/useMobile";
 import { images } from "../../data/images";
-import { content } from "../../data/content/home";
 
 const Home = () => {
     const { isMobile } = useMobile();
+
+    const [heroTitle, heroInfo, heroButton] = useContent("home", ["hero"]);
+    const [lessonsTitle, lessonsInfo, lessonsButton] = useContent("home", ["lessons"]);
+    const [forumTitle, forumInfo, forumButton] = useContent("home", ["forum"]);
 
     return(
         <section>
@@ -15,9 +19,9 @@ const Home = () => {
 
             <div className="home-section home-hero">
                 <HomeBlock
-                    title={content.H2_HERO_TITLE}
-                    info={content.P_HERO_INFO}
-                    button={content.BUTTON_HERO_EXPLORE}
+                    title={heroTitle}
+                    info={heroInfo}
+                    button={heroButton}
                     isMobile={false}
                 />
 
@@ -29,20 +33,20 @@ const Home = () => {
                     {isMobile ? <></> : <img src={images.star} alt="STAR" />}
 
                     <HomeBlock
-                        title={content.H2_LESSONS_TITLE}
+                        title={lessonsTitle}
                         image={images.star}
-                        info={content.P_LESSONS_INFO}
-                        button={content.BUTTON_LESSONS_EXPLORE}
+                        info={lessonsInfo}
+                        button={lessonsButton}
                         isMobile={isMobile}
                     />
                 </div>
 
                 <div className="home-inner-section">
                     <HomeBlock
-                        title={content.H2_FORUM_TITLE}
+                        title={forumTitle}
                         image={images.forum}
-                        info={content.P_FORUM_INFO}
-                        button={content.BUTTON_FORUM_EXPLORE}
+                        info={forumInfo}
+                        button={forumButton}
                         isMobile={isMobile}
                     />
 

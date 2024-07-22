@@ -1,16 +1,15 @@
 import React from "react";
 import FooterBlock from "./FooterBlock";
 import useContent from "../../hooks/useContent";
-import { content } from "../../data/content/footer";
 import { images } from "../../data/images";
 
 const Footer = () => {
-    const strongTitles = useContent(content, ["strong"]);
+    const strongTitles = useContent("footer", ["strong"]);
     
-    const generalLinks = useContent(content, ["li", "general"]);
-    const servicesLinks = useContent(content, ["li", "services"]);
-    const legalLinks = useContent(content, ["li", "legal"]);
-    const contributeLinks = useContent(content, ["li", "contribute"]);
+    const generalLinks = useContent("footer", ["li", "general"]);
+    const servicesLinks = useContent("footer", ["li", "services"]);
+    const legalLinks = useContent("footer", ["li", "legal"]);
+    const contributeLinks = useContent("footer", ["li", "contribute"]);
 
     const linksArray = [generalLinks, servicesLinks, legalLinks, contributeLinks];
     

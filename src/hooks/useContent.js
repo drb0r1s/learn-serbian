@@ -1,12 +1,33 @@
 import { useState, useEffect } from "react";
+import { content } from "../data/content";
 
-const useContent = (content, keywords) => {
+const useContent = (contentKey, keywords = []) => {
     const [contents, setContents] = useState([]);
 
+    function getContentObject() {
+        const realContentKey = contentKey.split(".")[0];
+        let contentObject = {};
+
+        Object.keys(content).forEach((key, index) => {
+            if(realContentKey === key) contentObject = Object.values(content)[index];
+        });
+
+        return contentObject;
+    }
+
     useEffect(() => {
+        const contentObject = getContentObject();
         const newContents = [];
         
-        Object.keys(content).forEach((key, index) => {
+        if(!keywords.length) {
+            const specifiedContentKey = contentKey.split(".")[1];
+
+            if(specifiedContentKey) Object.keys(contentObject).forEach((key, index) => {
+                if(specifiedContentKey.toLowerCase() === key.toLowerCase()) newContents.push(Object.values(contentObject)[index]);
+            });
+        }
+        
+        else Object.keys(contentObject).forEach((key, index) => {
             let result = true;
             let counter = 0;
 
@@ -23,11 +44,11 @@ const useContent = (content, keywords) => {
                 else counter++;
             }
     
-            if(result) newContents.push(Object.values(content)[index]);
+            if(result) newContents.push(Object.values(contentObject)[index]);
         });
 
         setContents(newContents);
-    }, [content]);
+    }, [contentKey]);
 
     return contents;
 }

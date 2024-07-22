@@ -1,5 +1,5 @@
 export const content = {
-    H3_FOOTER_TITLE: "Learn Serbian",
+    H3_TITLE: "Learn Serbian",
     
     STRONG_GENERAL: "General",
     STRONG_SERVICES: "Services",

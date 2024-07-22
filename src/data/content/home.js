@@ -5,9 +5,9 @@ export const content = {
 
     H2_LESSONS_TITLE: "Simple to Grasp Lessons",
     P_LESSONS_INFO: "Carefully crafted lessons are waiting for you to master them, gain your XP while doing them while competing with your friends, answer engaging questions while still doing them. Every lesson has estimated time of completion which helps you organise better. You are also able to search for lessons on the Lessons apage by title or related tag or grammatical name. CHATGPT BRO",
-    BUTTON_LESSONS_EXPLORE: false,
+    BUTTON_LESSONS_EXPLORE: "",
 
     H2_FORUM_TITLE: "Active modern forum",
     P_FORUM_INFO: "Carefully crafted lessons are waiting for you to master them, gain your XP while doing them while competing with your friends, answer engaging questions while still doing them. Every lesson has estimated time of completion which helps you organise better. You are also able to search for lessons on the Lessons apage by title or related tag or grammatical name. CHATGPT BRO",
-    BUTTON_FORUM_EXPLORE: false
+    BUTTON_FORUM_EXPLORE: ""
 };

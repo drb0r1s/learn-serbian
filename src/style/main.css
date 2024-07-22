@@ -64,6 +64,22 @@ header .header-holder .header-title-block #header-title {
   text-transform: capitalize;
   margin: 0;
 }
+header .header-holder .header-title-block #header-search {
+  width: 150%;
+  color: white;
+  font-family: learn-serbian-light-italic;
+  font-size: 20px;
+  background-color: #1a1632;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+header .header-holder .header-title-block #header-search::-moz-placeholder {
+  color: white;
+}
+header .header-holder .header-title-block #header-search::placeholder {
+  color: white;
+}
 header .header-holder nav ul {
   display: flex;
   align-items: center;
@@ -84,8 +100,9 @@ header .header-holder nav ul li a:hover {
   color: white;
 }
 header .header-holder nav ul .nav-li-active a {
-  color: white;
+  color: #ccc !important;
   font-weight: bold;
+  cursor: default;
 }
 header .header-holder .header-user-block img {
   height: 55px;

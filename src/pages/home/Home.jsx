@@ -1,17 +1,17 @@
 import React from "react";
-import Header from "../components/header/Header";
-import Footer from "../components/footer/Footer";
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 import HomeBlock from "./HomeBlock";
-import useMobile from "../hooks/useMobile";
-import { images } from "../data/images";
-import { content } from "../data/content/home";
+import useMobile from "../../hooks/useMobile";
+import { images } from "../../data/images";
+import { content } from "../../data/content/home";
 
 const Home = () => {
     const { isMobile } = useMobile();
 
     return(
         <section>
-            <Header currentPage="home" />
+            <Header />
 
             <div className="home-section home-hero">
                 <HomeBlock

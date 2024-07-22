@@ -1,11 +1,18 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import HeaderBottom from "./HeaderBottom";
 import useMobile from "../../hooks/useMobile";
 import { content } from "../../data/content/header";
 import { images } from "../../data/images";
 
-const Header = ({ currentPage }) => {
+const Header = () => {
+    const { pathname } = useLocation();
     const { isMobile } = useMobile(1025);
+
+    function getActiveLink(link) {
+        if(link === "Home" && pathname === "/") return true;
+        return link.toLowerCase() === pathname.substring(1);
+    }
     
     return(
         <>
@@ -18,8 +25,12 @@ const Header = ({ currentPage }) => {
                     {isMobile ? <></> : <nav><ul>{Object.values(content).map((link, index) => {
                         return <li
                             key={index}
-                            className={link === currentPage ? "nav-li-active" : ""}
-                        ><a href="#">{link}</a></li>;
+                            className={getActiveLink(link) ? "nav-li-active" : ""}
+                        >
+                            <Link
+                                to={link === "Home" ? "/" : `/${link.toLowerCase()}`}
+                            >{link}</Link>
+                        </li>;
                     })}</ul></nav>}
 
                     <div className="header-user-block">

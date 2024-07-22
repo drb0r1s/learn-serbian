@@ -14,5 +14,6 @@ import homeIcon from "../images/home-icon.png";
 import lessonsIcon from "../images/lessons-icon.png";
 import forumIcon from "../images/forum-icon.png";
 import linkIcon from "../images/link-icon.png";
+import linkYellowIcon from "../images/link-yellow-icon.png";
 
-export const images = { heroBackground, hero, userPlaceholder, star, forum, discordIcon, youtubeIcon, redditIcon, instagramIcon, homeIcon, lessonsIcon, forumIcon, linkIcon };
+export const images = { heroBackground, hero, userPlaceholder, star, forum, discordIcon, youtubeIcon, redditIcon, instagramIcon, homeIcon, lessonsIcon, forumIcon, linkIcon, linkYellowIcon };

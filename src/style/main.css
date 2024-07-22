@@ -70,15 +70,20 @@ header .header-holder .header-title-block #header-search {
   font-family: learn-serbian-light-italic;
   font-size: 20px;
   background-color: #1a1632;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 10px;
   padding: 10px;
+  transition: 300ms;
 }
 header .header-holder .header-title-block #header-search::-moz-placeholder {
   color: white;
 }
 header .header-holder .header-title-block #header-search::placeholder {
   color: white;
+}
+header .header-holder .header-title-block #header-search:focus {
+  outline: none;
+  border: 1px solid white;
 }
 header .header-holder nav ul {
   display: flex;
@@ -103,6 +108,32 @@ header .header-holder nav ul .nav-li-active a {
   color: #ccc !important;
   font-weight: bold;
   cursor: default;
+}
+header .header-holder .header-user-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 50px;
+}
+header .header-holder .header-user-block .header-points-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+header .header-holder .header-user-block .header-points-block img {
+  height: 30px;
+  width: 30px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+header .header-holder .header-user-block .header-points-block p {
+  color: #ccc;
+  font-family: learn-serbian-medium;
+  font-size: 20px;
+  font-weight: bold;
 }
 header .header-holder .header-user-block img {
   height: 55px;
@@ -308,6 +339,100 @@ footer .footer-copyright span {
   gap: 100px;
   background: linear-gradient(#1a1632, #170925);
   padding: 50px 100px;
+}
+
+#lessons {
+  height: 100vh;
+}
+#lessons .lessons-holder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+#lessons .lessons-holder .lessons-tree {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 350px;
+  position: relative;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-line {
+  height: 100%;
+  width: 5px;
+  background-color: white;
+  position: absolute;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  position: relative;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node .lessons-tree-node-block {
+  border-radius: 10px;
+  transform: rotate(45deg);
+  position: absolute;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node strong {
+  color: #0e1153;
+  font-size: 15px;
+  z-index: 1;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-1 {
+  height: 210px;
+  width: 210px;
+  background-color: rgba(181, 12, 12, 0.55);
+  filter: blur(2px);
+  overflow: hidden;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  transform: rotate(-45deg);
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder .lessons-tree-node-line {
+  height: 100%;
+  width: 5px;
+  background-color: white;
+  transform: translateY(100%);
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-2 {
+  height: 180px;
+  width: 180px;
+  background-color: #b50c0c;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-3 {
+  height: 160px;
+  width: 160px;
+  background-color: #1466c7;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-4 {
+  height: 120px;
+  width: 120px;
+  background-color: white;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-default .lessons-tree-node-block-1 {
+  height: 180px;
+  width: 180px;
+  background-color: #282088;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-default .lessons-tree-node-block-2 {
+  height: 160px;
+  width: 160px;
+  background-color: #0e1153;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-default .lessons-tree-node-block-3 {
+  height: 120px;
+  width: 120px;
+  background-color: white;
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {

@@ -1,0 +1,100 @@
+#lessons {
+    height: 100vh;
+
+    .lessons-holder {
+        height: 100%;
+        @include center;
+
+        .lessons-tree {
+            @include center(column);
+            gap: 350px;
+            position: relative;
+
+            .lessons-tree-line {
+                height: 100%;
+                width: 5px;
+                background-color: white;
+                position: absolute;
+            }
+
+            .lessons-tree-node {
+                @include center;
+                position: relative;
+                
+                .lessons-tree-node-block {
+                    border-radius: 10px;
+                    transform: rotate(45deg);
+                    position: absolute;
+                }
+
+                strong {
+                    color: $dark-purple;
+                    font-size: set-size(sm);
+                    z-index: 1;
+                }
+            }
+
+            .lessons-tree-node-active {
+                .lessons-tree-node-block-1 {
+                    height: 210px;
+                    width: 210px;
+                    background-color: $transparent-red;
+                    filter: blur(2px);
+                    overflow: hidden;
+
+                    .lessons-tree-node-line-holder {
+                        height: 100%;
+                        width: 100%;
+                        @include center;
+                        transform: rotate(-45deg);
+                        
+                        .lessons-tree-node-line {
+                            height: 100%;
+                            width: 5px;
+                            background-color: white;
+                            transform: translateY(100%);
+                        }
+                    }
+                }
+
+                .lessons-tree-node-block-2 {
+                    height: 180px;
+                    width: 180px;
+                    background-color: $red;
+                }
+
+                .lessons-tree-node-block-3 {
+                    height: 160px;
+                    width: 160px;
+                    background-color: $blue;
+                }
+
+                .lessons-tree-node-block-4 {
+                    height: 120px;
+                    width: 120px;
+                    background-color: white;
+                }
+            }
+
+            .lessons-tree-node-default {
+                .lessons-tree-node-block-1 {
+                    height: 180px;
+                    width: 180px;
+                    background-color: $purple;
+                }
+
+                .lessons-tree-node-block-2 {
+                    height: 160px;
+                    width: 160px;
+                    background-color: $dark-purple;
+                }
+
+                .lessons-tree-node-block-3 {
+                    height: 120px;
+                    width: 120px;
+                    background-color: white;
+                }
+            }
+        }
+    }
+}

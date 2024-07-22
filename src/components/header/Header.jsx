@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import HeaderSearch from "./HeaderSearch";
 import HeaderBottom from "./HeaderBottom";
 import useContent from "../../hooks/useContent";
 import useMobile from "../../hooks/useMobile";
@@ -10,6 +9,7 @@ const Header = () => {
     const { pathname } = useLocation();
     const { isMobile } = useMobile(1025);
     
+    const inputSearchContent = useContent("header.input_search");
     const linksContent = useContent("header", ["li"]);
     
     function getActiveLink(link) {
@@ -22,7 +22,9 @@ const Header = () => {
             <header>
                 <div className="header-holder">
                     <div className="header-title-block">
-                        {pathname === "/" ? <p id="header-title">learn serbian</p> : <HeaderSearch />}
+                        {pathname === "/"
+                            ? <p id="header-title">learn serbian</p>
+                        : <input id="header-search" type="text" placeholder={inputSearchContent} />}
                     </div>
 
                     {isMobile ? <></> : <nav><ul>{Object.values(linksContent).map((link, index) => {
@@ -37,6 +39,11 @@ const Header = () => {
                     })}</ul></nav>}
 
                     <div className="header-user-block">
+                        {pathname === "/lessons" ? <div className="header-points-block">
+                            <img src={images.linkYellowIcon} alt="POINTS" />
+                            <p>2740</p>
+                        </div> : <></>}
+                        
                         <img src={images.userPlaceholder} alt="USER" />
                     </div>
                 </div>

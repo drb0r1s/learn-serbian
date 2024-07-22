@@ -14,7 +14,7 @@ const Home = () => {
     const [forumTitle, forumInfo, forumButton] = useContent("home", ["forum"]);
 
     return(
-        <section>
+        <section id="home">
             <Header />
 
             <div className="home-section home-hero">

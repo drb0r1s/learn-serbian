@@ -10,24 +10,20 @@
         overflow-x: scroll;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        position: relative;
 
         &::-webkit-scrollbar {
             display: none;
         }
-
-        .lessons-info-holder-spacer {
-            height: 100%;
-            width: 60%;
-        }
         
         .lessons-info-holder {
-            height: 100%;
+            height: calc(100vh - 60px);
             width: 60%;
             @include center(column);
             align-items: flex-start;
             gap: 30px;
             padding-left: 100px;
-            position: fixed;
+            position: sticky;
             top: 0;
 
             h2 {

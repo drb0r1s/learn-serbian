@@ -355,16 +355,13 @@ footer .footer-copyright span {
   overflow-x: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  position: relative;
 }
 #lessons .lessons-holder::-webkit-scrollbar {
   display: none;
 }
-#lessons .lessons-holder .lessons-info-holder-spacer {
-  height: 100%;
-  width: 60%;
-}
 #lessons .lessons-holder .lessons-info-holder {
-  height: 100%;
+  height: calc(100vh - 60px);
   width: 60%;
   display: flex;
   align-items: center;
@@ -373,7 +370,7 @@ footer .footer-copyright span {
   align-items: flex-start;
   gap: 30px;
   padding-left: 100px;
-  position: fixed;
+  position: sticky;
   top: 0;
 }
 #lessons .lessons-holder .lessons-info-holder h2 {

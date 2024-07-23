@@ -1,99 +1,192 @@
 #lessons {
-    height: 100vh;
-
+    header {
+        position: relative;
+    }
+    
     .lessons-holder {
-        height: 100%;
+        height: calc(100vh - 60px);
         @include center;
+        justify-content: flex-start;
+        overflow-x: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
 
-        .lessons-tree {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .lessons-info-holder-spacer {
+            height: 100%;
+            width: 60%;
+        }
+        
+        .lessons-info-holder {
+            height: 100%;
+            width: 60%;
             @include center(column);
-            gap: 350px;
-            position: relative;
+            align-items: flex-start;
+            gap: 30px;
+            padding-left: 100px;
+            position: fixed;
+            top: 0;
 
-            .lessons-tree-line {
-                height: 100%;
-                width: 5px;
-                background-color: white;
-                position: absolute;
+            h2 {
+                color: white;
+                font-family: learn-serbian-medium;
+                font-size: set-size(miniheading);
+                margin: 0;
             }
 
-            .lessons-tree-node {
+            p {
+                width: 70%;
+                color: white;
+                font-family: learn-serbian-light;
+                font-size: set-size(md);
+                margin: 0;
+            }
+
+            button {
+                @include learn-serbian-button;
+                font-size: set-size(md);
+                padding: 15px 40px;
+            }
+
+            .lessons-info-holder-time-points-holder {
                 @include center;
-                position: relative;
-                
-                .lessons-tree-node-block {
-                    border-radius: 10px;
-                    transform: rotate(45deg);
-                    position: absolute;
-                }
+                gap: 50px;
 
-                strong {
-                    color: $dark-purple;
-                    font-size: set-size(sm);
-                    z-index: 1;
-                }
-            }
+                .lessons-info-holder-time-holder,
+                .lessons-info-holder-points-holder {
+                    @include center;
+                    gap: 15px;
 
-            .lessons-tree-node-active {
-                .lessons-tree-node-block-1 {
-                    height: 210px;
-                    width: 210px;
-                    background-color: $transparent-red;
-                    filter: blur(2px);
-                    overflow: hidden;
+                    img {
+                        height: 40px;
+                        width: 40px;
+                        object-fit: contain;
+                    }
 
-                    .lessons-tree-node-line-holder {
-                        height: 100%;
-                        width: 100%;
-                        @include center;
-                        transform: rotate(-45deg);
-                        
-                        .lessons-tree-node-line {
-                            height: 100%;
-                            width: 5px;
-                            background-color: white;
-                            transform: translateY(100%);
-                        }
+                    strong {
+                        color: $grey;
+                        font-family: learn-serbian-medium;
+                        font-size: set-size(lg);
                     }
                 }
+            }
+        }
 
-                .lessons-tree-node-block-2 {
+        .lessons-tree-holder {
+            height: 100%;
+            width: 40%;
+            @include center;
+            align-items: flex-start;
+            margin-top: 150px;
+        }
+        
+        .lessons-tree {
+            @include center(column);
+            
+            .lessons-tree-node-holder {
+                @include center(column);
+                gap: 200px;
+                position: relative;
+    
+                .lessons-tree-line {
+                    height: 100%;
+                    width: 5px;
+                    background-color: white;
+                    position: absolute;
+                }
+    
+                .lessons-tree-node {
+                    @include center;
+                    position: relative;
+                    
+                    .lessons-tree-node-block {
+                        border-radius: 10px;
+                        transform: rotate(45deg);
+                        position: absolute;
+                    }
+    
+                    strong {
+                        color: $dark-purple;
+                        font-size: set-size(sm);
+                        z-index: 1;
+                    }
+                }
+    
+                .lessons-tree-node-active {
+                    height: 210px;
+                    width: 210px;
+                    
+                    .lessons-tree-node-block-1 {
+                        height: 210px;
+                        width: 210px;
+                        background-color: $transparent-red;
+                        filter: blur(2px);
+                        overflow: hidden;
+    
+                        .lessons-tree-node-line-holder {
+                            height: 100%;
+                            width: 100%;
+                            @include center;
+                            transform: rotate(-45deg);
+                            
+                            .lessons-tree-node-line {
+                                height: 100%;
+                                width: 5px;
+                                background-color: white;
+                                transform: translateY(100%);
+                            }
+                        }
+                    }
+    
+                    .lessons-tree-node-block-2 {
+                        height: 180px;
+                        width: 180px;
+                        background-color: $red;
+                    }
+    
+                    .lessons-tree-node-block-3 {
+                        height: 160px;
+                        width: 160px;
+                        background-color: $blue;
+                    }
+    
+                    .lessons-tree-node-block-4 {
+                        height: 120px;
+                        width: 120px;
+                        background-color: white;
+                    }
+                }
+    
+                .lessons-tree-node-default {
                     height: 180px;
                     width: 180px;
-                    background-color: $red;
-                }
-
-                .lessons-tree-node-block-3 {
-                    height: 160px;
-                    width: 160px;
-                    background-color: $blue;
-                }
-
-                .lessons-tree-node-block-4 {
-                    height: 120px;
-                    width: 120px;
-                    background-color: white;
+                    
+                    .lessons-tree-node-block-1 {
+                        height: 180px;
+                        width: 180px;
+                        background-color: $purple;
+                    }
+    
+                    .lessons-tree-node-block-2 {
+                        height: 160px;
+                        width: 160px;
+                        background-color: $dark-purple;
+                    }
+    
+                    .lessons-tree-node-block-3 {
+                        height: 120px;
+                        width: 120px;
+                        background-color: white;
+                    }
                 }
             }
-
-            .lessons-tree-node-default {
-                .lessons-tree-node-block-1 {
-                    height: 180px;
-                    width: 180px;
-                    background-color: $purple;
-                }
-
-                .lessons-tree-node-block-2 {
-                    height: 160px;
-                    width: 160px;
-                    background-color: $dark-purple;
-                }
-
-                .lessons-tree-node-block-3 {
-                    height: 120px;
-                    width: 120px;
-                    background-color: white;
-                }
+    
+            .lessons-tree-spacer {
+                height: 70px;
+                width: 100%;
             }
         }
     }

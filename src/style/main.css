@@ -47,6 +47,7 @@ header {
   top: 0;
 }
 header .header-holder {
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,8 +137,8 @@ header .header-holder .header-user-block .header-points-block p {
   font-weight: bold;
 }
 header .header-holder .header-user-block img {
-  height: 55px;
-  width: 55px;
+  height: 50px;
+  width: 50px;
   -o-object-fit: contain;
      object-fit: contain;
   border-radius: 50%;
@@ -341,55 +342,152 @@ footer .footer-copyright span {
   padding: 50px 100px;
 }
 
-#lessons {
-  height: 100vh;
+#lessons header {
+  position: relative;
 }
 #lessons .lessons-holder {
-  height: 100%;
+  height: calc(100vh - 60px);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  justify-content: flex-start;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#lessons .lessons-holder::-webkit-scrollbar {
+  display: none;
+}
+#lessons .lessons-holder .lessons-info-holder-spacer {
+  height: 100%;
+  width: 60%;
+}
+#lessons .lessons-holder .lessons-info-holder {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  padding-left: 100px;
+  position: fixed;
+  top: 0;
+}
+#lessons .lessons-holder .lessons-info-holder h2 {
+  color: white;
+  font-family: learn-serbian-medium;
+  font-size: 40px;
+  margin: 0;
+}
+#lessons .lessons-holder .lessons-info-holder p {
+  width: 70%;
+  color: white;
+  font-family: learn-serbian-light;
+  font-size: 20px;
+  margin: 0;
+}
+#lessons .lessons-holder .lessons-info-holder button {
+  color: white;
+  font-family: learn-serbian-medium;
+  font-size: 25px;
+  background-color: #1466c7;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 15px;
+  font-size: 20px;
+  padding: 15px 40px;
+}
+#lessons .lessons-holder .lessons-info-holder .lessons-info-holder-time-points-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 50px;
+}
+#lessons .lessons-holder .lessons-info-holder .lessons-info-holder-time-points-holder .lessons-info-holder-time-holder,
+#lessons .lessons-holder .lessons-info-holder .lessons-info-holder-time-points-holder .lessons-info-holder-points-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 15px;
+}
+#lessons .lessons-holder .lessons-info-holder .lessons-info-holder-time-points-holder .lessons-info-holder-time-holder img,
+#lessons .lessons-holder .lessons-info-holder .lessons-info-holder-time-points-holder .lessons-info-holder-points-holder img {
+  height: 40px;
+  width: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+#lessons .lessons-holder .lessons-info-holder .lessons-info-holder-time-points-holder .lessons-info-holder-time-holder strong,
+#lessons .lessons-holder .lessons-info-holder .lessons-info-holder-time-points-holder .lessons-info-holder-points-holder strong {
+  color: #ccc;
+  font-family: learn-serbian-medium;
+  font-size: 25px;
+}
+#lessons .lessons-holder .lessons-tree-holder {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 150px;
 }
 #lessons .lessons-holder .lessons-tree {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 350px;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 200px;
   position: relative;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-line {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-line {
   height: 100%;
   width: 5px;
   background-color: white;
   position: absolute;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   position: relative;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node .lessons-tree-node-block {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node .lessons-tree-node-block {
   border-radius: 10px;
   transform: rotate(45deg);
   position: absolute;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node strong {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node strong {
   color: #0e1153;
   font-size: 15px;
   z-index: 1;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-1 {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active {
+  height: 210px;
+  width: 210px;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 {
   height: 210px;
   width: 210px;
   background-color: rgba(181, 12, 12, 0.55);
   filter: blur(2px);
   overflow: hidden;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder {
   height: 100%;
   width: 100%;
   display: flex;
@@ -398,41 +496,49 @@ footer .footer-copyright span {
   flex-direction: row;
   transform: rotate(-45deg);
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder .lessons-tree-node-line {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder .lessons-tree-node-line {
   height: 100%;
   width: 5px;
   background-color: white;
   transform: translateY(100%);
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-2 {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-2 {
   height: 180px;
   width: 180px;
   background-color: #b50c0c;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-3 {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-3 {
   height: 160px;
   width: 160px;
   background-color: #1466c7;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-active .lessons-tree-node-block-4 {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-4 {
   height: 120px;
   width: 120px;
   background-color: white;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-default .lessons-tree-node-block-1 {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default {
+  height: 180px;
+  width: 180px;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default .lessons-tree-node-block-1 {
   height: 180px;
   width: 180px;
   background-color: #282088;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-default .lessons-tree-node-block-2 {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default .lessons-tree-node-block-2 {
   height: 160px;
   width: 160px;
   background-color: #0e1153;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-default .lessons-tree-node-block-3 {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default .lessons-tree-node-block-3 {
   height: 120px;
   width: 120px;
   background-color: white;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-spacer {
+  height: 70px;
+  width: 100%;
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {

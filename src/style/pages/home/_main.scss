@@ -24,14 +24,7 @@
         }
 
         button {
-            color: white;
-            font-family: learn-serbian-medium;
-            font-size: set-size(lg);
-            background-color: $blue;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            padding: 15px;
+            @include learn-serbian-button;
         }
     }
 

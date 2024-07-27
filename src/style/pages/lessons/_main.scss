@@ -97,6 +97,8 @@
                 .lessons-tree-node {
                     @include center;
                     position: relative;
+                    cursor: pointer;
+                    transition: 300ms;
                     
                     .lessons-tree-node-block {
                         border-radius: 10px;
@@ -136,17 +138,36 @@
                             }
                         }
                     }
+
+                    &:hover .lessons-tree-node-block-1 {
+                        height: 205px;
+                        width: 205px;
+                    }
     
                     .lessons-tree-node-block-2 {
                         height: 180px;
                         width: 180px;
                         background-color: $red;
+                        border: 2px solid transparent;
+                        transition: 200ms;
+                    }
+
+                    &:hover .lessons-tree-node-block-2 {
+                        height: 185px;
+                        width: 185px;
+                        border: 2px solid white;
                     }
     
                     .lessons-tree-node-block-3 {
                         height: 160px;
                         width: 160px;
                         background-color: $blue;
+                        transition: 250ms;
+                    }
+
+                    &:hover .lessons-tree-node-block-3 {
+                        height: 150px;
+                        width: 150px;
                     }
     
                     .lessons-tree-node-block-4 {
@@ -170,6 +191,14 @@
                         height: 160px;
                         width: 160px;
                         background-color: $dark-purple;
+                        border: 2px solid transparent;
+                        transition: 300ms;
+                    }
+
+                    &:hover .lessons-tree-node-block-2 {
+                        height: 150px;
+                        width: 150px;
+                        border: 2px solid white;
                     }
     
                     .lessons-tree-node-block-3 {

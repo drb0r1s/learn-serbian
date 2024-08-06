@@ -1,17 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Header from "../../components/header/Header";
 import LessonsTree from "./LessonsTree";
 import { images } from "../../data/images";
 
 const Lessons = () => {
+    const activeLesson = useSelector(state => state.lessons.activeLesson);
+    
     return(
         <section id="lessons">
             <Header />
             
             <div className="lessons-holder">
                 <div className="lessons-info-holder">
-                    <h2>Lesson title</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus cum nam minus tenetur unde inventore ipsum sunt, temporibus harum eius quam ipsam, eos tempora nihil tempore? Minus, placeat esse!</p>
+                    <h2>{activeLesson.name}</h2>
+                    <p>{activeLesson.description}</p>
                 
                     <div className="lessons-info-holder-time-points-holder">
                         <div className="lessons-info-holder-time-holder">

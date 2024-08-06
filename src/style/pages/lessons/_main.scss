@@ -129,12 +129,22 @@
                             width: 100%;
                             @include center;
                             transform: rotate(-45deg);
+                            position: relative;
                             
-                            .lessons-tree-node-line {
+                            .lessons-tree-node-line-top {
+                                height: 100%;
+                                width: 5px;
+                                background-color: white;
+                                transform: translateY(-100%);
+                                position: absolute;
+                            }
+                            
+                            .lessons-tree-node-line-bottom {
                                 height: 100%;
                                 width: 5px;
                                 background-color: white;
                                 transform: translateY(100%);
+                                position: absolute;
                             }
                         }
                     }

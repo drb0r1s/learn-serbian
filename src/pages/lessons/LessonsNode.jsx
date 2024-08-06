@@ -1,12 +1,24 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateActiveLesson } from "../../state/reducers/lessonsSlice";
+import useExternalData from "../../hooks/useExternalData";
 
 const LessonsNode = ({ lesson }) => {
     const activeLesson = useSelector(state => state.lessons.activeLesson);
     const dispatch = useDispatch();
-    
+
+    const lessons = useExternalData("lessons");
     const type = activeLesson.id === lesson.id ? "active" : "default";
+    const position = getNodePosition();
+
+    function getNodePosition() {
+        if(Object.keys(lessons).length === 1) return "only";
+
+        if(!lesson.id) return "first";
+        else if(lesson.id === Object.keys(lessons).length - 1) return "last";
+
+        return "middle";
+    }
     
     function changeActiveLesson(newLesson) {
         dispatch(updateActiveLesson(newLesson));
@@ -17,7 +29,8 @@ const LessonsNode = ({ lesson }) => {
             {type === "active" ? <>
                 <div className="lessons-tree-node-block lessons-tree-node-block-1">
                     <div className="lessons-tree-node-line-holder">
-                        <div className="lessons-tree-node-line"></div>
+                        {(position === "last" || position === "middle") ? <div className="lessons-tree-node-line-top"></div> : <></>}
+                        {(position === "first" || position === "middle") ? <div className="lessons-tree-node-line-bottom"></div> : <></>}
                     </div>
                 </div>
                 <div className="lessons-tree-node-block lessons-tree-node-block-2"></div>

@@ -504,12 +504,21 @@ footer .footer-copyright span {
   justify-content: center;
   flex-direction: row;
   transform: rotate(-45deg);
+  position: relative;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder .lessons-tree-node-line {
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder .lessons-tree-node-line-top {
+  height: 100%;
+  width: 5px;
+  background-color: white;
+  transform: translateY(-100%);
+  position: absolute;
+}
+#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder .lessons-tree-node-line-bottom {
   height: 100%;
   width: 5px;
   background-color: white;
   transform: translateY(100%);
+  position: absolute;
 }
 #lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active:hover .lessons-tree-node-block-1 {
   height: 205px;

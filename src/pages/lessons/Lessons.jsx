@@ -19,12 +19,12 @@ const Lessons = () => {
                     <div className="lessons-info-holder-time-points-holder">
                         <div className="lessons-info-holder-time-holder">
                             <img src={images.timeBlueIcon} alt="TIME" />
-                            <strong>10:00</strong>
+                            <strong>{activeLesson.time}</strong>
                         </div>
 
                         <div className="lessons-info-holder-points-holder">
                             <img src={images.linkYellowIcon} alt="POINTS" />
-                            <strong>135</strong>
+                            <strong>{activeLesson.points}</strong>
                         </div>
                     </div>
 

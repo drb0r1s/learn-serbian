@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateActiveLesson } from "../../state/reducers/lessonsSlice";
+import { lessonsActions } from "../../state/reducers/lessonsSlice";
 import useExternalData from "../../hooks/useExternalData";
 
 const LessonsNode = ({ lesson }) => {
@@ -21,7 +21,8 @@ const LessonsNode = ({ lesson }) => {
     }
     
     function changeActiveLesson(newLesson) {
-        dispatch(updateActiveLesson(newLesson));
+        if(activeLesson.id === newLesson.id) return;
+        dispatch(lessonsActions.updateActiveLesson(newLesson));
     }
     
     return(

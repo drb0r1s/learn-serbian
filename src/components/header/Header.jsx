@@ -1,11 +1,15 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { lessonsActions } from "../../state/reducers/lessonsSlice";
 import HeaderBottom from "./HeaderBottom";
 import useContent from "../../hooks/useContent";
 import useMobile from "../../hooks/useMobile";
 import { images } from "../../data/images";
 
 const Header = () => {
+    const dispatch = useDispatch();
+    
     const { pathname } = useLocation();
     const { isMobile } = useMobile(1025);
     
@@ -24,7 +28,12 @@ const Header = () => {
                     <div className="header-title-block">
                         {pathname === "/"
                             ? <p id="header-title">learn serbian</p>
-                        : <input id="header-search" type="text" placeholder={inputSearchContent} />}
+                        : <input
+                            id="header-search"
+                            type="text"
+                            placeholder={inputSearchContent}
+                            onChange={e => dispatch(lessonsActions.updateSearchbar(e.target.value))}
+                        />}
                     </div>
 
                     {isMobile ? <></> : <nav><ul>{Object.values(linksContent).map((link, index) => {

@@ -77,6 +77,12 @@
             @include center;
             align-items: flex-start;
             margin-top: 150px;
+
+            #lessons-tree-no-lessons {
+                color: white;
+                font-size: set-size(miniheading);
+                text-align: center;
+            }
         }
         
         .lessons-tree {
@@ -116,6 +122,7 @@
                 .lessons-tree-node-active {
                     height: 210px;
                     width: 210px;
+                    cursor: default;
                     
                     .lessons-tree-node-block-1 {
                         height: 210px;

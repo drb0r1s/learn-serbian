@@ -6,14 +6,14 @@ const InnerDefault = ({ block }) => {
     
     return(
         <div className="lessons-inner-default">
-            <h3>{block.title}</h3>
-
-            <div className="lesson-inner-default-description-holder">
+            <div className="lessons-inner-default-holder">
+                <h3>{block.title}</h3>
                 <p>{block.description}</p>
-                <img src={pikachuIcon} alt="PIKACHU" />
+                
+                <button>Continue</button>
             </div>
 
-            <button>Continue</button>
+            <img src={pikachuIcon} alt="PIKACHU" />
         </div>
     );
 }

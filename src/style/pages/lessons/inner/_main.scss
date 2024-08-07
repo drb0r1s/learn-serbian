@@ -16,6 +16,41 @@
 
         .lessons-inner-default {
             height: calc(100vh - 60px);
+            @include center;
+        
+            .lessons-inner-default-holder {
+                width: 40%;
+                @include center;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                
+                h3 {
+                    color: white;
+                    font-family: learn-serbian-medium;
+                    font-size: set-size(miniheading);
+                    font-weight: bold;
+                    margin: 0;
+                }
+
+                p {
+                    color: white;
+                    font-family: learn-serbian-light;
+                    font-size: set-size(lg);
+                    margin: 0;
+                }
+
+                button {
+                    @include learn-serbian-button;
+                    font-size: set-size(md);
+                }
+            }
+
+            img {
+                height: 300px;
+                width: 300px;
+                object-fit: contain;
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { images } from "../data/images";
 
-const useImage = ({ imageName }) => {
+const useImage = (imageName) => {
     const [image, setImage] = useState("");
 
     useEffect(() => {

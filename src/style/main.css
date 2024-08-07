@@ -347,6 +347,10 @@ footer .footer-copyright span {
   padding: 50px 100px;
 }
 
+#lessons {
+  position: relative;
+  overflow: hidden;
+}
 #lessons header {
   position: relative;
 }
@@ -451,13 +455,13 @@ footer .footer-copyright span {
   font-size: 40px;
   text-align: center;
 }
-#lessons .lessons-holder .lessons-tree {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -465,13 +469,13 @@ footer .footer-copyright span {
   gap: 200px;
   position: relative;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-line {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-line {
   height: 100%;
   width: 5px;
   background-color: white;
   position: absolute;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -480,29 +484,29 @@ footer .footer-copyright span {
   cursor: pointer;
   transition: 300ms;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node .lessons-tree-node-block {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node .lessons-tree-node-block {
   border-radius: 10px;
   transform: rotate(45deg);
   position: absolute;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node strong {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node strong {
   color: #0e1153;
   font-size: 15px;
   z-index: 1;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active {
   height: 210px;
   width: 210px;
   cursor: default;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 {
   height: 210px;
   width: 210px;
   background-color: rgba(181, 12, 12, 0.55);
   filter: blur(2px);
   overflow: hidden;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder {
   height: 100%;
   width: 100%;
   display: flex;
@@ -512,80 +516,142 @@ footer .footer-copyright span {
   transform: rotate(-45deg);
   position: relative;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder .lessons-tree-node-line-top {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder .lessons-tree-node-line-top {
   height: 100%;
   width: 5px;
   background-color: white;
   transform: translateY(-100%);
   position: absolute;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder .lessons-tree-node-line-bottom {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-1 .lessons-tree-node-line-holder .lessons-tree-node-line-bottom {
   height: 100%;
   width: 5px;
   background-color: white;
   transform: translateY(100%);
   position: absolute;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active:hover .lessons-tree-node-block-1 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active:hover .lessons-tree-node-block-1 {
   height: 205px;
   width: 205px;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-2 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-2 {
   height: 180px;
   width: 180px;
   background-color: #b50c0c;
   border: 2px solid transparent;
   transition: 200ms;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active:hover .lessons-tree-node-block-2 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active:hover .lessons-tree-node-block-2 {
   height: 185px;
   width: 185px;
   border: 2px solid white;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-3 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-3 {
   height: 160px;
   width: 160px;
   background-color: #1466c7;
   transition: 250ms;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active:hover .lessons-tree-node-block-3 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active:hover .lessons-tree-node-block-3 {
   height: 150px;
   width: 150px;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-4 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-active .lessons-tree-node-block-4 {
   height: 120px;
   width: 120px;
   background-color: white;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default {
   height: 180px;
   width: 180px;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default .lessons-tree-node-block-1 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default .lessons-tree-node-block-1 {
   height: 180px;
   width: 180px;
   background-color: #282088;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default .lessons-tree-node-block-2 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default .lessons-tree-node-block-2 {
   height: 160px;
   width: 160px;
   background-color: #0e1153;
   border: 2px solid transparent;
   transition: 300ms;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default:hover .lessons-tree-node-block-2 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default:hover .lessons-tree-node-block-2 {
   height: 150px;
   width: 150px;
   border: 2px solid white;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default .lessons-tree-node-block-3 {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node-default .lessons-tree-node-block-3 {
   height: 120px;
   width: 120px;
   background-color: white;
 }
-#lessons .lessons-holder .lessons-tree .lessons-tree-spacer {
+#lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-spacer {
   height: 70px;
   width: 100%;
+}
+#lessons .lessons-inner {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(#1a1632, #170925);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transition: 500ms;
+  z-index: 2;
+}
+#lessons .lessons-inner .lessons-inner-header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(45, 42, 56, 0.7);
+  box-shadow: 0px 1px 5px 0px rgba(255, 255, 255, 0.4);
+  padding: 5px 50px;
+}
+#lessons .lessons-inner .lessons-inner-header .lessons-inner-header-points-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 5px;
+}
+#lessons .lessons-inner .lessons-inner-header .lessons-inner-header-points-holder img {
+  height: 30px;
+  width: 30px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  pointer-events: none;
+}
+#lessons .lessons-inner .lessons-inner-header .lessons-inner-header-points-holder strong {
+  color: #ccc;
+  font-size: 25px;
+}
+#lessons .lessons-inner .lessons-inner-header h2 {
+  color: #ccc;
+  font-family: learn-serbian-medium;
+  font-size: 40px;
+  margin: 0;
+}
+#lessons .lessons-inner .lessons-inner-header img {
+  height: 40px;
+  width: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  cursor: pointer;
+}
+#lessons .lessons-inner .lessons-inner-lesson {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-direction: column;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-default {
+  height: calc(100vh - 60px);
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {

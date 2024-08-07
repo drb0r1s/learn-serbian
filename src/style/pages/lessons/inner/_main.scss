@@ -1,0 +1,21 @@
+.lessons-inner {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient($gradient-first, $gradient-second);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transition: 500ms;
+    z-index: 2;
+
+    @import "./lessons-inner-header";
+
+    .lessons-inner-lesson {
+        @include center;
+        flex-direction: column;
+
+        .lessons-inner-default {
+            height: calc(100vh - 60px);
+        }
+    }
+}

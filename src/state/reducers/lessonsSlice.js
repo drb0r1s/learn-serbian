@@ -3,6 +3,7 @@ import { lessons } from "../../externalData/lessons";
 
 const initialState = {
     activeLesson: {...Object.values(lessons)[0], id: 0},
+    inLesson: false,
     searchbar: ""
 };
 
@@ -13,6 +14,10 @@ const lessonsSlice = createSlice({
     reducers: {
         updateActiveLesson: (state, action) => {
             state.activeLesson = action.payload;
+        },
+
+        updateInLesson: (state, action) => {
+            state.inLesson = action.payload;
         },
 
         updateSearchbar: (state, action) => {

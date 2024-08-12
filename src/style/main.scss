@@ -6,6 +6,7 @@ body {
     font-family: learn-serbian;
     box-sizing: border-box;
     background: linear-gradient($gradient-first, $gradient-second);
+    scroll-behavior: smooth;
 }
 
 @import "./components/main";

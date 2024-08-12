@@ -2,7 +2,7 @@ import React from "react";
 import useImage from "../../../../hooks/useImage";
 
 const InnerDefault = ({ block }) => {
-    const pikachuIcon = useImage("pikachuIcon");
+    const image = useImage(block.image);
     
     return(
         <div className="lessons-inner-default">
@@ -13,7 +13,7 @@ const InnerDefault = ({ block }) => {
                 <button>Continue</button>
             </div>
 
-            <img src={pikachuIcon} alt="PIKACHU" />
+            <img src={image} alt="PIKACHU" />
         </div>
     );
 }

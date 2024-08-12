@@ -1,15 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import InnerHeader from "./InnerHeader";
 import InnerDefault from "./content/InnerDefault";
+import useScrollBlock from "../../../hooks/useScrollBlock";
 
 const Inner = () => {
     const inner = useRef();
     const activeLesson = useSelector(state => state.lessons.activeLesson);
 
-    useEffect(() => {
-        setTimeout(() => { inner.current.style.top = "0" }, 1);
-    }, []);
+    const [innerElement, setInnerElement] = useState(null);
+    useEffect(() => { setInnerElement(inner.current) }, []);
+    
+    useScrollBlock(innerElement, "down");
 
     return(
         <div className="lessons-inner" ref={inner}>

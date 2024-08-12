@@ -1,6 +1,6 @@
 #lessons {
     position: relative;
-    overflow: hidden;
+    @include no-scrollbar;
     
     header {
         position: relative;
@@ -10,14 +10,8 @@
         height: calc(100vh - 60px);
         @include center;
         justify-content: flex-start;
-        overflow-x: scroll;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+        @include no-scrollbar;
         position: relative;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
         
         .lessons-info-holder {
             height: calc(100vh - 60px);
@@ -75,7 +69,7 @@
         }
 
         .lessons-tree-holder {
-            height: 100%;
+            max-height: 100%;
             width: 40%;
             @include center;
             align-items: flex-start;

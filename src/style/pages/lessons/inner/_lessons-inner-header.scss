@@ -4,7 +4,10 @@
     justify-content: space-between;
     background-color: $transparent-dark-grey;
     box-shadow: 0px 1px 5px 0px rgba($color: white, $alpha: .4);
+    backdrop-filter: blur(2px);
     padding: 5px 50px;
+    position: sticky;
+    top: 0;
 
     .lessons-inner-header-points-holder {
         @include center;

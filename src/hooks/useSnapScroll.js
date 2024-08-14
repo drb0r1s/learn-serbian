@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 
 const useSnapScroll = (element, dependency = []) => {
+    const scrollPoint = useRef(0);
     const touchStartY = useRef(0);
     
     useEffect(() => {
@@ -9,21 +10,22 @@ const useSnapScroll = (element, dependency = []) => {
         element.addEventListener("wheel", wheelScrolling, { passive: false });
         element.addEventListener("touchstart", touchStartScrolling, { passive: false });
         element.addEventListener("touchmove", touchMoveScrolling, { passive: false });
-        element.addEventListener("keydown", keydownScrolling, { passive: false });
+        window.addEventListener("keydown", keydownScrolling, { passive: false });
 
         return () => {
             element.removeEventListener("wheel", wheelScrolling, { passive: false });
             element.removeEventListener("touchstart", touchStartScrolling, { passive: false });
             element.removeEventListener("touchmove", touchMoveScrolling, { passive: false });
-            element.removeEventListener("keydown", keydownScrolling, { passive: false });
+            window.removeEventListener("keydown", keydownScrolling, { passive: false });
         }
     }, [element, ...dependency]);
 
     function wheelScrolling(e) {
         e.preventDefault();
-        
-        const top = e.deltaY > 0 ? window.innerHeight : window.innerHeight * -1;
-        element.scrollBy({ top, behavior: "smooth" });
+        if(!isScrollingAllowed()) return;
+
+        const scrollValue = snapScroll(e.deltaY > 0);
+        updateScrollPoint(scrollValue);
     }
 
     function touchStartScrolling(e) {
@@ -33,18 +35,56 @@ const useSnapScroll = (element, dependency = []) => {
     
     function touchMoveScrolling(e) {
         e.preventDefault();
+        if(!isScrollingAllowed()) return;
         
         const touchMoveY = e.touches[0].clientY;
 
-        const top = touchMoveY < touchStartY.current ? window.innerHeight : window.innerHeight * -1;
-        element.scrollBy({ top, behavior: "smooth" });
+        const scrollValue = snapScroll(touchMoveY < touchStartY.current);
 
         touchStartY.current = touchMoveY;
+        updateScrollPoint(scrollValue);
     }
 
     function keydownScrolling(e) {
+        if(e.code !== "ArrowUp" && e.code !== "ArrowDown") return;
+        
         e.preventDefault();
-        console.log(e)
+        if(!isScrollingAllowed()) return;
+
+        const scrollValue = snapScroll(e.code === "ArrowDown");
+        updateScrollPoint(scrollValue);
+    }
+
+    function isScrollingAllowed() {
+        let status = false;
+        let elementScrollTop = element.scrollTop;
+
+        if(
+            (elementScrollTop % parseInt(elementScrollTop) > 0) &&
+            (Math.abs(scrollPoint.current - elementScrollTop) <= 1)
+        ) elementScrollTop = scrollPoint.current;
+
+        if(scrollPoint.current === elementScrollTop) status = true;
+
+        return status;
+    }
+    
+    function snapScroll(direction) {
+        const scrollValue = direction ? window.innerHeight : window.innerHeight * -1;
+        element.scrollBy({ top: scrollValue, behavior: "smooth" });
+
+        return scrollValue;
+    }
+    
+    function updateScrollPoint(scrollValue) {
+        let newScrollPoint = element.scrollTop + scrollValue;
+
+        if(newScrollPoint < 0) newScrollPoint = 0;
+
+        const maxScrollTop = element.scrollHeight - window.innerHeight;
+        if(newScrollPoint > maxScrollTop) newScrollPoint = maxScrollTop;
+
+        scrollPoint.current = newScrollPoint;
     }
 }
 

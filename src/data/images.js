@@ -18,5 +18,6 @@ import linkYellowIcon from "../images/link-yellow-icon.png";
 import timeBlueIcon from "../images/time-blue-icon.png";
 import xIcon from "../images/x-icon.png";
 import pikachuIcon from "../images/pikachu-icon.png";
+import pikachuThinkingIcon from "../images/pikachu-thinking-icon.png"
 
-export const images = { heroBackground, hero, userPlaceholder, star, forum, discordIcon, youtubeIcon, redditIcon, instagramIcon, homeIcon, lessonsIcon, forumIcon, linkIcon, linkYellowIcon, timeBlueIcon, xIcon, pikachuIcon };
+export const images = { heroBackground, hero, userPlaceholder, star, forum, discordIcon, youtubeIcon, redditIcon, instagramIcon, homeIcon, lessonsIcon, forumIcon, linkIcon, linkYellowIcon, timeBlueIcon, xIcon, pikachuIcon, pikachuThinkingIcon };

@@ -718,6 +718,86 @@ footer .footer-copyright span {
   -o-object-fit: contain;
      object-fit: contain;
 }
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice {
+  height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 15px;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder h3 {
+  color: white;
+  font-family: learn-serbian-medium;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder p {
+  color: white;
+  font-family: learn-serbian-light;
+  font-size: 20px;
+  margin: 0;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-direction: column;
+  gap: 10px;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder button {
+  color: white;
+  font-family: learn-serbian-medium;
+  font-size: 25px;
+  background-color: #1466c7;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 15px;
+  transition: 300ms;
+  width: 100%;
+  border-radius: 10px;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder button:hover {
+  background-color: #282088;
+  border: 1px solid white;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder button {
+  color: white;
+  font-family: learn-serbian-medium;
+  font-size: 25px;
+  background-color: #1466c7;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 15px;
+  transition: 300ms;
+  font-size: 20px;
+  background-color: #2d2a38;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder button:hover {
+  background-color: #282088;
+  border: 1px solid white;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice img {
+  height: 300px;
+  width: 300px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
   header .header-holder {

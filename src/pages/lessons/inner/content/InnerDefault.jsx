@@ -13,7 +13,7 @@ const InnerDefault = ({ block, blockJump }) => {
                 <button onClick={blockJump}>Continue</button>
             </div>
 
-            <img src={image} alt="PIKACHU" />
+            <img src={image} alt="IMAGE" />
         </div>
     );
 }

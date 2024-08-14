@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import InnerHeader from "./InnerHeader";
 import InnerDefault from "./content/InnerDefault";
+import InnerMultipleChoice from "./content/InnerMultipleChoice";
 import useSnapScroll from "../../../hooks/useSnapScroll";
 
 const Inner = () => {
@@ -26,7 +27,19 @@ const Inner = () => {
 
             <div className="lessons-inner-lesson">
                 {activeLesson.content.map((block, index) => {
-                    return <InnerDefault block={block} blockJump={blockJump} key={index} />
+                    switch(block.type) {
+                        case "default": return <InnerDefault
+                            block={block}
+                            blockJump={blockJump}
+                            key={index}
+                        />
+                        case "multipleChoice": return <InnerMultipleChoice
+                            block={block}
+                            blockJump={blockJump}
+                            key={index}
+                        />
+                        default:
+                    }
                 })}
             </div>
         </div>

@@ -14,14 +14,20 @@
         {
             "type": "default",
             "title": "The Something Thing",
-            "description": "Ae videcemo banda, cemu to. Najjaci programer ikada."
+            "description": "Ae videcemo banda, cemu to. Najjaci programer ikada.",
+            "image": "xIcon"
         },
 
         {
-            "type": "default",
-            "title": "CEMU TO????",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus cum nam minus tenetur unde inventore ipsum sunt, temporibus harum eius quam ipsam, eos tempora nihil tempore? Minus, placeat esse!",
-            "image": "xIcon"
+            "type": "multipleChoice",
+            "title": "So does this or this that?",
+            "description": "If this that why you that do that bruh that come on then that is that okay? Strahinja, you should get familiar with lorem ipsum hahahahahah, why does this that?",
+            "image": "pikachuThinkingIcon",
+            "questions": [
+                "This that this bro that",
+                "This bro what bro",
+                "What this bro lol ain't no way"
+            ]
         }
     ]
 }

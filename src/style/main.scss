@@ -7,6 +7,10 @@ body {
     box-sizing: border-box;
     background: linear-gradient($gradient-first, $gradient-second);
     scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 @import "./components/main";

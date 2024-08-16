@@ -142,6 +142,9 @@ body {
   background: linear-gradient(#1a1632, #170925);
   scroll-behavior: smooth;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
 
 header {
   position: sticky;
@@ -597,6 +600,7 @@ footer .footer-copyright span {
 }
 #lessons .lessons-holder .lessons-tree-holder .lessons-tree .lessons-tree-node-holder .lessons-tree-node strong {
   color: #0e1153;
+  font-family: learn-serbian-nunito;
   font-size: 15px;
   z-index: 1;
 }

@@ -1,38 +1,138 @@
 @font-face {
   font-family: learn-serbian;
-  src: url("../fonts/MontserratAlternates-Black.ttf");
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-Black.ttf");
 }
 @font-face {
-  font-family: learn-serbian-medium;
-  src: url("../fonts/MontserratAlternates-Medium.ttf");
-}
-@font-face {
-  font-family: learn-serbian-medium-italic;
-  src: url("../fonts/MontserratAlternates-MediumItalic.ttf");
+  font-family: learn-serbian-italic;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-BlackItalic.ttf");
 }
 @font-face {
   font-family: learn-serbian-bold;
-  src: url("../fonts/MontserratAlternates-Bold.ttf");
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-Bold.ttf");
 }
 @font-face {
   font-family: learn-serbian-bold-italic;
-  src: url("../fonts/MontserratAlternates-BoldItalic.ttf");
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-BoldItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-extra-bold;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-ExtraBold.ttf");
+}
+@font-face {
+  font-family: learn-serbian-extra-bold-italic;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-ExtraBoldItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-extra-light;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-ExtraLight.ttf");
+}
+@font-face {
+  font-family: learn-serbian-extra-light-italic;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-ExtraLightItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-italic;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-Italic.ttf");
 }
 @font-face {
   font-family: learn-serbian-light;
-  src: url("../fonts/MontserratAlternates-Light.ttf");
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-Light.ttf");
 }
 @font-face {
   font-family: learn-serbian-light-italic;
-  src: url("../fonts/MontserratAlternates-LightItalic.ttf");
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-LightItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-medium;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-Medium.ttf");
+}
+@font-face {
+  font-family: learn-serbian-medium-italic;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-MediumItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-regular;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-Regular.ttf");
+}
+@font-face {
+  font-family: learn-serbian-semi-bold;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-SemiBold.ttf");
+}
+@font-face {
+  font-family: learn-serbian-semi-bold-italic;
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-SemiBoldItalic.ttf");
 }
 @font-face {
   font-family: learn-serbian-thin;
-  src: url("../fonts/MontserratAlternates-Thin.ttf");
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-Thin.ttf");
 }
 @font-face {
   font-family: learn-serbian-thin-italic;
-  src: url("../fonts/MontserratAlternates-ThinItalic.ttf");
+  src: url("../fonts/MontserratAlternates/MontserratAlternates-ThinItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito;
+  src: url("../fonts/Nunito/Nunito-Black.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-italic;
+  src: url("../fonts/Nunito/Nunito-BlackItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-bold;
+  src: url("../fonts/Nunito/Nunito-Bold.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-bold-italic;
+  src: url("../fonts/Nunito/Nunito-BoldItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-extra-bold;
+  src: url("../fonts/Nunito/Nunito-ExtraBold.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-extra-bold-italic;
+  src: url("../fonts/Nunito/Nunito-ExtraBoldItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-extra-light;
+  src: url("../fonts/Nunito/Nunito-ExtraLight.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-extra-light-italic;
+  src: url("../fonts/Nunito/Nunito-ExtraLightItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-italic;
+  src: url("../fonts/Nunito/Nunito-Italic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-light;
+  src: url("../fonts/Nunito/Nunito-Light.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-light-italic;
+  src: url("../fonts/Nunito/Nunito-LightItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-medium;
+  src: url("../fonts/Nunito/Nunito-Medium.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-medium-italic;
+  src: url("../fonts/Nunito/Nunito-MediumItalic.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-regular;
+  src: url("../fonts/Nunito/Nunito-Regular.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-semi-bold;
+  src: url("../fonts/Nunito/Nunito-SemiBold.ttf");
+}
+@font-face {
+  font-family: learn-serbian-nunito-semi-bold-italic;
+  src: url("../fonts/Nunito/Nunito-SemiBoldItalic.ttf");
 }
 body {
   margin: 0;

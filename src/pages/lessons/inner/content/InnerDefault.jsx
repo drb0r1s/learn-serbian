@@ -5,8 +5,8 @@ const InnerDefault = ({ block, blockJump }) => {
     const image = useImage(block.image);
     
     return(
-        <div className="lessons-inner-default">
-            <div className="lessons-inner-default-holder">
+        <div className="lessons-inner-block lessons-inner-default">
+            <div className="lessons-inner-block-holder lessons-inner-default-holder">
                 <h3>{block.title}</h3>
                 <p>{block.description}</p>
                 

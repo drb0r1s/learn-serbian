@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import InnerHeader from "./InnerHeader";
 import InnerDefault from "./content/InnerDefault";
 import InnerMultipleChoice from "./content/InnerMultipleChoice";
+import InnerTranslate from "./content/InnerTranslate";
 import useSnapScroll from "../../../hooks/useSnapScroll";
 
 const Inner = () => {
@@ -34,6 +35,11 @@ const Inner = () => {
                             key={index}
                         />
                         case "multipleChoice": return <InnerMultipleChoice
+                            block={block}
+                            blockJump={blockJump}
+                            key={index}
+                        />
+                        case "translate": return <InnerTranslate
                             block={block}
                             blockJump={blockJump}
                             key={index}

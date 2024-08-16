@@ -11,6 +11,11 @@ body {
     &::-webkit-scrollbar {
         display: none;
     }
+
+    img {
+        user-select: none;
+        -webkit-user-drag: none;
+    }
 }
 
 @import "./components/main";

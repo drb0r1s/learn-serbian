@@ -28,6 +28,12 @@
                 "This bro what bro",
                 "What this bro lol ain't no way"
             ]
+        },
+
+        {
+            "type": "translate",
+            "title": "Translate the following sentence",
+            "description": "Sta ima, doktore?"
         }
     ]
 }

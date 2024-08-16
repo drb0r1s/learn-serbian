@@ -5,8 +5,8 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
     const image = useImage(block.image);
     
     return(
-        <div className="lessons-inner-multiple-choice">
-            <div className="lessons-inner-multiple-choice-holder">
+        <div className="lessons-inner-block lessons-inner-multiple-choice">
+            <div className="lessons-inner-block-holder lessons-inner-multiple-choice-holder">
                 <h3>{block.title}</h3>
                 <p>{block.description}</p>
 

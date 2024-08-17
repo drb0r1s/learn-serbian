@@ -12,9 +12,8 @@
     @import "./lessons-inner-header";
 
     .lessons-inner-lesson {
-        @include center;
-        flex-direction: column;
-
+        @include center(column);
+        
         @import "./content/main";
     }
 }

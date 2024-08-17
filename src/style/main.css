@@ -773,7 +773,6 @@ footer .footer-copyright span {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
   flex-direction: column;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-block {
@@ -789,7 +788,6 @@ footer .footer-copyright span {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
@@ -834,7 +832,6 @@ footer .footer-copyright span {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
   flex-direction: column;
   gap: 10px;
 }

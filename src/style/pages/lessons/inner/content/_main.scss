@@ -5,8 +5,7 @@
 
     .lessons-inner-block-holder {
         width: 40%;
-        @include center;
-        flex-direction: column;
+        @include center(column);
         align-items: flex-start;
         gap: 20px;
 

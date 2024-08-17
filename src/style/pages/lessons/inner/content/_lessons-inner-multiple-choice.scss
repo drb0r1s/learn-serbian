@@ -1,8 +1,7 @@
 .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder {
     .lessons-inner-multiple-choice-questions-holder {
         width: 100%;
-        @include center;
-        flex-direction: column;
+        @include center(column);
         gap: 10px;
 
         button {

@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { images } from "../../../../data/images";
 import useContent from "../../../../hooks/useContent";
+import checkAnswer from "../../../../functions/checkAnswer";
 
 const InnerTranslate = ({ block, blockJump }) => {
     const [textareaValue, setTextareaValue] = useState("");
+    const textareaElement = useRef(null);
     
     const placeholderContent = useContent("lessonsInner.textarea_placeholder");
     const specialLetters = ["č", "ć", "š", "đ", "ž"];
 
+    function continueFunction() {
+        if(!textareaValue) return textareaElement.current.focus();
+        const { isCorrect } = checkAnswer(block, textareaValue);
+
+        if(isCorrect) alert("Correct!");
+        else alert("Incorrect!");
+    }
+    
     return(
         <div className="lessons-inner-block lessons-inner-translate">
             <div className="lessons-inner-block-holder lessons-inner-translate-holder">
@@ -24,6 +34,7 @@ const InnerTranslate = ({ block, blockJump }) => {
                         placeholder={placeholderContent}
                         value={textareaValue}
                         onChange={e => setTextareaValue(e.target.value)}
+                        ref={textareaElement}
                     ></textarea>
 
                     <div className="lessons-inner-translate-letters-holder">
@@ -35,7 +46,7 @@ const InnerTranslate = ({ block, blockJump }) => {
                     </div>
                 </div>
 
-                <button>Continue</button>
+                <button onClick={continueFunction}>Continue</button>
             </div>
         </div>
     );

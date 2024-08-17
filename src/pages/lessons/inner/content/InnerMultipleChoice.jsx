@@ -1,8 +1,18 @@
 import React from "react";
 import useImage from "../../../../hooks/useImage";
+import { ArrayFunctions } from "../../../../functions/ArrayFunctions";
+import checkAnswer from "../../../../functions/checkAnswer";
 
 const InnerMultipleChoice = ({ block, blockJump }) => {
     const image = useImage(block.image);
+    const blockQuestions = block.randomize ? ArrayFunctions.randomize(block.questions, true) : block.questions;
+    
+    function buttonFunction(question, index) {
+        const { isCorrect } = checkAnswer(block, block.randomize ? question.index + 1 : index + 1)
+    
+        if(isCorrect) alert("Correct!");
+        else alert("Incorrect!");
+    }
     
     return(
         <div className="lessons-inner-block lessons-inner-multiple-choice">
@@ -11,8 +21,11 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
                 <p>{block.description}</p>
 
                 <div className="lessons-inner-multiple-choice-questions-holder">
-                    {block.questions.map((question, index) => {
-                        return <button key={index}>{question}</button>
+                    {blockQuestions.map((question, index) => {
+                        return <button
+                            onClick={() => buttonFunction(question, index)}
+                            key={index}
+                        >{block.randomize ? question.element : question}</button>
                     })}
                 </div>
 

@@ -27,13 +27,21 @@
                 "This that this bro that",
                 "This bro what bro",
                 "What this bro lol ain't no way"
-            ]
+            ],
+            "answer": 2,
+            "randomize": true
         },
 
         {
             "type": "translate",
             "title": "Translate the following sentence",
-            "description": "Sta ima, doktore?"
+            "description": "Sta ima, doktore?",
+            "answers": [
+                "What's up, doctor?",
+                "What is up, doctor?",
+                "What's up, boss?",
+                "What is up, boss?"
+            ]
         }
     ]
 }

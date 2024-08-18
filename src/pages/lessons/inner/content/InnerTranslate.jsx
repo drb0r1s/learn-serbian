@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { images } from "../../../../data/images";
 import useContent from "../../../../hooks/useContent";
+import useCaseSensitive from "../../../../hooks/useCaseSensitive";
 import checkAnswer from "../../../../functions/checkAnswer";
 
 const InnerTranslate = ({ block, blockJump }) => {
@@ -8,7 +9,7 @@ const InnerTranslate = ({ block, blockJump }) => {
     const textareaElement = useRef(null);
     
     const placeholderContent = useContent("lessonsInner.textarea_placeholder");
-    const specialLetters = ["č", "ć", "š", "đ", "ž"];
+    const specialLetters = useCaseSensitive(["č", "ć", "š", "đ", "ž"], textareaValue);
 
     function continueFunction() {
         if(!textareaValue) return textareaElement.current.focus();
@@ -39,9 +40,7 @@ const InnerTranslate = ({ block, blockJump }) => {
 
                     <div className="lessons-inner-translate-letters-holder">
                         {specialLetters.map((specialLetter, index) => {
-                            return <button
-                                key={index}
-                            >{textareaValue ? specialLetter : specialLetter.toUpperCase()}</button>
+                            return <button key={index}>{specialLetter}</button>
                         })}
                     </div>
                 </div>

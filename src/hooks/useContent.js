@@ -1,19 +1,10 @@
 import { useState, useEffect } from "react";
 import { content } from "../data/content";
+import { Language } from "../functions/Language";
 
 const useContent = (contentKey, keywords = []) => {
     const [contents, setContents] = useState([]);
-
-    function getContentObject() {
-        const realContentKey = contentKey.split(".")[0];
-        let contentObject = {};
-
-        Object.keys(content).forEach((key, index) => {
-            if(realContentKey === key) contentObject = Object.values(content)[index];
-        });
-
-        return contentObject;
-    }
+    const languageContent = Language.inject(content);
 
     useEffect(() => {
         const contentObject = getContentObject();
@@ -49,6 +40,17 @@ const useContent = (contentKey, keywords = []) => {
 
         setContents(newContents);
     }, [contentKey]);
+
+    function getContentObject() {
+        const realContentKey = contentKey.split(".")[0];
+        let contentObject = {};
+
+        Object.keys(languageContent).forEach((key, index) => {
+            if(realContentKey === key) contentObject = Object.values(languageContent)[index];
+        });
+
+        return contentObject;
+    }
 
     return contents;
 }

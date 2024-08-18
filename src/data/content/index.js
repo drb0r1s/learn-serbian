@@ -1,6 +1,4 @@
-import { content as header } from "./header";
-import { content as footer } from "./footer";
-import { content as home } from "./home";
-import { content as lessonsInner } from "./lessonsInner";
+import { en } from "./en";
+import { rs } from "./rs";
 
-export const content = { header, footer, home, lessonsInner };
+export const content = { en, rs };

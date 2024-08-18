@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const useSnapScroll = (element, dependency = []) => {
+const useSnapScroll = (element, innerHeightDifference = 0, dependency = []) => {
     const scrollPoint = useRef(0);
     const touchStartY = useRef(0);
     
@@ -70,10 +70,12 @@ const useSnapScroll = (element, dependency = []) => {
     }
     
     function snapScroll(direction) {
-        const scrollValue = direction ? window.innerHeight : window.innerHeight * -1;
-        element.scrollBy({ top: scrollValue, behavior: "smooth" });
+        const scrollValue = window.innerHeight - innerHeightDifference;
+        const directionScrollValue = direction ? scrollValue : scrollValue * -1;
+        
+        element.scrollBy({ top: directionScrollValue, behavior: "smooth" });
 
-        return scrollValue;
+        return directionScrollValue;
     }
     
     function updateScrollPoint(scrollValue) {

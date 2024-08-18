@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { lessonsActions } from "../../../state/reducers/lessonsSlice";
 import { images } from "../../../data/images";
 
-const InnerHeader = ({ inner }) => {
+const InnerHeader = ({ inner, innerHeader }) => {
     const activeLesson = useSelector(state => state.lessons.activeLesson);
     const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ const InnerHeader = ({ inner }) => {
     }
     
     return(
-        <header className="lessons-inner-header">
+        <header className="lessons-inner-header" ref={innerHeader}>
             <div className="lessons-inner-header-points-holder">
                 <img src={images.linkYellowIcon} alt="POINTS" />
                 <strong>0</strong>

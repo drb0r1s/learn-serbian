@@ -7,13 +7,22 @@ import InnerTranslate from "./content/InnerTranslate";
 import useSnapScroll from "../../../hooks/useSnapScroll";
 
 const Inner = () => {
-    const inner = useRef();
+    const inner = useRef(null);
+    const innerHeader = useRef(null);
+
     const activeLesson = useSelector(state => state.lessons.activeLesson);
 
-    const [innerElement, setInnerElement] = useState(null);
-    useEffect(() => { setInnerElement(inner.current) }, []);
+    const [innerElement, setInnerElements] = useState(null);
+    const [innerHeaderHeight, setInnerHeaderHeight] = useState(0);
+
+    useEffect(() => {
+        setInnerElements(inner.current);
+
+        const height = parseInt(getComputedStyle(innerHeader.current).getPropertyValue("height"));
+        setInnerHeaderHeight(height);
+    }, []);
     
-    useSnapScroll(innerElement);
+    useSnapScroll(innerElement, innerHeaderHeight);
 
     function blockJump() {
         inner.current.scrollBy({
@@ -24,7 +33,7 @@ const Inner = () => {
 
     return(
         <div className="lessons-inner" ref={inner}>
-            <InnerHeader inner={inner} />
+            <InnerHeader inner={inner} innerHeader={innerHeader}  />
 
             <div className="lessons-inner-lesson">
                 {activeLesson.content.map((block, index) => {

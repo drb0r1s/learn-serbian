@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { lessonsActions } from "../../state/reducers/lessonsSlice";
 import useExternalData from "../../hooks/useExternalData";
+import { Language } from "../../functions/Language";
 
 const LessonsNode = ({ lesson }) => {
     const activeLesson = useSelector(state => state.lessons.activeLesson);
@@ -37,12 +38,12 @@ const LessonsNode = ({ lesson }) => {
                 <div className="lessons-tree-node-block lessons-tree-node-block-2"></div>
                 <div className="lessons-tree-node-block lessons-tree-node-block-3"></div>
                 <div className="lessons-tree-node-block lessons-tree-node-block-4"></div>
-                <strong>{lesson.name}</strong>
+                <strong>{Language.inject(lesson.name)}</strong>
             </> : <>
                 <div className="lessons-tree-node-block lessons-tree-node-block-1"></div>
                 <div className="lessons-tree-node-block lessons-tree-node-block-2"></div>
                 <div className="lessons-tree-node-block lessons-tree-node-block-3"></div>
-                <strong>{lesson.name}</strong>
+                <strong>{Language.inject(lesson.name)}</strong>
             </>}
         </div>
     );

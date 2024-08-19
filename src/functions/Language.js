@@ -1,6 +1,6 @@
 export const Language = {
     set: defaultLanguage => {
-        const language = localStorage.getItem("language");
+        const language = Language.get();
         //if(language === null) localStorage.setItem("language", defaultLanguage);
         localStorage.setItem("language", defaultLanguage);
     },
@@ -8,6 +8,7 @@ export const Language = {
     get: () => localStorage.getItem("language"),
 
     inject: content => {
+        if(typeof content === "string") return content;
         
         const language = Language.get();
         let languageContent = {};

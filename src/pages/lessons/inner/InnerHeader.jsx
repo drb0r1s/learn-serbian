@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { lessonsActions } from "../../../state/reducers/lessonsSlice";
 import { images } from "../../../data/images";
+import { Language } from "../../../functions/Language";
 
 const InnerHeader = ({ inner, innerHeader }) => {
     const activeLesson = useSelector(state => state.lessons.activeLesson);
@@ -23,7 +24,7 @@ const InnerHeader = ({ inner, innerHeader }) => {
                 <strong>0</strong>
             </div>
 
-            <h2>{activeLesson.name}</h2>
+            <h2>{Language.inject(activeLesson.name)}</h2>
 
             <img src={images.xIcon} alt="X" onClick={stopLesson} />
         </header>

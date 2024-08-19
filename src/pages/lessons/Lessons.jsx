@@ -6,6 +6,7 @@ import LessonsTree from "./LessonsTree";
 import useExternalData from "../../hooks/useExternalData";
 import { lessonsActions } from "../../state/reducers/lessonsSlice";
 import { images } from "../../data/images";
+import { Language } from "../../functions/Language";
 
 const Lessons = () => {
     const lessonsReducer = useSelector(state => state.lessons);
@@ -22,7 +23,7 @@ const Lessons = () => {
 
         Object.values(lessons).forEach((lesson, index) => {
             const lessonKey = Object.keys(lessons)[index];
-            const lessonName = lesson.name.toLowerCase();
+            const lessonName = Language.inject(lesson.name).toLowerCase();
             
             if(lessonName.includes(lessonsReducer.searchbar.toLowerCase())) newLessons = {...newLessons, [lessonKey]: lesson};
         });
@@ -41,8 +42,8 @@ const Lessons = () => {
             
             <div className="lessons-holder">
                 <div className="lessons-info-holder">
-                    <h2>{lessonsReducer.activeLesson.name}</h2>
-                    <p>{lessonsReducer.activeLesson.description}</p>
+                    <h2>{Language.inject(lessonsReducer.activeLesson.name)}</h2>
+                    <p>{Language.inject(lessonsReducer.activeLesson.description)}</p>
                 
                     <div className="lessons-info-holder-time-points-holder">
                         <div className="lessons-info-holder-time-holder">

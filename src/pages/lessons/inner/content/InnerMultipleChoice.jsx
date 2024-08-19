@@ -2,6 +2,7 @@ import React from "react";
 import useImage from "../../../../hooks/useImage";
 import { ArrayFunctions } from "../../../../functions/ArrayFunctions";
 import checkAnswer from "../../../../functions/checkAnswer";
+import { Language } from "../../../../functions/Language";
 
 const InnerMultipleChoice = ({ block, blockJump }) => {
     const image = useImage(block.image);
@@ -17,15 +18,15 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
     return(
         <div className="lessons-inner-block lessons-inner-multiple-choice">
             <div className="lessons-inner-block-holder lessons-inner-multiple-choice-holder">
-                <h3>{block.title}</h3>
-                <p>{block.description}</p>
+                <h3>{Language.inject(block.title)}</h3>
+                <p>{Language.inject(block.description)}</p>
 
                 <div className="lessons-inner-multiple-choice-questions-holder">
                     {blockQuestions.map((question, index) => {
                         return <button
                             onClick={() => buttonFunction(question, index)}
                             key={index}
-                        >{block.randomize ? question.element : question}</button>
+                        >{Language.inject(block.randomize ? question.element : question)}</button>
                     })}
                 </div>
 

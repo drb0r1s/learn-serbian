@@ -1,13 +1,30 @@
 {
-    "name": "First lesson",
-    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus cum nam minus tenetur unde inventore ipsum sunt, temporibus harum eius quam ipsam, eos tempora nihil tempore? Minus, placeat esse!",
+    "name": {
+        "en": "First lesson",
+        "rs": "Prva lekcija" 
+    },
+
+    "description": {
+        "en": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus cum nam minus tenetur unde inventore ipsum sunt, temporibus harum eius quam ipsam, eos tempora nihil tempore? Minus, placeat esse!",
+        "rs": "Lorem ipsum bla bla, samo na srpskom........."
+    },
+
     "time": "10:00",
     "points": 165,
     "content": [
         {
             "type": "default",
-            "title": "The Beginning",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus cum nam minus tenetur unde inventore ipsum sunt, temporibus harum eius quam ipsam, eos tempora nihil tempore? Minus, placeat esse!",
+
+            "title": {
+                "en": "The Beginning",
+                "rs": "Pocetak"
+            },
+
+            "description": {
+                "en": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet possimus cum nam minus tenetur unde inventore ipsum sunt, temporibus harum eius quam ipsam, eos tempora nihil tempore? Minus, placeat esse!",
+                "rs": "Srbi otkrili lorem ipsum"
+            },
+
             "image": "pikachuIcon"
         },
 
@@ -20,14 +37,30 @@
 
         {
             "type": "multipleChoice",
-            "title": "So does this or this that?",
-            "description": "If this that why you that do that bruh that come on then that is that okay? Strahinja, you should get familiar with lorem ipsum hahahahahah, why does this that?",
+
+            "title": {
+                "en": "So does this or this that?",
+                "rs": "Dakle da li ovo ono ili ono ovo?"
+            },
+
+            "description": {
+                "en": "If this that why you that do that bruh that come on then that is that okay? Strahinja, you should get familiar with lorem ipsum hahahahahah, why does this that?",
+                "rs": "To sto je Strahinja rekao, samo na srpskom."
+            },
+
             "image": "pikachuThinkingIcon",
+            
             "questions": [
                 "This that this bro that",
-                "This bro what bro",
+                
+                {
+                    "en": "This bro what bro",
+                    "rs": "Ovo brate sta brate"
+                },
+                
                 "What this bro lol ain't no way"
             ],
+
             "answer": 2,
             "randomize": true
         },
@@ -35,10 +68,20 @@
         {
             "type": "translate",
             "title": "Translate the following sentence",
-            "description": "Sta ima, doktore?",
+            
+            "description": {
+                "en": "Sta ima, doktore?",
+                "rs": "What is up, doctor?"
+            },
+
             "answers": [
                 "What's up, doctor?",
-                "What is up, doctor?",
+                
+                {
+                    "en": "What is up, doctor?",
+                    "rs": "Sta ima, doktore?"
+                },
+
                 "What's up, boss?",
                 "What is up, boss?"
             ]

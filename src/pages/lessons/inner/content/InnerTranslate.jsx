@@ -3,6 +3,7 @@ import { images } from "../../../../data/images";
 import useContent from "../../../../hooks/useContent";
 import useCaseSensitive from "../../../../hooks/useCaseSensitive";
 import checkAnswer from "../../../../functions/checkAnswer";
+import { Language } from "../../../../functions/Language";
 
 const InnerTranslate = ({ block, blockJump }) => {
     const [textareaValue, setTextareaValue] = useState("");
@@ -22,11 +23,11 @@ const InnerTranslate = ({ block, blockJump }) => {
     return(
         <div className="lessons-inner-block lessons-inner-translate">
             <div className="lessons-inner-block-holder lessons-inner-translate-holder">
-                <h3>{block.title}</h3>
+                <h3>{Language.inject(block.title)}</h3>
 
                 <div className="lessons-inner-translate-description-holder">
                     <span><img src={images.playIcon} alt="PLAY" /></span>
-                    <p>{block.description}</p>
+                    <p>{Language.inject(block.description)}</p>
                 </div>
 
                 <div className="lessons-inner-translate-textarea-holder">

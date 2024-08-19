@@ -15,9 +15,11 @@ const Header = () => {
     
     const inputSearchContent = useContent("header.input_search");
     const linksContent = useContent("header", ["li"]);
+
+    const links = ["home", "lessons", "forum", "link"];
     
     function getActiveLink(link) {
-        if(link === "Home" && pathname === "/") return true;
+        if(link === "home" && pathname === "/") return true;
         return link.toLowerCase() === pathname.substring(1);
     }
     
@@ -39,10 +41,10 @@ const Header = () => {
                     {isMobile ? <></> : <nav><ul>{Object.values(linksContent).map((link, index) => {
                         return <li
                             key={index}
-                            className={getActiveLink(link) ? "nav-li-active" : ""}
+                            className={getActiveLink(links[index]) ? "nav-li-active" : ""}
                         >
                             <Link
-                                to={link === "Home" ? "/" : `/${link.toLowerCase()}`}
+                                to={links[index] === "home" ? "/" : `/${links[index]}`}
                             >{link}</Link>
                         </li>;
                     })}</ul></nav>}

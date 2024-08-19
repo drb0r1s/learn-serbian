@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import useImage from "../../../../hooks/useImage";
 import { ArrayFunctions } from "../../../../functions/ArrayFunctions";
 import checkAnswer from "../../../../functions/checkAnswer";
@@ -8,11 +8,20 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
     const image = useImage(block.image);
     const blockQuestions = block.randomize ? ArrayFunctions.randomize(block.questions, true) : block.questions;
     
-    function buttonFunction(question, index) {
-        const { isCorrect } = checkAnswer(block, block.randomize ? question.index + 1 : index + 1)
+    const buttonElements = useRef([]);
     
+    function buttonFunction(button, question, index) {
+        const { isCorrect } = checkAnswer(block, block.randomize ? question.index + 1 : index + 1)
+        const correctButton = buttonElements.current[block.answer - 1];
+
+        buttonElements.current.forEach(buttonElement => { buttonElement.classList.add("button-neutral"); });
+        correctButton.classList.add("button-correct");
+
         if(isCorrect) alert("Correct!");
-        else alert("Incorrect!");
+        
+        else {
+            button.classList.add("button-wrong");
+        }
     }
     
     return(
@@ -24,7 +33,8 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
                 <div className="lessons-inner-multiple-choice-questions-holder">
                     {blockQuestions.map((question, index) => {
                         return <button
-                            onClick={() => buttonFunction(question, index)}
+                            ref={el => buttonElements.current[question.index] = el}
+                            onClick={e => buttonFunction(e.target, question, index)}
                             key={index}
                         >{Language.inject(block.randomize ? question.element : question)}</button>
                     })}

@@ -10,7 +10,7 @@ import "./style/main.css";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter(routes);
 
-Language.set("rs");
+Language.set("en");
 
 root.render(
     <Provider store={store}>

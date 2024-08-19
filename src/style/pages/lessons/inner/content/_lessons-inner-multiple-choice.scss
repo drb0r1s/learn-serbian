@@ -9,6 +9,38 @@
             width: 100%;
             border-radius: 10px; 
         }
+
+        .button-neutral {
+            background-color: $pale-purple;
+            border: none;
+            cursor: default;
+
+            &:hover {
+                background-color: $pale-purple;
+                border: none;
+                cursor: default;
+            }
+        }
+        
+        .button-correct {
+            border: 3px solid green;
+            cursor: default;
+
+            &:hover {
+                border: 3px solid green;
+            }
+        }
+
+        .button-wrong {
+            background-color: $dark-blue;
+            border: 3px solid $red;
+            cursor: default;
+
+            &:hover {
+                background-color: $dark-blue;
+                border: 3px solid $red;
+            }
+        }
     }
 
     button {

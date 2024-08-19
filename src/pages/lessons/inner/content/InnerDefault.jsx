@@ -1,8 +1,10 @@
 import React from "react";
+import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
 import { Language } from "../../../../functions/Language";
 
 const InnerDefault = ({ block, blockJump }) => {
+    const buttonContent = useContent("lessonsInner.button_default_continue");
     const image = useImage(block.image);
     
     return(
@@ -11,7 +13,7 @@ const InnerDefault = ({ block, blockJump }) => {
                 <h3>{Language.inject(block.title)}</h3>
                 <p>{Language.inject(block.description)}</p>
                 
-                <button onClick={blockJump}>Continue</button>
+                <button onClick={blockJump}>{buttonContent}</button>
             </div>
 
             <img src={image} alt="IMAGE" />

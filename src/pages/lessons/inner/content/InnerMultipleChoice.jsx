@@ -1,13 +1,15 @@
 import React, { useRef } from "react";
+import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
 import { ArrayFunctions } from "../../../../functions/ArrayFunctions";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { Language } from "../../../../functions/Language";
 
 const InnerMultipleChoice = ({ block, blockJump }) => {
+    const buttonContent = useContent("lessonsInner.button_multiple_choice_continue");
     const image = useImage(block.image);
+
     const blockQuestions = block.randomize ? ArrayFunctions.randomize(block.questions, true) : block.questions;
-    
     const buttonElements = useRef([]);
     
     function buttonFunction(button, question, index) {
@@ -40,7 +42,7 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
                     })}
                 </div>
 
-                <button>Continue</button>
+                <button>{buttonContent}</button>
             </div>
 
             <img src={image} alt="IMAGE" />

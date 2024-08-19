@@ -9,7 +9,9 @@ const InnerTranslate = ({ block, blockJump }) => {
     const [textareaValue, setTextareaValue] = useState("");
     const textareaElement = useRef(null);
     
+    const buttonContent = useContent("lessonsInner.button_translate_continue");
     const placeholderContent = useContent("lessonsInner.textarea_placeholder");
+    
     const specialLetters = useCaseSensitive(["č", "ć", "š", "đ", "ž"], textareaValue);
 
     function continueFunction() {
@@ -46,7 +48,7 @@ const InnerTranslate = ({ block, blockJump }) => {
                     </div>
                 </div>
 
-                <button onClick={continueFunction}>Continue</button>
+                <button onClick={continueFunction}>{buttonContent}</button>
             </div>
         </div>
     );

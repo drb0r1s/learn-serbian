@@ -101,7 +101,7 @@
         }
     }
 
-    button {
-        background-color: $dark-grey;
+    .button-disabled {
+        @include learn-serbian-disabled-button;
     }
 }

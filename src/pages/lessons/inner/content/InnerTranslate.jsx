@@ -4,22 +4,36 @@ import useContent from "../../../../hooks/useContent";
 import useCaseSensitive from "../../../../hooks/useCaseSensitive";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { Language } from "../../../../functions/Language";
+import buttonTimer from "../../../../functions/buttonTimer";
 
 const InnerTranslate = ({ block, blockJump }) => {
     const [textareaValue, setTextareaValue] = useState("");
+    
     const textareaElement = useRef(null);
+    const continueButton = useRef(null);
     
     const buttonContent = useContent("lessonsInner.button_translate_continue");
     const placeholderContent = useContent("lessonsInner.textarea_placeholder");
     
     const specialLetters = useCaseSensitive(["č", "ć", "š", "đ", "ž"], textareaValue);
 
-    function continueFunction() {
+    function continueButtonFunction() {
         if(!textareaValue) return textareaElement.current.focus();
         const { isCorrect } = checkAnswer(block, textareaValue);
 
-        if(isCorrect) alert("Correct!");
-        else alert("Incorrect!");
+        if(isCorrect) {
+            textareaElement.current.style.border = "3px solid green";
+            continueButton.current.classList("button-disabled");
+        }
+        
+        else {
+            textareaElement.current.style.border = "3px solid red";
+            const delay = block.incorrectDelay ? block.incorrectDelay : 5;
+            
+            buttonTimer(continueButton.current, delay, () => {
+                textareaElement.current.style.border = "";
+            });
+        }
     }
     
     return(
@@ -48,7 +62,11 @@ const InnerTranslate = ({ block, blockJump }) => {
                     </div>
                 </div>
 
-                <button onClick={continueFunction}>{buttonContent}</button>
+                <button
+                    className="button-disabled"
+                    ref={continueButton}
+                    onClick={continueButtonFunction}
+                >{buttonContent}</button>
             </div>
         </div>
     );

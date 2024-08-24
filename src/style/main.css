@@ -1014,6 +1014,13 @@ footer .footer-copyright span {
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder button {
   background-color: #2d2a38;
+  border: none;
+  cursor: default;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder button:hover {
+  background-color: #2d2a38;
+  border: none;
+  cursor: default;
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {

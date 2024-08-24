@@ -8,7 +8,7 @@ export const Language = {
     get: () => localStorage.getItem("language"),
 
     inject: content => {
-        if(typeof content === "string") return content;
+        if(typeof content !== "object") return content;
         
         const language = Language.get();
         let languageContent = {};

@@ -50,20 +50,22 @@
 
             "image": "pikachuThinkingIcon",
             
-            "questions": [
-                "This that this bro that",
-                
-                {
-                    "en": "This bro what bro",
-                    "rs": "Ovo brate sta brate"
-                },
-                
-                "What this bro lol ain't no way"
-            ],
+            "questions": {
+                "en": [
+                    "This that this bro that",
+                    "This bro what bro",
+                    "What this bro lol ain't no way"
+                ],
+
+                "rs": [
+                    "To je to",
+                    "Ae videcemo"
+                ]
+            },
 
             "answer": 2,
             "randomize": true,
-            "incorrectDelay": 14
+            "incorrectDelay": 7
         },
 
         {
@@ -75,17 +77,21 @@
                 "rs": "What is up, doctor?"
             },
 
-            "answers": [
-                "What's up, doctor?",
-                
-                {
-                    "en": "What is up, doctor?",
-                    "rs": "Sta ima, doktore?"
-                },
+            "answers": {
+                "en": [
+                    "What's up, doctor?",
+                    "What is up, doctor?",
+                    "What's up, boss?",
+                    "What is up, boss?"
+                ],
 
-                "What's up, boss?",
-                "What is up, boss?"
-            ]
+                "rs": [
+                    "Sta ima, doktore?",
+                    "Sta ima, sefe?"
+                ]
+            },
+
+            "incorrectDelay": 4
         }
     ]
 }

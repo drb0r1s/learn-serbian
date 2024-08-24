@@ -92,6 +92,12 @@
             },
 
             "incorrectDelay": 4
+        },
+
+        {
+            "type": "end",
+            "title": "Congratulations!",
+            "description": "You have successfully finished the lesson!"
         }
     ]
 }

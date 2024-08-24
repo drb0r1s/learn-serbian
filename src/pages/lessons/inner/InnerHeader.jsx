@@ -1,21 +1,14 @@
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { lessonsActions } from "../../../state/reducers/lessonsSlice";
+import { useSelector } from "react-redux";
 import { images } from "../../../data/images";
 import { Language } from "../../../functions/Language";
 
-const InnerHeader = ({ inner, innerHeader }) => {
+const InnerHeader = ({ inner, innerHeader, stopLesson }) => {
     const activeLesson = useSelector(state => state.lessons.activeLesson);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         setTimeout(() => { inner.current.style.top = "0" }, 1);
     }, []);
-
-    function stopLesson() {
-        inner.current.style.top = "";
-        setTimeout(() => { dispatch(lessonsActions.updateInLesson(false)) }, 500);
-    }
     
     return(
         <header className="lessons-inner-header" ref={innerHeader}>

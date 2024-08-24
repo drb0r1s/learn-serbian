@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { lessonsActions } from "../../../state/reducers/lessonsSlice";
 import InnerHeader from "./InnerHeader";
 import InnerDefault from "./content/InnerDefault";
 import InnerMultipleChoice from "./content/InnerMultipleChoice";
 import InnerTranslate from "./content/InnerTranslate";
+import InnerEnd from "./content/InnerEnd";
 import useSnapScroll from "../../../hooks/useSnapScroll";
 
 const Inner = () => {
@@ -11,6 +13,7 @@ const Inner = () => {
     const innerHeader = useRef(null);
 
     const activeLesson = useSelector(state => state.lessons.activeLesson);
+    const dispatch = useDispatch();
 
     const [innerElement, setInnerElements] = useState(null);
     const [innerHeaderHeight, setInnerHeaderHeight] = useState(0);
@@ -24,9 +27,18 @@ const Inner = () => {
     
     const blockJump = useSnapScroll(innerElement, innerHeaderHeight);
 
+    function stopLesson() {
+        inner.current.style.top = "";
+        setTimeout(() => { dispatch(lessonsActions.updateInLesson(false)) }, 500);
+    }
+
     return(
         <div className="lessons-inner" ref={inner}>
-            <InnerHeader inner={inner} innerHeader={innerHeader}  />
+            <InnerHeader
+                inner={inner}
+                innerHeader={innerHeader}
+                stopLesson={stopLesson} 
+            />
 
             <div className="lessons-inner-lesson">
                 {activeLesson.content.map((block, index) => {
@@ -44,6 +56,11 @@ const Inner = () => {
                         case "translate": return <InnerTranslate
                             block={block}
                             blockJump={() => blockJump(inner.current, "down")}
+                            key={index}
+                        />
+                        case "end": return <InnerEnd
+                            block={block}
+                            stopLesson={stopLesson}
                             key={index}
                         />
                         default:

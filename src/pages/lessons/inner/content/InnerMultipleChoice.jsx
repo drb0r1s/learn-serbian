@@ -10,20 +10,47 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
     const image = useImage(block.image);
 
     const blockQuestions = block.randomize ? ArrayFunctions.randomize(block.questions, true) : block.questions;
-    const buttonElements = useRef([]);
     
-    function buttonFunction(button, question, index) {
+    const buttonElements = useRef([]);
+    const continueButton = useRef(null);
+    
+    function questionButtonFunction(button, question, index) {
+        if(button.classList.contains("button-neutral")) return;
+        
         const { isCorrect } = checkAnswer(block, block.randomize ? question.index + 1 : index + 1)
         const correctButton = buttonElements.current[block.answer - 1];
 
         buttonElements.current.forEach(buttonElement => { buttonElement.classList.add("button-neutral"); });
         correctButton.classList.add("button-correct");
 
-        if(isCorrect) alert("Correct!");
+        if(isCorrect) continueButton.current.classList.remove("button-disabled");
         
         else {
             button.classList.add("button-wrong");
+            const delay = block.incorrectDelay ? block.incorrectDelay : 5;
+            
+            continueButton.current.innerText = `${buttonContent} (${delay})`;
+            let currentDelay = delay;
+
+            let interval = setInterval(() => {
+                if(currentDelay === 1) {
+                    buttonElements.current.forEach(buttonElement => { buttonElement.classList.remove("button-neutral") });
+                    button.classList.remove("button-wrong");
+                    correctButton.classList.remove("button-correct");
+
+                    continueButton.current.innerText = buttonContent;
+                    return clearInterval(interval);
+                }
+                
+                currentDelay--;
+                continueButton.current.innerText = `${buttonContent} (${currentDelay})`;
+            }, 1000);
         }
+    }
+
+    function continueButtonFunction(e) {
+        if(e.target.classList.contains("button-disabled")) return;
+        blockJump();
     }
     
     return(
@@ -36,13 +63,17 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
                     {blockQuestions.map((question, index) => {
                         return <button
                             ref={el => buttonElements.current[question.index] = el}
-                            onClick={e => buttonFunction(e.target, question, index)}
+                            onClick={e => questionButtonFunction(e.target, question, index)}
                             key={index}
                         >{Language.inject(block.randomize ? question.element : question)}</button>
                     })}
                 </div>
 
-                <button>{buttonContent}</button>
+                <button
+                    className="button-disabled"
+                    ref={continueButton}
+                    onClick={continueButtonFunction}
+                >{buttonContent}</button>
             </div>
 
             <img src={image} alt="IMAGE" />

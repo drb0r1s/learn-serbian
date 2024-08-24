@@ -30,6 +30,18 @@
     }
 }
 
+@mixin learn-serbian-disabled-button {
+    background-color: $dark-grey;
+    border: none;
+    cursor: default;
+
+    &:hover {
+        background-color: $dark-grey;
+        border: none;
+        cursor: default;
+    }
+}
+
 @mixin no-scrollbar {
     overflow-x: scroll;
     -ms-overflow-style: none;

@@ -7,43 +7,44 @@
         button {
             @include learn-serbian-button;
             width: 100%;
-            border-radius: 10px; 
+            border-radius: 10px;
+            outline: 3px solid transparent;
         }
 
         .button-neutral {
             background-color: $pale-purple;
-            border: none;
+            border: 1px solid transparent;
             cursor: default;
 
             &:hover {
                 background-color: $pale-purple;
-                border: none;
+                border: 1px solid transparent;
                 cursor: default;
             }
         }
         
         .button-correct {
-            border: 3px solid green;
+            outline: 3px solid green;
             cursor: default;
 
             &:hover {
-                border: 3px solid green;
+                outline: 3px solid green;
             }
         }
 
         .button-wrong {
             background-color: $dark-blue;
-            border: 3px solid $red;
+            outline: 3px solid $red;
             cursor: default;
 
             &:hover {
                 background-color: $dark-blue;
-                border: 3px solid $red;
+                outline: 3px solid $red;
             }
         }
     }
 
-    button {
-        background-color: $dark-grey;
+    .button-disabled {
+        @include learn-serbian-disabled-button;
     }
 }

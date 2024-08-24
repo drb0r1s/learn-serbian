@@ -23,6 +23,7 @@ const useSnapScroll = (element, innerHeightDifference = 0, dependency = []) => {
     function wheelScrolling(e) {
         e.preventDefault();
         if(!isScrollingAllowed()) return;
+        console.log("b")
 
         const scrollValue = snapScroll(e.deltaY > 0);
         updateScrollPoint(scrollValue);
@@ -69,11 +70,13 @@ const useSnapScroll = (element, innerHeightDifference = 0, dependency = []) => {
         return status;
     }
     
-    function snapScroll(direction) {
+    function snapScroll(direction, externalElement = null) {
+        const scrollingElement = externalElement ? externalElement : element;
+        
         const scrollValue = window.innerHeight - innerHeightDifference;
         const directionScrollValue = direction ? scrollValue : scrollValue * -1;
         
-        element.scrollBy({ top: directionScrollValue, behavior: "smooth" });
+        scrollingElement.scrollBy({ top: directionScrollValue, behavior: "smooth" });
 
         return directionScrollValue;
     }
@@ -88,6 +91,13 @@ const useSnapScroll = (element, innerHeightDifference = 0, dependency = []) => {
 
         scrollPoint.current = newScrollPoint;
     }
+
+    function externalScroll(element, direction) {
+        const scrollValue = snapScroll(direction === "down", element);
+        updateScrollPoint(scrollValue);
+    }
+
+    return externalScroll;
 }
 
 export default useSnapScroll;

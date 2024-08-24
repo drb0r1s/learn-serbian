@@ -22,14 +22,7 @@ const Inner = () => {
         setInnerHeaderHeight(height);
     }, []);
     
-    useSnapScroll(innerElement, innerHeaderHeight);
-
-    function blockJump() {
-        inner.current.scrollBy({
-            top: window.innerHeight,
-            behavior: "smooth"
-        });
-    }
+    const blockJump = useSnapScroll(innerElement, innerHeaderHeight);
 
     return(
         <div className="lessons-inner" ref={inner}>
@@ -40,17 +33,17 @@ const Inner = () => {
                     switch(block.type) {
                         case "default": return <InnerDefault
                             block={block}
-                            blockJump={blockJump}
+                            blockJump={() => blockJump(inner.current, "down")}
                             key={index}
                         />
                         case "multipleChoice": return <InnerMultipleChoice
                             block={block}
-                            blockJump={blockJump}
+                            blockJump={() => blockJump(inner.current, "down")}
                             key={index}
                         />
                         case "translate": return <InnerTranslate
                             block={block}
-                            blockJump={blockJump}
+                            blockJump={() => blockJump(inner.current, "down")}
                             key={index}
                         />
                         default:

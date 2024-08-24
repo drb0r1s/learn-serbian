@@ -847,6 +847,7 @@ footer .footer-copyright span {
   transition: 300ms;
   width: 100%;
   border-radius: 10px;
+  outline: 3px solid transparent;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder button:hover {
   background-color: #282088;
@@ -854,32 +855,39 @@ footer .footer-copyright span {
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder .button-neutral {
   background-color: #2d2641;
-  border: none;
+  border: 1px solid transparent;
   cursor: default;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder .button-neutral:hover {
   background-color: #2d2641;
-  border: none;
+  border: 1px solid transparent;
   cursor: default;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder .button-correct {
-  border: 3px solid green;
+  outline: 3px solid green;
   cursor: default;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder .button-correct:hover {
-  border: 3px solid green;
+  outline: 3px solid green;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder .button-wrong {
   background-color: #18234e;
-  border: 3px solid #b50c0c;
+  outline: 3px solid #b50c0c;
   cursor: default;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder .button-wrong:hover {
   background-color: #18234e;
-  border: 3px solid #b50c0c;
+  outline: 3px solid #b50c0c;
 }
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder button {
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .button-disabled {
   background-color: #2d2a38;
+  border: none;
+  cursor: default;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .button-disabled:hover {
+  background-color: #2d2a38;
+  border: none;
+  cursor: default;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder {
   width: 100%;

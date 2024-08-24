@@ -23,7 +23,9 @@ const Inner = () => {
         setInnerElements(inner.current);
 
         const height = parseInt(getComputedStyle(innerHeader.current).getPropertyValue("height"));
-        setInnerHeaderHeight(height);
+        const paddingY = parseInt(getComputedStyle(innerHeader.current).getPropertyValue("padding"));
+
+        setInnerHeaderHeight(height + paddingY * 2);
     }, []);
     
     const blockJump = useSnapScroll(innerElement, innerHeaderHeight);

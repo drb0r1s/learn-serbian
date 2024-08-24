@@ -11,6 +11,7 @@
 
     "time": "10:00",
     "points": 165,
+
     "content": [
         {
             "type": "default",
@@ -103,7 +104,18 @@
         {
             "type": "end",
             "title": "Congratulations!",
-            "description": "You have successfully finished the lesson!"
+            "description": "You have successfully finished the lesson!",
+            
+            "questions": [
+                {
+                    "content": "How are you doing?",
+                    
+                    "answers": [
+                        "I'm fine, how about you?",
+                        "Everything's fine g"
+                    ]
+                }
+            ]
         }
     ]
 }

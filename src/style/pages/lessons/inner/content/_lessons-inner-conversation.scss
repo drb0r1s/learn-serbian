@@ -7,6 +7,7 @@
         background-color: $gradient-first;
         border: 2px solid white;
         border-radius: 30px;
+        position: relative;
         overflow: hidden;
 
         .lessons-inner-conversation-display-user-holder {
@@ -32,11 +33,51 @@
         }
 
         .lessons-inner-conversation-display-messages-holder {
-
+            width: 100%;
         }
 
         .lessons-inner-conversation-display-keyboard-holder {
-            
+            width: 100%;
+            @include center;
+            gap: 20px;
+            border-top: 2px solid white;
+            position: absolute;
+            top: 100%;
+            transform: translateY(-100%);
+            padding: 10px 15px;
+
+            input {
+                color: white;
+                font-size: 20px;
+                background-color: $gradient-second;
+                border: 1px solid white;
+                border-radius: 5px;
+                padding: 5px 10px;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            button {
+                @include center;
+                @include learn-serbian-button;
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                position: relative;
+
+                img {
+                    height: 30px;
+                    width: 30px;
+                    object-fit: contain;
+                    position: absolute;
+                }
+            }
         }
+    }
+
+    button {
+        @include learn-serbian-disabled-button;
     }
 }

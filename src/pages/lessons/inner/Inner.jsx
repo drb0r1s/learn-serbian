@@ -5,6 +5,7 @@ import InnerHeader from "./InnerHeader";
 import InnerDefault from "./content/InnerDefault";
 import InnerMultipleChoice from "./content/InnerMultipleChoice";
 import InnerTranslate from "./content/InnerTranslate";
+import InnerConversation from "./content/InnerConversation";
 import InnerEnd from "./content/InnerEnd";
 import useSnapScroll from "../../../hooks/useSnapScroll";
 
@@ -54,6 +55,11 @@ const Inner = () => {
                             key={index}
                         />
                         case "translate": return <InnerTranslate
+                            block={block}
+                            blockJump={() => blockJump(inner.current, "down")}
+                            key={index}
+                        />
+                        case "conversation": return <InnerConversation
                             block={block}
                             blockJump={() => blockJump(inner.current, "down")}
                             key={index}

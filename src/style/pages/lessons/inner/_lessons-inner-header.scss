@@ -8,6 +8,7 @@
     padding: 5px 50px;
     position: sticky;
     top: 0;
+    z-index: 1;
 
     .lessons-inner-header-points-holder {
         @include center;

@@ -737,6 +737,7 @@ footer .footer-copyright span {
   padding: 5px 50px;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 #lessons .lessons-inner .lessons-inner-header .lessons-inner-header-points-holder {
   display: flex;
@@ -1022,7 +1023,40 @@ footer .footer-copyright span {
   border: none;
   cursor: default;
 }
-
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder {
+  width: 100%;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display {
+  height: 500px;
+  width: 100%;
+  background-color: #1a1632;
+  border: 2px solid white;
+  border-radius: 30px;
+  overflow: hidden;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-user-holder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 15px;
+  background-color: #170925;
+  border-bottom: 2px solid white;
+  padding: 10px 15px;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-user-holder img {
+  height: 55px;
+  width: 55px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 50%;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-user-holder strong {
+  color: white;
+  font-size: 30px;
+}
 @media screen and (min-width: 481px) and (max-width: 768px) {
   header .header-holder {
     padding: 5px 30px;

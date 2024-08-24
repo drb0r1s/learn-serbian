@@ -1,0 +1,42 @@
+.lessons-inner-conversation .lessons-inner-conversation-holder {
+    width: 100%;
+
+    .lessons-inner-conversation-display {
+        height: 500px;
+        width: 100%;
+        background-color: $gradient-first;
+        border: 2px solid white;
+        border-radius: 30px;
+        overflow: hidden;
+
+        .lessons-inner-conversation-display-user-holder {
+            width: 100%;
+            @include center;
+            justify-content: flex-start;
+            gap: 15px;
+            background-color: $gradient-second;
+            border-bottom: 2px solid white;
+            padding: 10px 15px;
+
+            img {
+                height: 55px;
+                width: 55px;
+                object-fit: contain;
+                border-radius: 50%;
+            }
+
+            strong {
+                color: white;
+                font-size: set-size(xl);
+            }
+        }
+
+        .lessons-inner-conversation-display-messages-holder {
+
+        }
+
+        .lessons-inner-conversation-display-keyboard-holder {
+            
+        }
+    }
+}

@@ -95,6 +95,12 @@
         },
 
         {
+            "type": "conversation",
+            "title": "Have a conversation",
+            "conversationWith": "John"
+        },
+
+        {
             "type": "end",
             "title": "Congratulations!",
             "description": "You have successfully finished the lesson!"

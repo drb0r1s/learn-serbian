@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { images } from "../../../../data/images";
+import { colors } from "../../../../data/colors";
 import useContent from "../../../../hooks/useContent";
 import useCaseSensitive from "../../../../hooks/useCaseSensitive";
 import checkAnswer from "../../../../functions/checkAnswer";
@@ -18,20 +19,24 @@ const InnerTranslate = ({ block, blockJump }) => {
     const specialLetters = useCaseSensitive(["č", "ć", "š", "đ", "ž"], textareaValue);
 
     function continueButtonFunction() {
+        if(continueButton.current.classList.contains("button-disabled")) return;
+        
         if(!textareaValue) return textareaElement.current.focus();
         const { isCorrect } = checkAnswer(block, textareaValue);
 
         if(isCorrect) {
             textareaElement.current.style.border = "3px solid green";
-            continueButton.current.classList("button-disabled");
         }
         
         else {
-            textareaElement.current.style.border = "3px solid red";
+            textareaElement.current.style.border = `3px solid ${colors.red}`;
+            continueButton.current.classList.add("button-disabled");
+            
             const delay = block.incorrectDelay ? block.incorrectDelay : 5;
             
             buttonTimer(continueButton.current, delay, () => {
                 textareaElement.current.style.border = "";
+                continueButton.current.classList.remove("button-disabled");
             });
         }
     }
@@ -63,7 +68,6 @@ const InnerTranslate = ({ block, blockJump }) => {
                 </div>
 
                 <button
-                    className="button-disabled"
                     ref={continueButton}
                     onClick={continueButtonFunction}
                 >{buttonContent}</button>

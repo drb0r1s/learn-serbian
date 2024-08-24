@@ -14,23 +14,23 @@ $fontSizes: (
 );
 
 $grey: #ccc;
-$dark-grey: #2d2a38;
 $blue: #1466c7;
+$red: #b50c0c;
 $purple: #282088;
+$yellow: #d1be18;
+$dark-grey: #2d2a38;
 $dark-blue: #18234e;
 $dark-purple: #0e1153;
 $pale-blue: #1a1632;
-$pale-purple: #2d2641;
 $pale-red: #170925;
-$red: #b50c0c;
-$yellow: #d1be18;
+$pale-purple: #2d2641;
 
-$transparent-light-grey: rgba($color: $grey, $alpha: .25);
 $transparent-black: rgba($color: black, $alpha: .25);
 $transparent-grey: rgba($color: #606060, $alpha: .5);
-$transparent-dark-grey: rgba($color: #2d2a38, $alpha: .7);
 $transparent-blue: rgba($color: $blue, $alpha: .5);
 $transparent-red: rgba($color: $red, $alpha: .55);
+$transparent-light-grey: rgba($color: $grey, $alpha: .25);
+$transparent-dark-grey: rgba($color: #2d2a38, $alpha: .7);
 
 $gradient-first: #1a1632;
 $gradient-second: #170925;

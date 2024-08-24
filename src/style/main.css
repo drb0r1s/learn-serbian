@@ -1012,12 +1012,12 @@ footer .footer-copyright span {
   background-color: #282088;
   border: 1px solid white;
 }
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder button {
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder .button-disabled {
   background-color: #2d2a38;
   border: none;
   cursor: default;
 }
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder button:hover {
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder .button-disabled:hover {
   background-color: #2d2a38;
   border: none;
   cursor: default;

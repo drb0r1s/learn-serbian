@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
 import { ArrayFunctions } from "../../../../functions/ArrayFunctions";
@@ -11,10 +11,15 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
     const image = useImage(block.image);
 
     const languageBlockQuestions = Language.inject(block.questions);
-    const blockQuestions = block.randomize ? ArrayFunctions.randomize(languageBlockQuestions, true) : languageBlockQuestions;
     
+    const [blockQuestions, setBlockQuestions] = useState([]);
+
     const buttonElements = useRef([]);
     const continueButton = useRef(null);
+
+    useEffect(() => {
+        setBlockQuestions(block.randomize ? ArrayFunctions.randomize(languageBlockQuestions, true) : languageBlockQuestions);
+    }, []);
     
     function questionButtonFunction(button, question, index) {
         if(button.classList.contains("button-neutral")) return;

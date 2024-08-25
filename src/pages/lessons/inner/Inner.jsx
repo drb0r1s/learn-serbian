@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { lessonsActions } from "../../../state/reducers/lessonsSlice";
 import InnerHeader from "./InnerHeader";
@@ -10,15 +10,14 @@ import InnerEnd from "./content/InnerEnd";
 import useSnapScroll from "../../../hooks/useSnapScroll";
 
 const Inner = () => {
-    const inner = useRef(null);
-    const innerHeader = useRef(null);
-
     const lessonsReducer = useSelector(state => state.lessons);
     const dispatch = useDispatch();
 
     const [innerElement, setInnerElements] = useState(null);
     const [innerHeaderHeight, setInnerHeaderHeight] = useState(0);
-    const [currentBlock, setCurrentBlock] = useState(0);
+
+    const inner = useRef(null);
+    const innerHeader = useRef(null);
 
     useEffect(() => {
         setInnerElements(inner.current);
@@ -29,15 +28,13 @@ const Inner = () => {
         setInnerHeaderHeight(height + paddingY * 2);
     }, []);
 
-    useEffect(() => { dispatch(lessonsActions.updateLessonBlock(currentBlock)) }, [currentBlock]);
-
     const blockJump = useSnapScroll({
         element: innerElement,
         additionalMovement: innerHeaderHeight * -1,
         
         onScroll: direction => {
-            if(direction === "up") setCurrentBlock(prevCurrentBlock => prevCurrentBlock - 1);
-            else setCurrentBlock(prevCurrentBlock => prevCurrentBlock + 1);
+            if(direction === "up") dispatch(lessonsActions.updateLessonBlock(-1));
+            else dispatch(lessonsActions.updateLessonBlock(1));
         }
     });
 

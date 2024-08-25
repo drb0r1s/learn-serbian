@@ -22,9 +22,8 @@ const InnerConversation = ({ id, block, blockJump }) => {
     useEffect(() => { if(startTyping) sendMessage() }, [startTyping]);
 
     function sendMessage() {
-        setStartTyping(false);
-
         setTimeout(() => {
+            setStartTyping(false);
             setCurrentMessage(prevCurrentMessage => prevCurrentMessage + 1)
         }, getRandomDelay(2, 5));
     }

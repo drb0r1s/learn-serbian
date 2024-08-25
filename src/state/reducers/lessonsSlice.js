@@ -22,7 +22,7 @@ const lessonsSlice = createSlice({
         },
 
         updateLessonBlock: (state, action) => {
-            state.lessonBlock = action.payload;
+            state.lessonBlock += action.payload;
         },
 
         updateSearchbar: (state, action) => {

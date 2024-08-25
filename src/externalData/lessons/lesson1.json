@@ -98,24 +98,26 @@
         {
             "type": "conversation",
             "title": "Have a conversation",
-            "conversationWith": "John"
+            "conversationWith": "John",
+            "avatar": "noAvatar",
+
+            "questions": [
+                {
+                    "content": "Sta ima, doktore?",
+                    "translation": "Nothing special",
+                    
+                    "answers": [
+                        "Nista posebno",
+                        "Nista specijalno"
+                    ]
+                }
+            ]
         },
 
         {
             "type": "end",
             "title": "Congratulations!",
-            "description": "You have successfully finished the lesson!",
-            
-            "questions": [
-                {
-                    "content": "How are you doing?",
-                    
-                    "answers": [
-                        "I'm fine, how about you?",
-                        "Everything's fine g"
-                    ]
-                }
-            ]
+            "description": "You have successfully finished the lesson!"
         }
     ]
 }

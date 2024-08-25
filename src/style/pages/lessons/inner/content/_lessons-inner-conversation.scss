@@ -2,7 +2,8 @@
     width: 100%;
 
     .lessons-inner-conversation-display {
-        height: 500px;
+        height: 510px;
+        max-width: 420px;
         width: 100%;
         background-color: $gradient-first;
         border: 2px solid white;
@@ -11,13 +12,14 @@
         overflow: hidden;
 
         .lessons-inner-conversation-display-user-holder {
+            height: 75px;
             width: 100%;
             @include center;
             justify-content: flex-start;
             gap: 15px;
             background-color: $gradient-second;
             border-bottom: 2px solid white;
-            padding: 10px 15px;
+            padding: 0 15px;
 
             img {
                 height: 55px;
@@ -32,11 +34,79 @@
             }
         }
 
+        .lessons-inner-conversation-center {
+            @include center;
+        }
+
         .lessons-inner-conversation-display-messages-holder {
+            height: 365px;
             width: 100%;
+            position: relative;
+
+            .lessons-inner-conversation-display-no-messages {
+                width: 50%;
+                color: white;
+                font-family: learn-serbian-medium;
+                font-size: set-size(lg);
+                text-align: center;
+            }
+
+            .lessons-inner-conversation-display-typing {
+                height: 40px;
+                width: 100px;
+                @include center;
+                gap: 10px;
+                background-color: $grey;
+                border-radius: 30px;
+                border-bottom-left-radius: 0;
+                box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, .5);
+                position: absolute;
+                top: 95%;
+                left: 15px;
+                transform: translateY(-95%);
+                
+                .lessons-inner-conversation-display-typing-dot {
+                    height: 15px;
+                    width: 15px;
+                    background-color: $dark-grey;
+                    border-radius: 50%;
+                    opacity: 0;
+                }
+
+                #lessons-inner-conversation-display-typing-dot-1 {
+                    animation: blinking-1 3s ease-in infinite;
+                }
+
+                #lessons-inner-conversation-display-typing-dot-2 {
+                    animation: blinking-2 3s ease-in infinite;
+                }
+
+                #lessons-inner-conversation-display-typing-dot-3 {
+                    animation: blinking-3 3s ease-in infinite;
+                }
+
+                @keyframes blinking-1 {
+                    0% { opacity: 1; }
+                    25% { opacity: 0.25; }
+                    100% { opacity: 1; }
+                }
+
+                @keyframes blinking-2 {
+                    0% { opacity: 1; }
+                    50% { opacity: 0.25; }
+                    100% { opacity: 1; }
+                }
+
+                @keyframes blinking-3 {
+                    0% { opacity: 1; }
+                    75% { opacity: 0.25; }
+                    100% { opacity: 1; }
+                }
+            }
         }
 
         .lessons-inner-conversation-display-keyboard-holder {
+            height: 70px;
             width: 100%;
             @include center;
             gap: 20px;
@@ -44,15 +114,14 @@
             position: absolute;
             top: 100%;
             transform: translateY(-100%);
-            padding: 10px 15px;
 
             input {
                 color: white;
                 font-size: 20px;
                 background-color: $gradient-second;
                 border: 1px solid white;
-                border-radius: 5px;
-                padding: 5px 10px;
+                border-radius: 15px;
+                padding: 10px 15px;
 
                 &:focus {
                     outline: none;

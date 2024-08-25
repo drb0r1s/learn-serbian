@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const useSnapScroll = (element, innerHeightDifference = 0, dependency = []) => {
+const useSnapScroll = ({ element, additionalMovement, onScroll }) => {
     const scrollPoint = useRef(0);
     const touchStartY = useRef(0);
     
@@ -18,7 +18,7 @@ const useSnapScroll = (element, innerHeightDifference = 0, dependency = []) => {
             element.removeEventListener("touchmove", touchMoveScrolling, { passive: false });
             window.removeEventListener("keydown", keydownScrolling, { passive: false });
         }
-    }, [element, ...dependency]);
+    }, [element]);
 
     function wheelScrolling(e) {
         e.preventDefault();
@@ -72,11 +72,12 @@ const useSnapScroll = (element, innerHeightDifference = 0, dependency = []) => {
     function snapScroll(direction, externalElement = null) {
         const scrollingElement = externalElement ? externalElement : element;
         
-        const scrollValue = window.innerHeight - innerHeightDifference;
+        const scrollValue = window.innerHeight + (additionalMovement ? additionalMovement : 0);
         const directionScrollValue = direction ? scrollValue : scrollValue * -1;
         
         scrollingElement.scrollBy({ top: directionScrollValue, behavior: "smooth" });
-
+        if(onScroll !== null) onScroll(directionScrollValue < 0 ? "up" : "down");
+        
         return directionScrollValue;
     }
     

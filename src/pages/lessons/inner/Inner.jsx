@@ -13,11 +13,12 @@ const Inner = () => {
     const inner = useRef(null);
     const innerHeader = useRef(null);
 
-    const activeLesson = useSelector(state => state.lessons.activeLesson);
+    const lessonsReducer = useSelector(state => state.lessons);
     const dispatch = useDispatch();
 
     const [innerElement, setInnerElements] = useState(null);
     const [innerHeaderHeight, setInnerHeaderHeight] = useState(0);
+    const [currentBlock, setCurrentBlock] = useState(0);
 
     useEffect(() => {
         setInnerElements(inner.current);
@@ -27,8 +28,18 @@ const Inner = () => {
 
         setInnerHeaderHeight(height + paddingY * 2);
     }, []);
-    
-    const blockJump = useSnapScroll(innerElement, innerHeaderHeight);
+
+    useEffect(() => { dispatch(lessonsActions.updateLessonBlock(currentBlock)) }, [currentBlock]);
+
+    const blockJump = useSnapScroll({
+        element: innerElement,
+        additionalMovement: innerHeaderHeight * -1,
+        
+        onScroll: direction => {
+            if(direction === "up") setCurrentBlock(prevCurrentBlock => prevCurrentBlock - 1);
+            else setCurrentBlock(prevCurrentBlock => prevCurrentBlock + 1);
+        }
+    });
 
     function stopLesson() {
         inner.current.style.top = "";
@@ -44,29 +55,34 @@ const Inner = () => {
             />
 
             <div className="lessons-inner-lesson">
-                {activeLesson.content.map((block, index) => {
+                {lessonsReducer.activeLesson.content.map((block, index) => {
                     switch(block.type) {
                         case "default": return <InnerDefault
+                            id={index}
                             block={block}
                             blockJump={() => blockJump(inner.current, "down")}
                             key={index}
                         />
                         case "multipleChoice": return <InnerMultipleChoice
+                            id={index}
                             block={block}
                             blockJump={() => blockJump(inner.current, "down")}
                             key={index}
                         />
                         case "translate": return <InnerTranslate
+                            id={index}
                             block={block}
                             blockJump={() => blockJump(inner.current, "down")}
                             key={index}
                         />
                         case "conversation": return <InnerConversation
+                            id={index}
                             block={block}
                             blockJump={() => blockJump(inner.current, "down")}
                             key={index}
                         />
                         case "end": return <InnerEnd
+                            id={index}
                             block={block}
                             stopLesson={stopLesson}
                             key={index}

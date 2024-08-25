@@ -4,6 +4,7 @@ import { lessons } from "../../externalData/lessons";
 const initialState = {
     activeLesson: {...Object.values(lessons)[0], id: 0},
     inLesson: false,
+    lessonBlock: 0,
     searchbar: ""
 };
 
@@ -18,6 +19,10 @@ const lessonsSlice = createSlice({
 
         updateInLesson: (state, action) => {
             state.inLesson = action.payload;
+        },
+
+        updateLessonBlock: (state, action) => {
+            state.lessonBlock = action.payload;
         },
 
         updateSearchbar: (state, action) => {

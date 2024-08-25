@@ -128,7 +128,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
                             onChange={e => setInputValue(e.target.value)}
                         />
                         
-                        <button onClick={sendUserMessage}><img src={images.playIcon} alt="SEND" /></button>
+                        <button onClick={sendUserMessage}><img src={images.sendIcon} alt="SEND" /></button>
                     </div>
                 </div>
                 

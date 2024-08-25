@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import useContent from "../../../../hooks/useContent";
 import { images } from "../../../../data/images";
@@ -13,18 +13,35 @@ const InnerConversation = ({ id, block, blockJump }) => {
     const [startTyping, setStartTyping] = useState(false);
     const [currentMessage, setCurrentMessage] = useState(-1);
 
-    const getRandomDelay = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    const noMessagesElement = useRef(null);
+    const typingMessageElement = useRef(null);
+
+    const getRandomDelay = (min, max) => (Math.floor(Math.random() * (max - min + 1)) + min) * 1000;
 
     useEffect(() => {
-        if(id === lessonBlock) setTimeout(() => { setStartTyping(true) }, getRandomDelay(1, 3) * 1000);
+        if(id === lessonBlock) setTimeout(() => { setStartTyping(true) }, getRandomDelay(1, 3));
     }, [lessonBlock]);
 
-    useEffect(() => { if(startTyping) sendMessage() }, [startTyping]);
+    useEffect(() => {
+        if(startTyping) setTimeout(() => {
+            typingMessageElement.current.style.top = "95%";
+            typingMessageElement.current.style.opacity = "1";
+
+            setTimeout(() => { sendMessage() }, 300);
+        }, 1);
+    }, [startTyping]);
 
     function sendMessage() {
         setTimeout(() => {
-            setStartTyping(false);
-            setCurrentMessage(prevCurrentMessage => prevCurrentMessage + 1)
+            noMessagesElement.current.style.opacity = "0";
+
+            typingMessageElement.current.style.top = "";
+            typingMessageElement.current.style.opacity = "";
+
+            setTimeout(() => {
+                setStartTyping(false);
+                setCurrentMessage(prevCurrentMessage => prevCurrentMessage + 1)
+            }, 300);
         }, getRandomDelay(2, 5));
     }
 
@@ -40,9 +57,9 @@ const InnerConversation = ({ id, block, blockJump }) => {
                     </div>
 
                     <div className={`lessons-inner-conversation-display-messages-holder ${currentMessage === -1 ? "lessons-inner-conversation-center" : ""}`}>
-                        {currentMessage === -1 ? <strong className="lessons-inner-conversation-display-no-messages">{`${noMessagesContent} ${Language.inject(block.conversationWith)}.`}</strong> : <></>}
+                        {currentMessage === -1 ? <strong className="lessons-inner-conversation-display-no-messages" ref={noMessagesElement}>{`${noMessagesContent} ${Language.inject(block.conversationWith)}.`}</strong> : <></>}
                         
-                        {startTyping ? <div className="lessons-inner-conversation-display-typing">
+                        {startTyping ? <div className="lessons-inner-conversation-display-typing" ref={typingMessageElement}>
                             <div className="lessons-inner-conversation-display-typing-dot" id="lessons-inner-conversation-display-typing-dot-1"></div>
                             <div className="lessons-inner-conversation-display-typing-dot" id="lessons-inner-conversation-display-typing-dot-2"></div>
                             <div className="lessons-inner-conversation-display-typing-dot" id="lessons-inner-conversation-display-typing-dot-3"></div>

@@ -1077,6 +1077,8 @@ footer .footer-copyright span {
   font-family: learn-serbian-medium;
   font-size: 25px;
   text-align: center;
+  opacity: 1;
+  transition: 300ms;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-typing {
   height: 40px;
@@ -1091,9 +1093,11 @@ footer .footer-copyright span {
   border-bottom-left-radius: 0;
   box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.5);
   position: absolute;
-  top: 95%;
+  top: 100%;
   left: 15px;
   transform: translateY(-95%);
+  opacity: 0;
+  transition: 300ms;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-typing .lessons-inner-conversation-display-typing-dot {
   height: 15px;

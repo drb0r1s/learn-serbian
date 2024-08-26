@@ -1228,16 +1228,20 @@ footer .footer-copyright span {
   gap: 20px;
   background: linear-gradient(90deg, #1a1632 20%, #170925 90%);
   border-top: 2px solid white;
+  opacity: 0.5;
   padding: 10px 0;
+  transition: 300ms;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder input {
   color: white;
   font-family: learn-serbian-medium;
   font-size: 20px;
   background-color: #170925;
-  border: 1px solid white;
+  border: 1px solid transparent;
   border-radius: 15px;
+  cursor: default;
   padding: 10px 15px;
+  transition: 300ms;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder input:focus {
   outline: none;
@@ -1257,6 +1261,34 @@ footer .footer-copyright span {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  background-color: #2d2a38;
+  border: none;
+  cursor: default;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  position: relative;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder button:hover {
+  background-color: #2d2a38;
+  border: none;
+  cursor: default;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder button img {
+  height: 30px;
+  width: 30px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  position: absolute;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder-active {
+  opacity: 1;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder-active input {
+  border: 1px solid white;
+  cursor: text;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder-active button {
   color: white;
   font-family: learn-serbian-medium;
   font-size: 25px;
@@ -1266,21 +1298,12 @@ footer .footer-copyright span {
   cursor: pointer;
   padding: 15px;
   transition: 300ms;
-  height: 50px;
-  width: 50px;
   border-radius: 50%;
-  position: relative;
+  cursor: pointer !important;
 }
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder button:hover {
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder-active button:hover {
   background-color: #282088;
   border: 1px solid white;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder button img {
-  height: 30px;
-  width: 30px;
-  -o-object-fit: contain;
-     object-fit: contain;
-  position: absolute;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder button {
   background-color: #2d2a38;

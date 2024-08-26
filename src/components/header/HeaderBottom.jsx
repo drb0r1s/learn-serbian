@@ -3,7 +3,7 @@ import useContent from "../../hooks/useContent";
 import { images } from "../../data/images";
 
 const HeaderBottom = () => {
-    const linksContent = useContent("header", ["li"]);
+    const linksContent = useContent("header", { keywords: ["li"] });
     const imageArray = [images.homeIcon, images.lessonsIcon, images.forumIcon, images.linkIcon];
     
     return(

@@ -4,12 +4,12 @@ import useContent from "../../hooks/useContent";
 import { images } from "../../data/images";
 
 const Footer = () => {
-    const strongTitles = useContent("footer", ["strong"]);
+    const strongTitles = useContent("footer", { keywords: ["strong"] });
     
-    const generalLinks = useContent("footer", ["li", "general"]);
-    const servicesLinks = useContent("footer", ["li", "services"]);
-    const legalLinks = useContent("footer", ["li", "legal"]);
-    const contributeLinks = useContent("footer", ["li", "contribute"]);
+    const generalLinks = useContent("footer", { keywords: ["li", "general"] });
+    const servicesLinks = useContent("footer", { keywords: ["li", "services"] });
+    const legalLinks = useContent("footer", { keywords: ["li", "legal"] });
+    const contributeLinks = useContent("footer", { keywords: ["li", "contribute"] });
 
     const linksArray = [generalLinks, servicesLinks, legalLinks, contributeLinks];
     

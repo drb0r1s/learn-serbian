@@ -9,9 +9,9 @@ import { images } from "../../data/images";
 const Home = () => {
     const { isMobile } = useMobile();
 
-    const [heroTitle, heroInfo, heroButton] = useContent("home", ["hero"]);
-    const [lessonsTitle, lessonsInfo, lessonsButton] = useContent("home", ["lessons"]);
-    const [forumTitle, forumInfo, forumButton] = useContent("home", ["forum"]);
+    const [heroTitle, heroInfo, heroButton] = useContent("home", { keywords: ["hero"] });
+    const [lessonsTitle, lessonsInfo, lessonsButton] = useContent("home", { keywords: ["lessons"] });
+    const [forumTitle, forumInfo, forumButton] = useContent("home", { keywords: ["forum"] });
 
     return(
         <section id="home">

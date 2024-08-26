@@ -14,7 +14,7 @@ const Header = () => {
     const { isMobile } = useMobile(1025);
     
     const inputSearchContent = useContent("header.input_search");
-    const linksContent = useContent("header", ["li"]);
+    const linksContent = useContent("header", { keywords: ["li"] });
 
     const links = ["home", "lessons", "forum", "link"];
     

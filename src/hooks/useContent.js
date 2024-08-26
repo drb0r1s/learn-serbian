@@ -2,43 +2,54 @@ import { useState, useEffect } from "react";
 import { content } from "../data/content";
 import { Language } from "../functions/Language";
 
-const useContent = (contentKey, keywords = []) => {
+const useContent = (contentKey, options) => {
     const [contents, setContents] = useState([]);
     const languageContent = Language.inject(content);
 
     useEffect(() => {
         const contentObject = getContentObject();
-        const newContents = [];
         
-        if(!keywords.length) {
+        if(!options?.keywords?.length) {
+            let newContent = "";
             const specifiedContentKey = contentKey.split(".")[1];
 
             if(specifiedContentKey) Object.keys(contentObject).forEach((key, index) => {
-                if(specifiedContentKey.toLowerCase() === key.toLowerCase()) newContents.push(Object.values(contentObject)[index]);
+                if(specifiedContentKey.toLowerCase() === key.toLowerCase()) newContent = Object.values(contentObject)[index];
             });
+
+            if(options?.parameters) Object.keys(options.parameters).forEach((key, index) => {
+                console.log(key, newContent)
+                newContent = newContent.replaceAll(`<${key}>`, Object.values(options.parameters)[index]);
+            });
+
+            setContents(newContent);
         }
         
-        else Object.keys(contentObject).forEach((key, index) => {
-            let result = true;
-            let counter = 0;
-
-            const dividedKeys = key.split("_");
+        else {
+            const newContents = [];
+            
+            Object.keys(contentObject).forEach((key, index) => {
+                let result = true;
+                let counter = 0;
     
-            while(result && keywords[counter]) {
-                let matching = false;
-                
-                dividedKeys.forEach(dividedKey => {
-                    if(keywords[counter].toLowerCase() === dividedKey.toLowerCase()) matching = true;
-                });
-
-                if(!matching) result = false;
-                else counter++;
-            }
+                const dividedKeys = key.split("_");
+        
+                while(result && options.keywords[counter]) {
+                    let matching = false;
+                    
+                    dividedKeys.forEach(dividedKey => {
+                        if(options.keywords[counter].toLowerCase() === dividedKey.toLowerCase()) matching = true;
+                    });
     
-            if(result) newContents.push(Object.values(contentObject)[index]);
-        });
+                    if(!matching) result = false;
+                    else counter++;
+                }
+        
+                if(result) newContents.push(Object.values(contentObject)[index]);
+            });
 
-        setContents(newContents);
+            setContents(newContents);
+        }
     }, [contentKey]);
 
     function getContentObject() {

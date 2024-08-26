@@ -10,6 +10,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
     const [startTyping, setStartTyping] = useState(false);
     const [currentMessage, setCurrentMessage] = useState(-1);
     const [conversation, setConversation] = useState([]);
+    const [isKeyboardActive, setIsKeyboardActive] = useState(false);
     const [inputValue, setInputValue] = useState("");
 
     const noMessagesElement = useRef(null);
@@ -21,6 +22,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
     
     const noMessagesContent = useContent("lessonsInner.strong_conversation_no_messages");
     const buttonContent = useContent("lessonsInner.button_conversation_continue");
+    const placeholderContent = useContent("lessonsInner.input_conversation_wait_for_reply", { parameters: { name: block.conversationWith } });
 
     const avatar = useImage(block.avatar);
 
@@ -70,6 +72,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
             setTimeout(() => {
                 setStartTyping(false);
                 setCurrentMessage(prevCurrentMessage => prevCurrentMessage + 1)
+                setIsKeyboardActive(true);
             }, 300);
         }, getRandomDelay(2, 5));
     }
@@ -80,7 +83,10 @@ const InnerConversation = ({ id, block, blockJump }) => {
         const message = { content: inputValue, isUser: true };
         setConversation(prevConversation => [...prevConversation, message]);
 
+        setIsKeyboardActive(false);
         setInputValue("");
+
+        inputElement.current.placeholder = placeholderContent;
     }
 
     return(
@@ -119,13 +125,15 @@ const InnerConversation = ({ id, block, blockJump }) => {
                         })}
                     </div>
 
-                    <div className="lessons-inner-conversation-display-keyboard-holder">
+                    <div className={`lessons-inner-conversation-display-keyboard-holder ${isKeyboardActive ? "lessons-inner-conversation-display-keyboard-holder-active" : ""}`}>
                         <input
                             type="text"
                             placeholder={currentMessage > -1 ? block.questions[currentMessage].translation : ""}
+                            disabled={!isKeyboardActive}
                             ref={inputElement}
                             value={inputValue}
                             onChange={e => setInputValue(e.target.value)}
+                            onKeyDown={e => { if(e.key === "Enter") sendUserMessage() }}
                         />
                         
                         <button onClick={sendUserMessage}><img src={images.sendIcon} alt="SEND" /></button>

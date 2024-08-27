@@ -865,11 +865,11 @@ footer .footer-copyright span {
   cursor: default;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder .button-correct {
-  outline: 3px solid green;
+  outline: 3px solid #28a515;
   cursor: default;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder .button-correct:hover {
-  outline: 3px solid green;
+  outline: 3px solid #28a515;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-multiple-choice .lessons-inner-multiple-choice-holder .lessons-inner-multiple-choice-questions-holder .button-wrong {
   background-color: #18234e;
@@ -1029,7 +1029,7 @@ footer .footer-copyright span {
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display {
   width: 100%;
   background-color: #1a1632;
-  border: 2px solid white;
+  border: 3px solid white;
   border-radius: 30px;
   border-bottom-left-radius: 0;
   position: relative;
@@ -1177,21 +1177,22 @@ footer .footer-copyright span {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  color: white;
   font-family: learn-serbian-medium;
   font-size: 20px;
+  border: 2px solid white;
   border-radius: 15px;
   box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.5);
   margin: 0;
   padding: 5px 10px;
+  transition: 300ms;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-message-user {
   justify-content: flex-end;
   left: -10px;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-message-user p {
-  color: white;
   background-color: #2d2a38;
-  border: 1px solid white;
   border-bottom-right-radius: 0;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-message-participant {
@@ -1206,9 +1207,7 @@ footer .footer-copyright span {
   border-radius: 50%;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-message-participant p {
-  color: white;
   background-color: #1466c7;
-  border: 1px solid white;
   border-bottom-left-radius: 0;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder-active {

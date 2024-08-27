@@ -4,6 +4,7 @@ import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { images } from "../../../../data/images";
+import { colors } from "../../../../data/colors";
 import { Language } from "../../../../functions/Language";
 
 const InnerConversation = ({ id, block, blockJump }) => {
@@ -13,6 +14,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
     const [conversation, setConversation] = useState([]);
     const [isKeyboardActive, setIsKeyboardActive] = useState(false);
     const [inputValue, setInputValue] = useState("");
+    const [isAnswerCorrect, setIsAnswerCorrect] = useState(true);
 
     const noMessagesElement = useRef(null);
     const typingMessageElement = useRef(null);
@@ -29,10 +31,18 @@ const InnerConversation = ({ id, block, blockJump }) => {
 
     const getRandomDelay = (min, max) => (Math.floor(Math.random() * (max - min + 1)) + min) * 1000;
 
+    const incorrectAnswerMessages = [
+        "O čemu ti?",
+        "Šta?",
+        "Ne razumem šta si hteo da kažes?",
+        "Molim?",
+        "Kako to misliš?"
+    ];
+
     useEffect(() => {
         if(id === lessonBlock && !isShown) {
             setIsShown(true);
-            setTimeout(() => { setStartTyping(true) }, getRandomDelay(1, 3));
+            enableTyping();
         }
     }, [lessonBlock]);
 
@@ -60,19 +70,36 @@ const InnerConversation = ({ id, block, blockJump }) => {
         setTimeout(() => {
             lastMessage.style.top = "0";
             lastMessage.style.opacity = "1";
+
+            if(conversation.length > 2) colorUserMessage();
         }, 100);
     }, [conversation]);
 
+    function enableTyping() {
+        setTimeout(() => { setStartTyping(true) }, getRandomDelay(1, 3));
+    }
+
     function sendMessage() {
         setTimeout(() => {
-            noMessagesElement.current.style.opacity = "0";
+            if(noMessagesElement.current) noMessagesElement.current.style.opacity = "0";
 
             typingMessageElement.current.style.top = "";
             typingMessageElement.current.style.opacity = "";
 
             setTimeout(() => {
                 setStartTyping(false);
-                setCurrentMessage(prevCurrentMessage => prevCurrentMessage + 1)
+                
+                if(isAnswerCorrect) setCurrentMessage(prevCurrentMessage => prevCurrentMessage + 1);
+                
+                else {
+                    const message = {
+                        content: incorrectAnswerMessages[Math.floor(Math.random() * incorrectAnswerMessages.length)],
+                        isUser: false
+                    };
+
+                    setConversation(prevConversation => [...prevConversation, message]);
+                }
+
                 setIsKeyboardActive(true);
             }, 300);
         }, getRandomDelay(2, 5));
@@ -82,6 +109,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
         if(!inputValue) return inputElement.current.focus();
 
         const { isCorrect } = checkAnswer(block, inputValue, block.questions[currentMessage].answers);
+        setIsAnswerCorrect(isCorrect);
 
         const message = { content: inputValue, isUser: true };
         setConversation(prevConversation => [...prevConversation, message]);
@@ -91,8 +119,15 @@ const InnerConversation = ({ id, block, blockJump }) => {
 
         inputElement.current.placeholder = placeholderContent;
 
-        if(isCorrect) alert("Correct");
-        else alert("Incorrect");
+        enableTyping();
+    }
+
+    function colorUserMessage() {
+        const lastUserMessage = messageElements.current[messageElements.current.length - 2];
+        const lastUserMessageP = lastUserMessage.firstChild;
+
+        lastUserMessageP.style.border = `2px solid ${isAnswerCorrect ? colors.green : colors.red}`;
+        setTimeout(() => { lastUserMessageP.style.border = "" }, 600);
     }
 
     return(

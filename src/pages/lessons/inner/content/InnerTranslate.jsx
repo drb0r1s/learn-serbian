@@ -25,7 +25,7 @@ const InnerTranslate = ({ block, blockJump }) => {
         const { isCorrect } = checkAnswer(block, textareaValue);
 
         if(isCorrect) {
-            textareaElement.current.style.border = "3px solid green";
+            textareaElement.current.style.border = `3px solid ${colors.green}`;
             blockJump();
         }
         

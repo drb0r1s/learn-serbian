@@ -24,11 +24,11 @@
         }
         
         .button-correct {
-            outline: 3px solid green;
+            outline: 3px solid $green;
             cursor: default;
 
             &:hover {
-                outline: 3px solid green;
+                outline: 3px solid $green;
             }
         }
 

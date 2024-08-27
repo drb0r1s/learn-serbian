@@ -110,6 +110,16 @@
                         "Nista posebno",
                         "Nista specijalno"
                     ]
+                },
+
+                {
+                    "content": "Kako si danas?",
+                    "translation": "I'm okay",
+
+                    "answers": [
+                        "Dobro sam",
+                        "Okej sam"
+                    ]
                 }
             ]
         },

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
+import checkAnswer from "../../../../functions/checkAnswer";
 import { images } from "../../../../data/images";
 import { Language } from "../../../../functions/Language";
 
@@ -80,6 +81,8 @@ const InnerConversation = ({ id, block, blockJump }) => {
     function sendUserMessage() {
         if(!inputValue) return inputElement.current.focus();
 
+        const { isCorrect } = checkAnswer(block, inputValue, block.questions[currentMessage].answers);
+
         const message = { content: inputValue, isUser: true };
         setConversation(prevConversation => [...prevConversation, message]);
 
@@ -87,6 +90,9 @@ const InnerConversation = ({ id, block, blockJump }) => {
         setInputValue("");
 
         inputElement.current.placeholder = placeholderContent;
+
+        if(isCorrect) alert("Correct");
+        else alert("Incorrect");
     }
 
     return(

@@ -1,9 +1,23 @@
 export const ArrayFunctions = {
-    compareTwo: (first, second) => {
+    compareTwo: (first, second, caseSensitive = false) => {
         if(first.length !== second.length) return false;
 
         let status = true;
-        for(let i = 0; i < first.length; i++) if(first[i] !== second[i]) status = false;
+        
+        for(let i = 0; i < first.length; i++) {
+            if(
+                typeof first[i] === "string" &&
+                typeof second[i] === "string" &&
+                !caseSensitive &&
+                (first[i].toLowerCase() !== second[i].toLowerCase())
+            ) status = false;
+            
+            else if(
+                typeof first[i] !== "string" &&
+                typeof second[i] !== "string" &&
+                first[i] !== second[i]
+            ) status = false;
+        }
 
         return status;
     },

@@ -18,7 +18,6 @@ const useContent = (contentKey, options) => {
             });
 
             if(options?.parameters) Object.keys(options.parameters).forEach((key, index) => {
-                console.log(key, newContent)
                 newContent = newContent.replaceAll(`<${key}>`, Object.values(options.parameters)[index]);
             });
 

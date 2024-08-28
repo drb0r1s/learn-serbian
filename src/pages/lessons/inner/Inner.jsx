@@ -22,7 +22,7 @@ const Inner = () => {
     const innerHeader = useRef(null);
     const progressBar = useRef(null);
 
-    const progressBarMovement = 100 / lessonsReducer.activeLesson.content.length;
+    const progressBarMovement = Math.round(100 / lessonsReducer.activeLesson.content.length);
 
     useEffect(() => {
         setInnerElement(inner.current);
@@ -34,7 +34,11 @@ const Inner = () => {
 
         setTimeout(() => {
             ProgressBar.animation(progressBar.current, "appear");
-            setTimeout(() => { ProgressBar.update(progressBar.current, progressBarMovement) }, 300);
+            
+            setTimeout(() => {
+                ProgressBar.update(progressBar.current, progressBarMovement);
+                ProgressBar.update(progressBar.current, progressBarMovement * 2, true);
+            }, 300);
         }, 500);
     }, []);
 
@@ -50,7 +54,12 @@ const Inner = () => {
 
             else {
                 dispatch(lessonsActions.updateLessonBlock(1));
-                ProgressBar.update(progressBar.current, progressBarMovement);
+
+                const progressBarHeight = ProgressBar.update(progressBar.current, progressBarMovement);
+                const progressBarHelperHeight = ProgressBar.getHelperHeight(progressBar.current);
+                
+                console.log(progressBarHeight, progressBarHelperHeight)
+                if(progressBarHeight === progressBarHelperHeight) ProgressBar.update(progressBar.current, progressBarMovement, true);
             }
         }
     });

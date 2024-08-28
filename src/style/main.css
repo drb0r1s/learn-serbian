@@ -794,10 +794,10 @@ footer .footer-copyright span {
 #lessons .lessons-inner .lessons-inner-bars-holder .lessons-inner-progress-bar .lessons-inner-progress-bar-line-helper {
   height: 0;
   width: 10px;
-  background-color: #ccc;
+  background-color: #1466c7;
   position: absolute;
   top: 0;
-  transition: 300ms;
+  transition: 500ms;
 }
 #lessons .lessons-inner .lessons-inner-bars-holder .lessons-inner-progress-bar .lessons-inner-progress-bar-line {
   height: 0;
@@ -806,7 +806,7 @@ footer .footer-copyright span {
   box-shadow: 5px 0px 10px 0px rgba(255, 255, 255, 0.4);
   position: absolute;
   top: 0;
-  transition: 300ms;
+  transition: 1s;
 }
 #lessons .lessons-inner .lessons-inner-lesson {
   display: flex;

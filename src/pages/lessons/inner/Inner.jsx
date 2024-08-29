@@ -30,15 +30,9 @@ const Inner = () => {
         const paddingY = parseInt(getComputedStyle(innerHeader.current).getPropertyValue("padding"));
 
         setInnerHeaderHeight(height + paddingY * 2);
-
-        setTimeout(() => {
-            ProgressBar.animation(progressBar.current, "appear");
             
-            setTimeout(() => {
-                ProgressBar.update(progressBar.current, progressBarMovement);
-                ProgressBar.update(progressBar.current, progressBarMovement * 2, true);
-            }, 300);
-        }, 500);
+        ProgressBar.update(progressBar.current, progressBarMovement);
+        ProgressBar.update(progressBar.current, progressBarMovement * 2, true);
     }, []);
 
     const blockJump = useSnapScroll({
@@ -63,12 +57,8 @@ const Inner = () => {
     });
 
     function stopLesson() {
-        ProgressBar.animation(progressBar.current, "disappear");
-        
-        setTimeout(() => {
-            inner.current.style.top = "";
-            setTimeout(() => { dispatch(lessonsActions.updateInLesson(false)) }, 500);
-        }, 300);
+        inner.current.style.top = "";
+        setTimeout(() => { dispatch(lessonsActions.updateInLesson(false)) }, 500);
     }
 
     return(

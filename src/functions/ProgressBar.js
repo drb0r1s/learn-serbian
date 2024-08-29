@@ -1,9 +1,5 @@
 export const ProgressBar = {
     width: { main: 0, helper: 0 },
-    
-    animation: (progressBar, type) => {
-        progressBar.style.opacity = type === "appear" ? "1" : "";
-    },
 
     update: (progressBar, movement, isHelper = false) => {
         const progressBarLine = [...progressBar.children][isHelper ? 0 : 1];
@@ -19,8 +15,6 @@ export const ProgressBar = {
         }
         
         let newProgressBarLineWidthPercentage = progressBarLineWidth + Math.round(movement);
-
-        console.log(newProgressBarLineWidthPercentage, Math.abs(Math.round(movement)))
 
         if(newProgressBarLineWidthPercentage < Math.abs(Math.round(movement))) newProgressBarLineWidthPercentage = Math.abs(Math.round(movement));
         else if(newProgressBarLineWidthPercentage > 100) newProgressBarLineWidthPercentage = 100;

@@ -785,10 +785,6 @@ footer .footer-copyright span {
   height: 10px;
   width: 100%;
   background-color: rgba(45, 42, 56, 0.7);
-  border-left: 5px solid white;
-  border-right: 5px solid white;
-  opacity: 0;
-  transition: 300ms;
 }
 #lessons .lessons-inner .lessons-inner-bars-holder .lessons-inner-progress-bar .lessons-inner-progress-bar-line-helper {
   height: 10px;

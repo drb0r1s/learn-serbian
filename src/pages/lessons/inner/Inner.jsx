@@ -55,9 +55,8 @@ const Inner = () => {
                 dispatch(lessonsActions.updateLessonBlock(1));
 
                 const progressBarWidth = ProgressBar.update(progressBar.current, progressBarMovement);
-                const progressBarHelperWidth = ProgressBar.getHelperWidth(progressBar.current);
+                const progressBarHelperWidth = ProgressBar.width.helper;
                 
-                console.log(progressBarWidth, progressBarHelperWidth)
                 if(progressBarWidth === progressBarHelperWidth) ProgressBar.update(progressBar.current, progressBarMovement, true);
             }
         }

@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import InnerBars from "./InnerBars";
 import { images } from "../../../data/images";
 import { Language } from "../../../functions/Language";
 
-const InnerHeader = ({ inner, innerHeader, stopLesson }) => {
+const InnerHeader = ({ inner, innerHeader, stopLesson, progressBar }) => {
     const activeLesson = useSelector(state => state.lessons.activeLesson);
 
     useEffect(() => {
@@ -20,6 +21,8 @@ const InnerHeader = ({ inner, innerHeader, stopLesson }) => {
             <h2>{Language.inject(activeLesson.name)}</h2>
 
             <img src={images.xIcon} alt="X" onClick={stopLesson} />
+
+            <InnerBars progressBar={progressBar} />
         </header>
     );
 }

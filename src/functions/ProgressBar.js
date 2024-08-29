@@ -1,32 +1,31 @@
 export const ProgressBar = {
     animation: (progressBar, type) => {
         progressBar.style.opacity = type === "appear" ? "1" : "";
-        progressBar.style.left = type === "appear" ? "0" : "";
     },
 
     update: (progressBar, movement, isHelper = false) => {
         const progressBarLine = [...progressBar.children][isHelper ? 0 : 1];
 
-        const progressBarHeight = parseInt(getComputedStyle(progressBar).getPropertyValue("height"));
-        const progressBarLineHeight = parseInt(getComputedStyle(progressBarLine).getPropertyValue("height"));
+        const progressBarWidth = parseInt(getComputedStyle(progressBar).getPropertyValue("width"));
+        const progressBarLineWidth = parseInt(getComputedStyle(progressBarLine).getPropertyValue("width"));
         
-        const progressBarLineHeightPercentage = Math.round(calcPercentage(progressBarLineHeight, progressBarHeight));
-        let newProgressBarLineHeightPercentage = progressBarLineHeightPercentage + Math.round(movement);
+        const progressBarLineWidthPercentage = Math.round(calcPercentage(progressBarLineWidth, progressBarWidth));
+        let newProgressBarLineWidthPercentage = progressBarLineWidthPercentage + Math.round(movement);
 
-        if(newProgressBarLineHeightPercentage < Math.round(movement)) newProgressBarLineHeightPercentage = movement;
-        else if(newProgressBarLineHeightPercentage > 100) newProgressBarLineHeightPercentage = 100;
+        if(newProgressBarLineWidthPercentage < Math.round(movement)) newProgressBarLineWidthPercentage = movement;
+        else if(newProgressBarLineWidthPercentage > 100) newProgressBarLineWidthPercentage = 100;
         
-        progressBarLine.style.height = `${newProgressBarLineHeightPercentage}%`;
-        return newProgressBarLineHeightPercentage;
+        progressBarLine.style.width = `${newProgressBarLineWidthPercentage}%`;
+        return newProgressBarLineWidthPercentage;
     },
 
-    getHelperHeight: progressBar => {
-        const progressBarHeight = parseInt(getComputedStyle(progressBar).getPropertyValue("height"));
+    getHelperWidth: progressBar => {
+        const progressBarWidth = parseInt(getComputedStyle(progressBar).getPropertyValue("width"));
         
         const progressBarLineHelper = progressBar.firstChild;
-        const progressBarLineHelperHeight = parseInt(getComputedStyle(progressBarLineHelper).getPropertyValue("height"));
+        const progressBarLineHelperWidth = parseInt(getComputedStyle(progressBarLineHelper).getPropertyValue("width"));
 
-        return Math.round(calcPercentage(progressBarLineHelperHeight, progressBarHeight));
+        return Math.round(calcPercentage(progressBarLineHelperWidth, progressBarWidth));
     }
 }
 

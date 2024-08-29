@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { lessonsActions } from "../../../state/reducers/lessonsSlice";
 import InnerHeader from "./InnerHeader";
-import InnerBars from "./InnerBars";
 import InnerDefault from "./content/InnerDefault";
 import InnerMultipleChoice from "./content/InnerMultipleChoice";
 import InnerTranslate from "./content/InnerTranslate";
@@ -55,11 +54,11 @@ const Inner = () => {
             else {
                 dispatch(lessonsActions.updateLessonBlock(1));
 
-                const progressBarHeight = ProgressBar.update(progressBar.current, progressBarMovement);
-                const progressBarHelperHeight = ProgressBar.getHelperHeight(progressBar.current);
+                const progressBarWidth = ProgressBar.update(progressBar.current, progressBarMovement);
+                const progressBarHelperWidth = ProgressBar.getHelperWidth(progressBar.current);
                 
-                console.log(progressBarHeight, progressBarHelperHeight)
-                if(progressBarHeight === progressBarHelperHeight) ProgressBar.update(progressBar.current, progressBarMovement, true);
+                console.log(progressBarWidth, progressBarHelperWidth)
+                if(progressBarWidth === progressBarHelperWidth) ProgressBar.update(progressBar.current, progressBarMovement, true);
             }
         }
     });
@@ -78,10 +77,9 @@ const Inner = () => {
             <InnerHeader
                 inner={inner}
                 innerHeader={innerHeader}
-                stopLesson={stopLesson} 
+                stopLesson={stopLesson}
+                progressBar={progressBar}
             />
-
-            <InnerBars progressBar={progressBar} />
 
             <div className="lessons-inner-lesson">
                 {lessonsReducer.activeLesson.content.map((block, index) => {

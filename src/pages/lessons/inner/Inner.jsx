@@ -6,9 +6,11 @@ import InnerDefault from "./content/InnerDefault";
 import InnerMultipleChoice from "./content/InnerMultipleChoice";
 import InnerTranslate from "./content/InnerTranslate";
 import InnerConversation from "./content/InnerConversation";
+import InnerConnect from "./content/InnerConnect";
 import InnerEnd from "./content/InnerEnd";
 import useSnapScroll from "../../../hooks/useSnapScroll";
 import { ProgressBar } from "../../../functions/ProgressBar";
+import { ExtendedMath } from "../../../functions/ExtendedMath";
 
 const Inner = () => {
     const lessonsReducer = useSelector(state => state.lessons);
@@ -21,7 +23,7 @@ const Inner = () => {
     const innerHeader = useRef(null);
     const progressBar = useRef(null);
 
-    const progressBarMovement = Math.round(100 / lessonsReducer.activeLesson.content.length);
+    const progressBarMovement = ExtendedMath.upperRound(100 / lessonsReducer.activeLesson.content.length);
 
     useEffect(() => {
         setInnerElement(inner.current);
@@ -92,6 +94,12 @@ const Inner = () => {
                             key={index}
                         />
                         case "conversation": return <InnerConversation
+                            id={index}
+                            block={block}
+                            blockJump={() => blockJump(inner.current, "down")}
+                            key={index}
+                        />
+                        case "connect": return <InnerConnect
                             id={index}
                             block={block}
                             blockJump={() => blockJump(inner.current, "down")}

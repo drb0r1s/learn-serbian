@@ -1,4 +1,4 @@
-export const ArrayFunctions = {
+export const ExtendedArray = {
     compareTwo: (first, second, caseSensitive = false) => {
         if(first.length !== second.length) return false;
 

@@ -1,3 +1,5 @@
+import { ExtendedMath } from "./ExtendedMath";
+
 export const ProgressBar = {
     width: { main: 0, helper: 0 },
     interval: false,
@@ -11,13 +13,13 @@ export const ProgressBar = {
         if(!progressBarLineWidth) {
             progressBarLineWidth = getWidth(progressBarLine);
 
-            const progressBarLineWidthPercentage = Math.round(calcPercentage(progressBarLineWidth, progressBarWidth));
+            const progressBarLineWidthPercentage = ExtendedMath.upperRound(ExtendedMath.percentageOf(progressBarLineWidth, progressBarWidth));
             progressBarLineWidth = progressBarLineWidthPercentage;
         }
         
-        let newProgressBarLineWidthPercentage = progressBarLineWidth + Math.round(movement);
+        let newProgressBarLineWidthPercentage = progressBarLineWidth + ExtendedMath.upperRound(movement);
 
-        if(newProgressBarLineWidthPercentage < Math.abs(Math.round(movement))) newProgressBarLineWidthPercentage = Math.abs(Math.round(movement));
+        if(newProgressBarLineWidthPercentage < Math.abs(ExtendedMath.upperRound(movement))) newProgressBarLineWidthPercentage = Math.abs(ExtendedMath.upperRound(movement));
         else if(newProgressBarLineWidthPercentage > 100) newProgressBarLineWidthPercentage = 100;
 
         if(isHelper) ProgressBar.width.helper = newProgressBarLineWidthPercentage;
@@ -28,10 +30,6 @@ export const ProgressBar = {
         progressBarLine.style.width = `${newProgressBarLineWidthPercentage}%`;
         return newProgressBarLineWidthPercentage;
     }
-}
-
-function calcPercentage(number, percentOf) {
-    return number / percentOf * 100;
 }
 
 function getWidth(element) {
@@ -45,8 +43,8 @@ function widthInterval(progressBar) {
         const progressBarWidth = getWidth(progressBar);
         const progressBarLineWidth = getWidth([...progressBar.children][1]);
     
-        const progressBarLineWidthPercentage = Math.round(calcPercentage(progressBarLineWidth, progressBarWidth));
-    
+        const progressBarLineWidthPercentage = ExtendedMath.upperRound(ExtendedMath.percentageOf(progressBarLineWidth, progressBarWidth));
+        
         if(progressBarLineWidthPercentage === ProgressBar.width.main) progressBar.style.height = "3px";
         else progressBar.style.height = "";
     }, 100);

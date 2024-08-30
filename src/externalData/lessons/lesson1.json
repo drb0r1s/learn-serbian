@@ -70,6 +70,37 @@
         },
 
         {
+            "type": "connect",
+            "title": "Connect the right pairs",
+            
+            "left": [
+                "mačka",
+                "pas",
+                "čemu to",
+                "doktor",
+                "najjače"
+            ],
+
+            "right": [
+                "a cat",
+                "a dog",
+                "why that",
+                "a doctor",
+                "the strongest"
+            ],
+
+            "answers": {
+                "mačka": "a cat",
+                "pas": "a dog",
+                "čemuTo": "why that",
+                "doktor": "a doctor",
+                "najjače": "the strongest"
+            },
+
+            "randomize": true
+        },
+
+        {
             "type": "translate",
             "title": "Translate the following sentence",
             

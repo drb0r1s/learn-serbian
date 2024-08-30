@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
-import { ArrayFunctions } from "../../../../functions/ArrayFunctions";
+import { ExtendedArray } from "../../../../functions/ExtendedArray";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { Language } from "../../../../functions/Language";
 import buttonTimer from "../../../../functions/buttonTimer";
@@ -18,7 +18,7 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
     const continueButton = useRef(null);
 
     useEffect(() => {
-        setBlockQuestions(block.randomize ? ArrayFunctions.randomize(languageBlockQuestions, true) : languageBlockQuestions);
+        setBlockQuestions(block.randomize ? ExtendedArray.randomize(languageBlockQuestions, true) : languageBlockQuestions);
     }, []);
     
     function questionButtonFunction(button, question, index) {

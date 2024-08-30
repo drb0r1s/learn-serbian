@@ -1279,6 +1279,44 @@ footer .footer-copyright span {
   border: none;
   cursor: default;
 }
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder {
+  width: 100%;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 15px;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left button,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right button {
+  width: 100%;
+  color: white;
+  font-family: learn-serbian-medium;
+  font-size: 25px;
+  background-color: #1466c7;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 15px;
+  transition: 300ms;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left button:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right button:hover {
+  background-color: #282088;
+  border: 1px solid white;
+}
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
   header .header-holder {

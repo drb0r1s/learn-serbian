@@ -1,5 +1,5 @@
 import extractWords from "./extractWords";
-import { ArrayFunctions } from "./ArrayFunctions";
+import { ExtendedArray } from "./ExtendedArray";
 import { Language } from "./Language";
 
 function checkAnswer(block, userAnswer, answers) {
@@ -30,7 +30,7 @@ function checkAnswer(block, userAnswer, answers) {
 
         languageAnswers.forEach(answer => {
             const answerWords = extractWords(answer);
-            if(ArrayFunctions.compareTwo(userAnswerWords, answerWords)) status = true;
+            if(ExtendedArray.compareTwo(userAnswerWords, answerWords)) status = true;
         });
 
         return status;

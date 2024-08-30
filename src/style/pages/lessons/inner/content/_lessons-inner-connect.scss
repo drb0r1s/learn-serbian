@@ -1,0 +1,21 @@
+.lessons-inner-connect .lessons-inner-connect-holder {
+    width: 100%;
+
+    .lessons-inner-connect-button-holder {
+        width: 100%;
+        @include center;
+        gap: 15px;
+
+        .lessons-inner-connect-button-holder-left,
+        .lessons-inner-connect-button-holder-right {
+            width: 50%;
+            @include center(column);
+            gap: 10px;
+
+            button {
+                width: 100%;
+                @include learn-serbian-button;
+            }
+        }
+    }
+}

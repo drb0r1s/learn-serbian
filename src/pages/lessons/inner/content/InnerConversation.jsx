@@ -9,7 +9,7 @@ import { Language } from "../../../../functions/Language";
 
 const InnerConversation = ({ id, block, blockJump }) => {
     const [isShown, setIsShown] = useState(false);
-    const [startTyping, setStartTyping] = useState(false);
+    const [typing, setTyping] = useState({ user: false, participant: false });
     const [currentMessage, setCurrentMessage] = useState(-1);
     const [conversation, setConversation] = useState([]);
     const [isKeyboardActive, setIsKeyboardActive] = useState(false);
@@ -17,14 +17,15 @@ const InnerConversation = ({ id, block, blockJump }) => {
     const [isAnswerCorrect, setIsAnswerCorrect] = useState(true);
 
     const noMessagesElement = useRef(null);
-    const typingMessageElement = useRef(null);
     const messageElements = useRef([]);
+    const messageInfo = useRef(null);
     const inputElement = useRef(null);
 
     const lessonBlock = useSelector(state => state.lessons.lessonBlock);
     
     const noMessagesContent = useContent("lessonsInner.strong_conversation_no_messages");
     const buttonContent = useContent("lessonsInner.button_conversation_continue");
+    const messageInfoContent = useContent("lessonsInner.p_conversation_typing", { parameters: { name: block.conversationWith } });
     const placeholderContent = useContent("lessonsInner.input_conversation_wait_for_reply", { parameters: { name: block.conversationWith } });
 
     const avatar = useImage(block.avatar);
@@ -42,18 +43,18 @@ const InnerConversation = ({ id, block, blockJump }) => {
     useEffect(() => {
         if(id === lessonBlock && !isShown) {
             setIsShown(true);
-            enableTyping();
+            enableTyping("participant");
         }
     }, [lessonBlock]);
 
     useEffect(() => {
-        if(startTyping) setTimeout(() => {
-            typingMessageElement.current.style.top = "95%";
-            typingMessageElement.current.style.opacity = "1";
+        if(typing.user || typing.participant) setTimeout(() => {
+            messageInfo.current.style.opacity = "1";
+            messageInfo.current.style.top = "100%";
 
-            setTimeout(() => { sendMessage() }, 300);
+            if(typing.participant) setTimeout(() => { sendMessage() }, 300);
         }, 1);
-    }, [startTyping]);
+    }, [typing.user, typing.participant]);
 
     useEffect(() => {
         if(currentMessage === -1) return;
@@ -75,19 +76,26 @@ const InnerConversation = ({ id, block, blockJump }) => {
         }, 100);
     }, [conversation]);
 
-    function enableTyping() {
-        setTimeout(() => { setStartTyping(true) }, getRandomDelay(1, 3));
+    function enableTyping(key) {        
+        setTimeout(() => { setTyping(prevTyping => { return {...prevTyping, [key]: true} }) }, getRandomDelay(1, 3));
+    }
+
+    function disableTyping(key) {
+        messageInfo.current.style.opacity = "";
+        messageInfo.current.style.top = "";
+
+        setTimeout(() => { setTyping(prevTyping => { return {...prevTyping, [key]: false} }) }, 300);
     }
 
     function sendMessage() {
         setTimeout(() => {
             if(noMessagesElement.current) noMessagesElement.current.style.opacity = "0";
 
-            typingMessageElement.current.style.top = "";
-            typingMessageElement.current.style.opacity = "";
+            messageInfo.current.style.opacity = "";
+            messageInfo.current.style.top = "";
 
             setTimeout(() => {
-                setStartTyping(false);
+                setTyping(prevTyping => { return {...prevTyping, participant: false} });
                 
                 if(isAnswerCorrect) setCurrentMessage(prevCurrentMessage => prevCurrentMessage + 1);
                 
@@ -119,7 +127,21 @@ const InnerConversation = ({ id, block, blockJump }) => {
 
         inputElement.current.placeholder = placeholderContent;
 
-        enableTyping();
+        enableTyping("participant");
+    }
+
+    function sendUserMessageEnter(e) {
+        if(e.key !== "Enter") return;
+
+        sendUserMessage();
+        disableTyping("user");
+    }
+
+    function updateInputValue(e) {
+        if(e.target.value) setTyping(prevTyping => { return {...prevTyping, user: true} });
+        else disableTyping("user");
+        
+        setInputValue(e.target.value);
     }
 
     function colorUserMessage() {
@@ -127,7 +149,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
         const lastUserMessageP = lastUserMessage.firstChild;
 
         lastUserMessageP.style.border = `2px solid ${isAnswerCorrect ? colors.green : colors.red}`;
-        setTimeout(() => { lastUserMessageP.style.border = "" }, 600);
+        setTimeout(() => { lastUserMessageP.style.border = "" }, 900);
     }
 
     return(
@@ -144,16 +166,6 @@ const InnerConversation = ({ id, block, blockJump }) => {
                     <div className={`lessons-inner-conversation-display-messages-holder ${currentMessage > -1 ? "lessons-inner-conversation-display-messages-holder-active" : ""}`}>
                         {currentMessage === -1 ? <strong className="lessons-inner-conversation-display-no-messages" ref={noMessagesElement}>{`${noMessagesContent} ${Language.inject(block.conversationWith)}.`}</strong> : <></>}
                         
-                        {startTyping ? <div className="lessons-inner-conversation-display-typing" ref={typingMessageElement}>
-                            <img src={avatar} alt={block.conversationWith} />
-                            
-                            <div className="lessons-inner-conversation-display-typing-dot-holder">
-                                <div className="lessons-inner-conversation-display-typing-dot" id="lessons-inner-conversation-display-typing-dot-1"></div>
-                                <div className="lessons-inner-conversation-display-typing-dot" id="lessons-inner-conversation-display-typing-dot-2"></div>
-                                <div className="lessons-inner-conversation-display-typing-dot" id="lessons-inner-conversation-display-typing-dot-3"></div>
-                            </div>
-                        </div> : <></>}
-
                         {conversation.map((message, index) => {
                             return <div
                                 className={`lessons-inner-conversation-display-message lessons-inner-conversation-display-message-${message.isUser ? "user" : "participant"}`}
@@ -164,6 +176,13 @@ const InnerConversation = ({ id, block, blockJump }) => {
                                 <p>{message.content}</p>
                             </div>
                         })}
+
+                        {typing.user || typing.participant ? <p
+                            className="lessons-inner-conversation-display-message-info"
+                            ref={messageInfo}
+                        >
+                            {typing.user ? block.questions[currentMessage].translation : messageInfoContent}
+                        </p> : <></>}
                     </div>
 
                     <div className={`lessons-inner-conversation-display-keyboard-holder ${isKeyboardActive ? "lessons-inner-conversation-display-keyboard-holder-active" : ""}`}>
@@ -173,8 +192,8 @@ const InnerConversation = ({ id, block, blockJump }) => {
                             disabled={!isKeyboardActive}
                             ref={inputElement}
                             value={inputValue}
-                            onChange={e => setInputValue(e.target.value)}
-                            onKeyDown={e => { if(e.key === "Enter") sendUserMessage() }}
+                            onChange={updateInputValue}
+                            onKeyDown={sendUserMessageEnter}
                         />
                         
                         <button onClick={sendUserMessage}><img src={images.sendIcon} alt="SEND" /></button>

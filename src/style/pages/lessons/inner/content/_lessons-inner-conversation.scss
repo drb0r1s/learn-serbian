@@ -37,6 +37,7 @@
             height: 400px;
             width: 100%;
             position: relative;
+            padding-bottom: 30px;
 
             .lessons-inner-conversation-display-no-messages {
                 width: 50%;
@@ -50,73 +51,6 @@
                 left: 50%;
                 transform: translate(-50%, -50%);
                 transition: 300ms;
-            }
-
-            .lessons-inner-conversation-display-typing {
-                @include center;
-                gap: 10px;
-                position: absolute;
-                top: 100%;
-                left: 15px;
-                transform: translateY(-95%);
-                opacity: 0;
-                transition: 300ms;
-                
-                img {
-                    height: 40px;
-                    width: 40px;
-                    object-fit: contain;
-                    border-radius: 50%;
-                }
-                
-                .lessons-inner-conversation-display-typing-dot-holder {
-                    height: 35px;
-                    width: 100px;
-                    @include center;
-                    gap: 10px;
-                    background-color: $grey;
-                    border-radius: 30px;
-                    border-bottom-left-radius: 0;
-                    box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, .5);
-
-                    .lessons-inner-conversation-display-typing-dot {
-                        height: 15px;
-                        width: 15px;
-                        background-color: $dark-grey;
-                        border-radius: 50%;
-                        opacity: 0;
-                    }
-    
-                    #lessons-inner-conversation-display-typing-dot-1 {
-                        animation: blinking-1 3s ease-in infinite;
-                    }
-    
-                    #lessons-inner-conversation-display-typing-dot-2 {
-                        animation: blinking-2 3s ease-in infinite;
-                    }
-    
-                    #lessons-inner-conversation-display-typing-dot-3 {
-                        animation: blinking-3 3s ease-in infinite;
-                    }
-    
-                    @keyframes blinking-1 {
-                        0% { opacity: 1; }
-                        25% { opacity: 0.25; }
-                        100% { opacity: 1; }
-                    }
-    
-                    @keyframes blinking-2 {
-                        0% { opacity: 1; }
-                        50% { opacity: 0.25; }
-                        100% { opacity: 1; }
-                    }
-    
-                    @keyframes blinking-3 {
-                        0% { opacity: 1; }
-                        75% { opacity: 0.25; }
-                        100% { opacity: 1; }
-                    }
-                }
             }
 
             .lessons-inner-conversation-display-message {
@@ -169,6 +103,24 @@
                     border-bottom-left-radius: 0;
                 }
             }
+
+            .lessons-inner-conversation-display-message-info {
+                width: 100%;
+                color: white;
+                font-family: learn-serbian-medium;
+                font-size: set-size(sm);
+                background-color: $blue;
+                border-top: 1px solid white;
+                margin: 0;
+                padding: 5px 0;
+                padding-left: 15px;
+                opacity: 0;
+                position: absolute;
+                top: 105%;
+                left: 0;
+                transform: translateY(-100%);
+                transition: 300ms;
+            }
         }
 
         .lessons-inner-conversation-display-messages-holder-active {
@@ -183,10 +135,10 @@
             gap: 20px;
             background: linear-gradient(90deg, $gradient-first 20%, $gradient-second 90%);
             border-top: 2px solid white;
-            opacity: .5;
+            position: relative;
             padding: 10px 0;
             transition: 300ms;
-
+            
             input {
                 color: white;
                 font-family: learn-serbian-medium;
@@ -227,8 +179,6 @@
         }
 
         .lessons-inner-conversation-display-keyboard-holder-active {
-            opacity: 1;
-
             input {
                 border: 1px solid white;
                 cursor: text;

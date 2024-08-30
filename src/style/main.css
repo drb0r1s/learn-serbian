@@ -1096,6 +1096,7 @@ footer .footer-copyright span {
   height: 400px;
   width: 100%;
   position: relative;
+  padding-bottom: 30px;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-no-messages {
   width: 50%;
@@ -1109,88 +1110,6 @@ footer .footer-copyright span {
   left: 50%;
   transform: translate(-50%, -50%);
   transition: 300ms;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-typing {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 10px;
-  position: absolute;
-  top: 100%;
-  left: 15px;
-  transform: translateY(-95%);
-  opacity: 0;
-  transition: 300ms;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-typing img {
-  height: 40px;
-  width: 40px;
-  -o-object-fit: contain;
-     object-fit: contain;
-  border-radius: 50%;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-typing .lessons-inner-conversation-display-typing-dot-holder {
-  height: 35px;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 10px;
-  background-color: #ccc;
-  border-radius: 30px;
-  border-bottom-left-radius: 0;
-  box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.5);
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-typing .lessons-inner-conversation-display-typing-dot-holder .lessons-inner-conversation-display-typing-dot {
-  height: 15px;
-  width: 15px;
-  background-color: #2d2a38;
-  border-radius: 50%;
-  opacity: 0;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-typing .lessons-inner-conversation-display-typing-dot-holder #lessons-inner-conversation-display-typing-dot-1 {
-  animation: blinking-1 3s ease-in infinite;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-typing .lessons-inner-conversation-display-typing-dot-holder #lessons-inner-conversation-display-typing-dot-2 {
-  animation: blinking-2 3s ease-in infinite;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-typing .lessons-inner-conversation-display-typing-dot-holder #lessons-inner-conversation-display-typing-dot-3 {
-  animation: blinking-3 3s ease-in infinite;
-}
-@keyframes blinking-1 {
-  0% {
-    opacity: 1;
-  }
-  25% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes blinking-2 {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes blinking-3 {
-  0% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-message {
   width: 100%;
@@ -1243,6 +1162,23 @@ footer .footer-copyright span {
   background-color: #1466c7;
   border-bottom-left-radius: 0;
 }
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-message-info {
+  width: 100%;
+  color: white;
+  font-family: learn-serbian-medium;
+  font-size: 15px;
+  background-color: #1466c7;
+  border-top: 1px solid white;
+  margin: 0;
+  padding: 5px 0;
+  padding-left: 15px;
+  opacity: 0;
+  position: absolute;
+  top: 105%;
+  left: 0;
+  transform: translateY(-100%);
+  transition: 300ms;
+}
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder-active {
   display: flex;
   align-items: center;
@@ -1260,7 +1196,7 @@ footer .footer-copyright span {
   gap: 20px;
   background: linear-gradient(90deg, #1a1632 20%, #170925 90%);
   border-top: 2px solid white;
-  opacity: 0.5;
+  position: relative;
   padding: 10px 0;
   transition: 300ms;
 }
@@ -1312,9 +1248,6 @@ footer .footer-copyright span {
   -o-object-fit: contain;
      object-fit: contain;
   position: absolute;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder-active {
-  opacity: 1;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-keyboard-holder-active input {
   border: 1px solid white;

@@ -770,32 +770,30 @@ footer .footer-copyright span {
      object-fit: contain;
   cursor: pointer;
 }
-#lessons .lessons-inner .lessons-inner-bars-holder {
+#lessons .lessons-inner .lessons-inner-progress-bar {
+  height: 10px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  justify-content: flex-start;
+  background-color: rgba(45, 42, 56, 0.7);
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 2;
 }
-#lessons .lessons-inner .lessons-inner-bars-holder .lessons-inner-progress-bar {
-  height: 10px;
-  width: 100%;
-  background-color: rgba(45, 42, 56, 0.7);
-}
-#lessons .lessons-inner .lessons-inner-bars-holder .lessons-inner-progress-bar .lessons-inner-progress-bar-line-helper {
-  height: 10px;
+#lessons .lessons-inner .lessons-inner-progress-bar .lessons-inner-progress-bar-line-helper {
+  height: 100%;
   width: 0;
   background-color: #1466c7;
   position: absolute;
   top: 0;
   transition: 500ms;
 }
-#lessons .lessons-inner .lessons-inner-bars-holder .lessons-inner-progress-bar .lessons-inner-progress-bar-line {
-  height: 10px;
+#lessons .lessons-inner .lessons-inner-progress-bar .lessons-inner-progress-bar-line {
+  height: 100%;
   width: 0;
   background-color: white;
   box-shadow: 0px 5px 10px 0px rgba(255, 255, 255, 0.4);

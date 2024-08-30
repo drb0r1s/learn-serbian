@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import InnerBars from "./InnerBars";
+import InnerProgressBar from "./InnerProgressBar";
 import { images } from "../../../data/images";
 import { Language } from "../../../functions/Language";
 
@@ -22,7 +22,7 @@ const InnerHeader = ({ inner, innerHeader, stopLesson, progressBar }) => {
 
             <img src={images.xIcon} alt="X" onClick={stopLesson} />
 
-            <InnerBars progressBar={progressBar} />
+            <InnerProgressBar progressBar={progressBar} />
         </header>
     );
 }

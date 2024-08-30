@@ -32,7 +32,7 @@ const Inner = () => {
         setInnerHeaderHeight(height + paddingY * 2);
             
         ProgressBar.update(progressBar.current, progressBarMovement);
-        ProgressBar.update(progressBar.current, progressBarMovement * 2, true);
+        ProgressBar.update(progressBar.current, progressBarMovement, true);
     }, []);
 
     const blockJump = useSnapScroll({
@@ -51,7 +51,7 @@ const Inner = () => {
                 const progressBarWidth = ProgressBar.update(progressBar.current, progressBarMovement);
                 const progressBarHelperWidth = ProgressBar.width.helper;
                 
-                if(progressBarWidth === progressBarHelperWidth) ProgressBar.update(progressBar.current, progressBarMovement, true);
+                if(progressBarWidth > progressBarHelperWidth) ProgressBar.update(progressBar.current, progressBarMovement, true);
             }
         }
     });

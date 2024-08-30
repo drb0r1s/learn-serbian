@@ -76,7 +76,9 @@ const InnerConversation = ({ id, block, blockJump }) => {
         }, 100);
     }, [conversation]);
 
-    useEffect(() => { if(isKeyboardActive) inputElement.current.focus() }, [isKeyboardActive]);
+    useEffect(() => {
+        if(isKeyboardActive && (id === lessonBlock)) inputElement.current.focus()
+    }, [isKeyboardActive]);
 
     function enableTyping(key) {        
         setTimeout(() => { setTyping(prevTyping => { return {...prevTyping, [key]: true} }) }, getRandomDelay(1, 3));

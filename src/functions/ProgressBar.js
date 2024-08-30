@@ -1,5 +1,6 @@
 export const ProgressBar = {
     width: { main: 0, helper: 0 },
+    interval: false,
 
     update: (progressBar, movement, isHelper = false) => {
         const progressBarLine = [...progressBar.children][isHelper ? 0 : 1];
@@ -22,6 +23,8 @@ export const ProgressBar = {
         if(isHelper) ProgressBar.width.helper = newProgressBarLineWidthPercentage;
         else ProgressBar.width.main = newProgressBarLineWidthPercentage;
 
+        if(!ProgressBar.interval) widthInterval(progressBar);
+        
         progressBarLine.style.width = `${newProgressBarLineWidthPercentage}%`;
         return newProgressBarLineWidthPercentage;
     }
@@ -33,4 +36,18 @@ function calcPercentage(number, percentOf) {
 
 function getWidth(element) {
     return parseInt(getComputedStyle(element).getPropertyValue("width"));
+}
+
+function widthInterval(progressBar) {    
+    ProgressBar.interval = true;
+    
+    setInterval(() => {
+        const progressBarWidth = getWidth(progressBar);
+        const progressBarLineWidth = getWidth([...progressBar.children][1]);
+    
+        const progressBarLineWidthPercentage = Math.round(calcPercentage(progressBarLineWidth, progressBarWidth));
+    
+        if(progressBarLineWidthPercentage === ProgressBar.width.main) progressBar.style.height = "3px";
+        else progressBar.style.height = "";
+    }, 100);
 }

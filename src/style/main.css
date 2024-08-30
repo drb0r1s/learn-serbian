@@ -782,6 +782,7 @@ footer .footer-copyright span {
   position: absolute;
   top: 100%;
   left: 0;
+  transition: 300ms;
   z-index: 2;
 }
 #lessons .lessons-inner .lessons-inner-progress-bar .lessons-inner-progress-bar-line-helper {

@@ -4,7 +4,7 @@
     .lessons-inner-connect-button-holder {
         width: 100%;
         @include center;
-        gap: 15px;
+        gap: 20px;
 
         .lessons-inner-connect-button-holder-left,
         .lessons-inner-connect-button-holder-right {
@@ -15,6 +15,12 @@
             button {
                 width: 100%;
                 @include learn-serbian-button;
+            }
+
+            .button-active {
+                background-color: $purple;
+                border: 1px solid white;
+                cursor: default;
             }
         }
     }

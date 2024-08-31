@@ -1288,7 +1288,7 @@ footer .footer-copyright span {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  gap: 15px;
+  gap: 20px;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left,
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right {
@@ -1316,6 +1316,12 @@ footer .footer-copyright span {
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right button:hover {
   background-color: #282088;
   border: 1px solid white;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-active,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-active {
+  background-color: #282088;
+  border: 1px solid white;
+  cursor: default;
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {

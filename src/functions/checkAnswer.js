@@ -1,6 +1,7 @@
 import extractWords from "./extractWords";
 import { ExtendedArray } from "./ExtendedArray";
 import { Language } from "./Language";
+import { Case } from "./Case";
 
 function checkAnswer(block, userAnswer, answers) {
     let isCorrect = false;
@@ -16,6 +17,20 @@ function checkAnswer(block, userAnswer, answers) {
 
         case "conversation":
             isCorrect = checkInputAnswer(false, answers);
+            break;
+
+        case "connect":
+            const userAnswerObject = { key: Case.toSnake(userAnswer[0]), value: userAnswer[1] };
+            
+            Object.keys(answers).forEach((key, index) => {
+                const value = Object.values(answers)[index];
+                
+                if(
+                    userAnswerObject.key === key &&
+                    userAnswerObject.value === value
+                ) isCorrect = true;
+            });
+            
             break;
         default:
     }

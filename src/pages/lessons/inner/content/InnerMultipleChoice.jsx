@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
+import useAttempts from "../../../../hooks/useAttempts";
 import { ExtendedArray } from "../../../../functions/ExtendedArray";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { Language } from "../../../../functions/Language";
@@ -9,16 +10,15 @@ import buttonTimer from "../../../../functions/buttonTimer";
 const InnerMultipleChoice = ({ block, blockJump }) => {
     const buttonContent = useContent("lessonsInner.button_multiple_choice_continue");
     const image = useImage(block.image);
+    
+    const { noAttempts, newAttempt } = useAttempts(block);
 
     const languageBlockQuestions = Language.inject(block.questions);
     
-    const [attempts, setAttempts] = useState(0);
     const [blockQuestions, setBlockQuestions] = useState([]);
 
     const buttonElements = useRef([]);
     const continueButton = useRef(null);
-
-    const allowedAttempts = block.attempts ? block.attempts : 5;
 
     useEffect(() => {
         setBlockQuestions(block.randomize ? ExtendedArray.randomize(languageBlockQuestions, true) : languageBlockQuestions);
@@ -32,7 +32,7 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
 
         buttonElements.current.forEach(buttonElement => { buttonElement.classList.add("button-neutral"); });
         
-        if(isCorrect || attempts === allowedAttempts) {
+        if(isCorrect || noAttempts) {
             correctButton.classList.add("button-correct");
             if(!isCorrect) button.classList.add("button-wrong");
 
@@ -48,7 +48,7 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
                 button.classList.remove("button-wrong");
             });
 
-            setAttempts(prevAttempts => prevAttempts + 1);
+            newAttempt();
         }
     }
 

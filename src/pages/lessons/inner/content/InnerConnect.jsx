@@ -8,6 +8,8 @@ const InnerConnect = ({ block, blockJump }) => {
     const [activeButtons, setActiveButtons] = useState({ left: null, right: null });
 
     const buttonElements = useRef({ left: [], right: [] });
+
+    const attempts = block.attempts ? block.attempts : 5;
     
     useEffect(() => {
         setButtons({
@@ -71,6 +73,8 @@ const InnerConnect = ({ block, blockJump }) => {
                 setActiveButtons({ left: null, right: null });
                 updateBlockedButtons(false);
             }, 600);
+
+            
         }
     }
 

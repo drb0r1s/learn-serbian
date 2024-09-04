@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, act } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { ExtendedArray } from "../../../../functions/ExtendedArray";
 import { Language } from "../../../../functions/Language";
@@ -7,6 +7,8 @@ const InnerConnect = ({ block, blockJump }) => {
     const [buttons, setButtons] = useState({ left: block.left, right: block.right });
     const [activeButtons, setActiveButtons] = useState({ left: null, right: null });
 
+    const buttonElements = useRef({ left: [], right: [] });
+    
     useEffect(() => {
         setButtons({
             left: block.randomize ? ExtendedArray.randomize(block.left) : block.left,
@@ -16,11 +18,18 @@ const InnerConnect = ({ block, blockJump }) => {
 
     useEffect(() => {
         if(activeButtons.left && activeButtons.right) checkConnection();
-    }, [activeButtons.left, activeButtons.right])
+    }, [activeButtons.left, activeButtons.right]);
 
     function updateConnection(button, position) {        
+        if(
+            button.classList.contains("button-blocked") ||
+            button.classList.contains("button-invalid")
+        ) return;
+        
         if(button.classList.contains("button-active")) {
-            activeButtons.left.classList.remove("button-active");
+            activeButtons.left?.classList.remove("button-active");
+            activeButtons.right?.classList.remove("button-active");
+            
             return setActiveButtons(prevActiveButtons => { return {...prevActiveButtons, [position]: null} });
         }
         
@@ -39,8 +48,42 @@ const InnerConnect = ({ block, blockJump }) => {
 
         const { isCorrect } = checkAnswer(block, userAnswer, block.answers);
 
-        if(isCorrect) alert("Correct");
-        else alert("Incorrect");
+        if(isCorrect) {
+            activeButtons.left.classList.add("button-correct", "button-invalid");
+            activeButtons.right.classList.add("button-correct", "button-invalid");
+        
+            setActiveButtons({ left: null, right: null });
+        }
+
+        else {
+            updateBlockedButtons(true);
+            
+            activeButtons.left.classList.remove("button-active");
+            activeButtons.right.classList.remove("button-active");
+            
+            activeButtons.left.classList.add("button-incorrect", "button-invalid");
+            activeButtons.right.classList.add("button-incorrect", "button-invalid");
+        
+            setTimeout(() => {
+                activeButtons.left.classList.remove("button-incorrect", "button-invalid");
+                activeButtons.right.classList.remove("button-incorrect", "button-invalid");
+            
+                setActiveButtons({ left: null, right: null });
+                updateBlockedButtons(false);
+            }, 600);
+        }
+    }
+
+    function updateBlockedButtons(block) {
+        buttonElements.current.left.forEach(buttonLeft => {
+            if(block) buttonLeft.classList.add("button-blocked");
+            else buttonLeft.classList.remove("button-blocked");
+        });
+
+        buttonElements.current.right.forEach(buttonRight => {
+            if(block) buttonRight.classList.add("button-blocked");
+            else buttonRight.classList.remove("button-blocked");
+        });
     }
 
     return(
@@ -52,6 +95,7 @@ const InnerConnect = ({ block, blockJump }) => {
                     <div className="lessons-inner-connect-button-holder-left">
                         {buttons.left.map((button, index) => {
                             return <button
+                                ref={el => buttonElements.current.left[index] = el}
                                 onClick={e => updateConnection(e.target, "left")}
                                 key={index}
                             >{button}</button>
@@ -61,6 +105,7 @@ const InnerConnect = ({ block, blockJump }) => {
                     <div className="lessons-inner-connect-button-holder-right">
                         {buttons.right.map((button, index) => {
                             return <button
+                                ref={el => buttonElements.current.right[index] = el}
                                 onClick={e => updateConnection(e.target, "right")}
                                 key={index}
                             >{button}</button>

@@ -1318,10 +1318,54 @@ footer .footer-copyright span {
   border: 1px solid white;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-active,
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-active {
-  background-color: #282088;
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-blocked,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-correct,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-incorrect,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-active,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-blocked,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-correct,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-incorrect {
   border: 1px solid white;
   cursor: default;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-active:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-blocked:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-correct:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-incorrect:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-active:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-blocked:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-correct:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-incorrect:hover {
+  border: 1px solid white;
+  cursor: default;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-active,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-active {
+  background-color: #282088;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-blocked,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-blocked {
+  background-color: #2d2a38;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-blocked:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-blocked:hover {
+  background-color: #2d2a38;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-correct,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-correct {
+  background-color: #28a515;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-correct:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-correct:hover {
+  background-color: #28a515;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-incorrect,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-incorrect {
+  background-color: #b50c0c;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left .button-incorrect:hover,
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right .button-incorrect:hover {
+  background-color: #b50c0c;
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {

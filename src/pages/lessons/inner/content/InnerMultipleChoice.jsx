@@ -12,10 +12,13 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
 
     const languageBlockQuestions = Language.inject(block.questions);
     
+    const [attempts, setAttempts] = useState(0);
     const [blockQuestions, setBlockQuestions] = useState([]);
 
     const buttonElements = useRef([]);
     const continueButton = useRef(null);
+
+    const allowedAttempts = block.attempts ? block.attempts : 5;
 
     useEffect(() => {
         setBlockQuestions(block.randomize ? ExtendedArray.randomize(languageBlockQuestions, true) : languageBlockQuestions);
@@ -23,14 +26,18 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
     
     function questionButtonFunction(button, question, index) {
         if(button.classList.contains("button-neutral")) return;
-        
+
         const { isCorrect } = checkAnswer(block, block.randomize ? question.index + 1 : index + 1)
         const correctButton = buttonElements.current[block.answer - 1];
 
         buttonElements.current.forEach(buttonElement => { buttonElement.classList.add("button-neutral"); });
-        correctButton.classList.add("button-correct");
+        
+        if(isCorrect || attempts === allowedAttempts) {
+            correctButton.classList.add("button-correct");
+            if(!isCorrect) button.classList.add("button-wrong");
 
-        if(isCorrect) continueButton.current.classList.remove("button-disabled");
+            continueButton.current.classList.remove("button-disabled");
+        }
         
         else {
             button.classList.add("button-wrong");
@@ -39,8 +46,9 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
             buttonTimer(continueButton.current, delay, () => {
                 buttonElements.current.forEach(buttonElement => { buttonElement.classList.remove("button-neutral") });
                 button.classList.remove("button-wrong");
-                correctButton.classList.remove("button-correct");
             });
+
+            setAttempts(prevAttempts => prevAttempts + 1);
         }
     }
 

@@ -66,7 +66,8 @@
 
             "answer": 2,
             "randomize": true,
-            "incorrectDelay": 7
+            "attempts": 3,
+            "incorrectDelay": 3
         },
 
         {

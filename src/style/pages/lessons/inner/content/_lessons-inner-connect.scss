@@ -17,10 +17,45 @@
                 @include learn-serbian-button;
             }
 
-            .button-active {
-                background-color: $purple;
+            .button-active,
+            .button-blocked,
+            .button-correct,
+            .button-incorrect {
                 border: 1px solid white;
                 cursor: default;
+
+                &:hover {
+                    border: 1px solid white;
+                    cursor: default;
+                }
+            }
+            
+            .button-active {
+                background-color: $purple;
+            }
+
+            .button-blocked {
+                background-color: $dark-grey;
+
+                &:hover {
+                    background-color: $dark-grey;
+                }
+            }
+
+            .button-correct {
+                background-color: $green;
+
+                &:hover {
+                    background-color: $green;
+                }
+            }
+
+            .button-incorrect {
+                background-color: $red;
+
+                &:hover {
+                    background-color: $red;
+                }
             }
         }
     }

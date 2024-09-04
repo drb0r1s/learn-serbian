@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import useAttempts from "../../../../hooks/useAttempts";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { ExtendedArray } from "../../../../functions/ExtendedArray";
 import { Language } from "../../../../functions/Language";
@@ -9,7 +10,7 @@ const InnerConnect = ({ block, blockJump }) => {
 
     const buttonElements = useRef({ left: [], right: [] });
 
-    const attempts = block.attempts ? block.attempts : 5;
+    const { noAttempts, newAttempt } = useAttempts(block);
     
     useEffect(() => {
         setButtons({
@@ -21,6 +22,8 @@ const InnerConnect = ({ block, blockJump }) => {
     useEffect(() => {
         if(activeButtons.left && activeButtons.right) checkConnection();
     }, [activeButtons.left, activeButtons.right]);
+
+    useEffect(() => { if(noAttempts) makeCorrectConnections() }, [noAttempts]);
 
     function updateConnection(button, position) {        
         if(
@@ -74,8 +77,21 @@ const InnerConnect = ({ block, blockJump }) => {
                 updateBlockedButtons(false);
             }, 600);
 
-            
+            newAttempt();
         }
+    }
+
+    function makeCorrectConnections() {
+        const correctLeft = block.left;
+        const correctRight = [];
+
+        for(let i = 0; i < correctLeft.length; i++) {
+            for(let j = 0; j < block.answers.length; j++) {
+                if(correctLeft[i] === block.answers[j][0]) correctRight.push(block.answers[j][1]);
+            }
+        }
+
+        setButtons({ left: correctLeft, right: correctRight });
     }
 
     function updateBlockedButtons(block) {

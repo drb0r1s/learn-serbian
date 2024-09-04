@@ -90,13 +90,13 @@
                 "the strongest"
             ],
 
-            "answers": {
-                "mačka": "a cat",
-                "pas": "a dog",
-                "čemuTo": "why that",
-                "doktor": "a doctor",
-                "najjače": "the strongest"
-            },
+            "answers": [
+                ["mačka", "a cat"],
+                ["pas", "a dog"],
+                ["čemu to", "why that"],
+                ["doktor", "a doctor"],
+                ["najjače", "the strongest"]
+            ],
 
             "randomize": true
         },

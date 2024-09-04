@@ -1311,6 +1311,7 @@ footer .footer-copyright span {
   cursor: pointer;
   padding: 15px;
   transition: 300ms;
+  position: relative;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-left button:hover,
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-connect .lessons-inner-connect-holder .lessons-inner-connect-button-holder .lessons-inner-connect-button-holder-right button:hover {

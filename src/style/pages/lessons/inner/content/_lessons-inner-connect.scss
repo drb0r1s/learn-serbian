@@ -15,6 +15,7 @@
             button {
                 width: 100%;
                 @include learn-serbian-button;
+                position: relative;
             }
 
             .button-active,

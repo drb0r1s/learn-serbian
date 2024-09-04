@@ -5,7 +5,9 @@ import { ExtendedArray } from "../../../../functions/ExtendedArray";
 import { Language } from "../../../../functions/Language";
 
 const InnerConnect = ({ block, blockJump }) => {
-    const [buttons, setButtons] = useState({ left: block.left, right: block.right });
+    const [buttons, setButtons] = useState({ left: [], right: [] });
+    const [defaultButtons, setDefaultButtons] = useState({ left: [], right: [] });
+    const [correctButtons, setCorrectButtons] = useState({ left: [], right: [] });
     const [activeButtons, setActiveButtons] = useState({ left: null, right: null });
 
     const buttonElements = useRef({ left: [], right: [] });
@@ -24,6 +26,7 @@ const InnerConnect = ({ block, blockJump }) => {
     }, [activeButtons.left, activeButtons.right]);
 
     useEffect(() => { if(noAttempts) makeCorrectConnections() }, [noAttempts]);
+    useEffect(() => { if(noAttempts) connectionsPositionAnimation() }, [buttons]);
 
     function updateConnection(button, position) {        
         if(
@@ -57,11 +60,16 @@ const InnerConnect = ({ block, blockJump }) => {
             activeButtons.left.classList.add("button-correct", "button-invalid");
             activeButtons.right.classList.add("button-correct", "button-invalid");
         
+            setCorrectButtons(prevCorrectButtons => { return {
+                left: [...prevCorrectButtons.left, activeButtons.left.innerText],
+                right: [...prevCorrectButtons.right, activeButtons.right.innerText] 
+            }});
+
             setActiveButtons({ left: null, right: null });
         }
 
         else {
-            updateBlockedButtons(true);
+            blockButtons(true);
             
             activeButtons.left.classList.remove("button-active");
             activeButtons.right.classList.remove("button-active");
@@ -74,7 +82,7 @@ const InnerConnect = ({ block, blockJump }) => {
                 activeButtons.right.classList.remove("button-incorrect", "button-invalid");
             
                 setActiveButtons({ left: null, right: null });
-                updateBlockedButtons(false);
+                blockButtons(false);
             }, 600);
 
             newAttempt();
@@ -91,10 +99,43 @@ const InnerConnect = ({ block, blockJump }) => {
             }
         }
 
+        setDefaultButtons(buttons);
         setButtons({ left: correctLeft, right: correctRight });
     }
 
-    function updateBlockedButtons(block) {
+    function connectionsPositionAnimation() {
+        setTimeout(() => {
+            blockButtons(true);
+            findCorrectButtons();
+        }, 600);
+
+        const buttonHeight = parseInt(getComputedStyle(buttonElements.current.left[0]).getPropertyValue("height"));
+
+        buttonElements.current.left.forEach((buttonLeft, index) => { positionRow("left", buttonLeft, index) });
+        buttonElements.current.right.forEach((buttonRight, index) => { positionRow("right", buttonRight, index) });
+
+        setTimeout(() => {
+            buttonElements.current.left.forEach(buttonLeft => { buttonLeft.style.top = "0" });
+            buttonElements.current.right.forEach(buttonRight => { buttonRight.style.top = "0" });
+        }, 300);
+        
+        function positionRow(side, button, index) {
+            const defaultButtonsSide = side === "left" ? defaultButtons.left : defaultButtons.right;
+
+            let defaultIndex;
+            for(let i = 0; i < defaultButtonsSide.length; i++) if(button.innerText === defaultButtonsSide[i]) defaultIndex = i;
+            
+            let movement;
+
+            if(index === defaultIndex) movement = 0;
+            else if(index > defaultIndex) movement = (index - defaultIndex) * -1;
+            else movement = defaultIndex - index;
+
+            button.style.top = `${(buttonHeight + 10) * movement}px`;
+        }
+    }
+
+    function blockButtons(block) {
         buttonElements.current.left.forEach(buttonLeft => {
             if(block) buttonLeft.classList.add("button-blocked");
             else buttonLeft.classList.remove("button-blocked");
@@ -106,6 +147,21 @@ const InnerConnect = ({ block, blockJump }) => {
         });
     }
 
+    function findCorrectButtons() {
+        buttonElements.current.left.forEach(buttonLeft => { updateButton("left", buttonLeft) });
+        buttonElements.current.right.forEach(buttonRight => { updateButton("right", buttonRight) });
+
+        function updateButton(side, button) {
+            const correctButtonsSide = side === "left" ? correctButtons.left : correctButtons.right;
+            
+            if(button.classList.contains("button-correct")) button.classList.remove("button-correct");
+
+            for(let i = 0; i < correctButtonsSide.length; i++) {
+                if(button.innerText === correctButtonsSide[i]) button.classList.add("button-correct");
+            }
+        }
+    }
+
     return(
         <div className="lessons-inner-block lessons-inner-connect">
             <div className="lessons-inner-block-holder lessons-inner-connect-holder">
@@ -115,6 +171,7 @@ const InnerConnect = ({ block, blockJump }) => {
                     <div className="lessons-inner-connect-button-holder-left">
                         {buttons.left.map((button, index) => {
                             return <button
+                                id={`lessons-inner-connect-button-left-${index}`}
                                 ref={el => buttonElements.current.left[index] = el}
                                 onClick={e => updateConnection(e.target, "left")}
                                 key={index}
@@ -125,6 +182,7 @@ const InnerConnect = ({ block, blockJump }) => {
                     <div className="lessons-inner-connect-button-holder-right">
                         {buttons.right.map((button, index) => {
                             return <button
+                                id={`lessons-inner-connect-button-right-${index}`}
                                 ref={el => buttonElements.current.right[index] = el}
                                 onClick={e => updateConnection(e.target, "right")}
                                 key={index}

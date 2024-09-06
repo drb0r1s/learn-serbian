@@ -125,6 +125,7 @@
                 ]
             },
 
+            "attempts": 2,
             "incorrectDelay": 4
         },
 

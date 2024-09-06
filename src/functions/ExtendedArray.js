@@ -37,5 +37,9 @@ export const ExtendedArray = {
         }
 
         return randomizedArray;
+    },
+
+    getRandom: array => {
+        return array[Math.floor(Math.random() * array.length)];
     }
 };

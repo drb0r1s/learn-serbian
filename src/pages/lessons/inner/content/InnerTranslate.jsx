@@ -1,11 +1,14 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { images } from "../../../../data/images";
 import { colors } from "../../../../data/colors";
 import useContent from "../../../../hooks/useContent";
 import useCaseSensitive from "../../../../hooks/useCaseSensitive";
+import useAttempts from "../../../../hooks/useAttempts";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { Language } from "../../../../functions/Language";
 import buttonTimer from "../../../../functions/buttonTimer";
+import handType from "../../../../functions/handType";
+import { ExtendedArray } from "../../../../functions/ExtendedArray";
 
 const InnerTranslate = ({ block, blockJump }) => {
     const [textareaValue, setTextareaValue] = useState("");
@@ -17,15 +20,27 @@ const InnerTranslate = ({ block, blockJump }) => {
     const placeholderContent = useContent("lessonsInner.textarea_placeholder");
     
     const specialLetters = useCaseSensitive(["č", "ć", "š", "đ", "ž"], textareaValue);
+    const { noAttempts, newAttempt } = useAttempts(block);
 
-    function continueButtonFunction() {
+    useEffect(() => { if(noAttempts) typeAnswer() }, [noAttempts]);
+
+    function continueFunctionEnter(e) {
+        if(e.key !== "Enter") return;
+
+        e.preventDefault();
+        continueFunction();
+    }
+
+    function continueFunction() {
         if(continueButton.current.classList.contains("button-disabled")) return;
         
         if(!textareaValue) return textareaElement.current.focus();
         const { isCorrect } = checkAnswer(block, textareaValue);
 
         if(isCorrect) {
+            textareaElement.current.disabled = true;
             textareaElement.current.style.border = `3px solid ${colors.green}`;
+            
             blockJump();
         }
         
@@ -39,7 +54,14 @@ const InnerTranslate = ({ block, blockJump }) => {
                 textareaElement.current.style.border = "";
                 continueButton.current.classList.remove("button-disabled");
             });
+
+            newAttempt();
         }
+    }
+
+    function typeAnswer() {
+        textareaElement.current.value = "";
+        handType(textareaElement.current, ExtendedArray.getRandom(Language.inject(block.answers)), true);
     }
     
     return(
@@ -57,8 +79,10 @@ const InnerTranslate = ({ block, blockJump }) => {
                         rows="10"
                         placeholder={placeholderContent}
                         value={textareaValue}
-                        onChange={e => setTextareaValue(e.target.value)}
+                        disabled={noAttempts}
                         ref={textareaElement}
+                        onChange={e => setTextareaValue(e.target.value)}
+                        onKeyDown={continueFunctionEnter}
                     ></textarea>
 
                     <div className="lessons-inner-translate-letters-holder">
@@ -70,7 +94,7 @@ const InnerTranslate = ({ block, blockJump }) => {
 
                 <button
                     ref={continueButton}
-                    onClick={continueButtonFunction}
+                    onClick={continueFunction}
                 >{buttonContent}</button>
             </div>
         </div>

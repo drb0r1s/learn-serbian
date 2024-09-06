@@ -6,6 +6,8 @@ import checkAnswer from "../../../../functions/checkAnswer";
 import { images } from "../../../../data/images";
 import { colors } from "../../../../data/colors";
 import { Language } from "../../../../functions/Language";
+import { ExtendedMath } from "../../../../functions/ExtendedMath";
+import { ExtendedArray } from "../../../../functions/ExtendedArray";
 
 const InnerConversation = ({ id, block, blockJump }) => {
     const [isShown, setIsShown] = useState(false);
@@ -29,8 +31,6 @@ const InnerConversation = ({ id, block, blockJump }) => {
     const placeholderContent = useContent("lessonsInner.input_conversation_wait_for_reply", { parameters: { name: block.conversationWith } });
 
     const avatar = useImage(block.avatar);
-
-    const getRandomDelay = (min, max) => (Math.floor(Math.random() * (max - min + 1)) + min) * 1000;
 
     const incorrectAnswerMessages = [
         "O čemu ti?",
@@ -81,7 +81,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
     }, [isKeyboardActive]);
 
     function enableTyping(key) {        
-        setTimeout(() => { setTyping(prevTyping => { return {...prevTyping, [key]: true} }) }, getRandomDelay(1, 3));
+        setTimeout(() => { setTyping(prevTyping => { return {...prevTyping, [key]: true} }) }, ExtendedMath.random(1, 3) * 1000);
     }
 
     function disableTyping(key) {
@@ -105,7 +105,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
                 
                 else {
                     const message = {
-                        content: incorrectAnswerMessages[Math.floor(Math.random() * incorrectAnswerMessages.length)],
+                        content: ExtendedArray.getRandom(incorrectAnswerMessages),
                         isUser: false
                     };
 
@@ -114,7 +114,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
 
                 setIsKeyboardActive(true);
             }, 300);
-        }, getRandomDelay(2, 5));
+        }, ExtendedMath.random(2, 5) * 1000);
     }
 
     function sendUserMessage() {

@@ -2,14 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { lessonsActions } from "../../../state/reducers/lessonsSlice";
 import InnerHeader from "./InnerHeader";
-import InnerDefault from "./content/InnerDefault";
-import InnerMultipleChoice from "./content/InnerMultipleChoice";
-import InnerTranslate from "./content/InnerTranslate";
-import InnerConversation from "./content/InnerConversation";
-import InnerConnect from "./content/InnerConnect";
-import InnerEnd from "./content/InnerEnd";
 import useSnapScroll from "../../../hooks/useSnapScroll";
-import getPageComponent from "../../../functions/getPageComponent";
+import getLessonBlockComponent from "../../../functions/getLessonBlockComponent";
 import { ProgressBar } from "../../../functions/ProgressBar";
 import { ExtendedMath } from "../../../functions/ExtendedMath";
 
@@ -79,9 +73,9 @@ const Inner = () => {
 
             <div className="lessons-inner-lesson">
                 {lessonsReducer.activeLesson.content.map((block, index) => {
-                    const Component = getPageComponent(block.type);
+                    const LessonBlock = getLessonBlockComponent(block.type);
 
-                    return <Component
+                    return <LessonBlock
                         id={index}
                         block={block}
                         blockJump={() => blockJump(inner.current, "down")}

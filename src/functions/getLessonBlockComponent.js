@@ -5,7 +5,7 @@ import InnerConversation from "../pages/lessons/inner/content/InnerConversation"
 import InnerConnect from "../pages/lessons/inner/content/InnerConnect";
 import InnerEnd from "../pages/lessons/inner/content/InnerEnd";
 
-function getPageComponent(type) {
+function getLessonBlockComponent(type) {
     switch(type) {
         case "default": return InnerDefault;
         case "multipleChoice": return InnerMultipleChoice;
@@ -16,4 +16,4 @@ function getPageComponent(type) {
     }
 }
 
-export default getPageComponent;
+export default getLessonBlockComponent;

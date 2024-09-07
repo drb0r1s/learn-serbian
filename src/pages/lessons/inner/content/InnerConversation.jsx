@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import BlockButton from "../../../../components/BlockButton";
 import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
 import checkAnswer from "../../../../functions/checkAnswer";
@@ -204,7 +205,11 @@ const InnerConversation = ({ id, block, blockJump }) => {
                     </div>
                 </div>
                 
-                <button className="disabled-button">{buttonContent}</button>
+                <BlockButton
+                    className="disabled-button"
+                    content={buttonContent}
+                    blockJump={blockJump}
+                />
             </div>
         </div>
     );

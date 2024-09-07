@@ -123,6 +123,8 @@ const useSnapScroll = ({ element, additionalMovement, onScroll, blocked }) => {
     function externalSnapScroll(element, direction) {
         const scrollValue = snapScroll(direction === "down", element);
         updateScrollPoint(scrollValue);
+
+        onScrollListener(direction);
     }
 
     function blockSnapScroll(value) {

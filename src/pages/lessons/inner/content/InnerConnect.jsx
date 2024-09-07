@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import BlockButton from "../../../../components/BlockButton";
+import useContent from "../../../../hooks/useContent";
 import useAttempts from "../../../../hooks/useAttempts";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { ExtendedArray } from "../../../../functions/ExtendedArray";
@@ -12,6 +14,7 @@ const InnerConnect = ({ block, blockJump }) => {
 
     const buttonElements = useRef({ left: [], right: [] });
 
+    const buttonContent = useContent("lessonsInner.button_connect_continue");
     const { noAttempts, newAttempt } = useAttempts(block);
     
     useEffect(() => {
@@ -190,6 +193,11 @@ const InnerConnect = ({ block, blockJump }) => {
                         })}
                     </div>
                 </div>
+
+                <BlockButton
+                    content={buttonContent}
+                    blockJump={blockJump}
+                />
             </div>
         </div>
     );

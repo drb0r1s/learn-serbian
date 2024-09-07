@@ -854,6 +854,16 @@ footer .footer-copyright span {
   background-color: #282088;
   border: 1px solid white;
 }
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-block .lessons-inner-block-holder .button-locked {
+  background-color: #2d2a38;
+  border: none;
+  cursor: default;
+}
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-block .lessons-inner-block-holder .button-locked:hover {
+  background-color: #2d2a38;
+  border: none;
+  cursor: default;
+}
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-block img {
   height: 300px;
   width: 300px;

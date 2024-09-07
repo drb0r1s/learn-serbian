@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { images } from "../../../../data/images";
 import { colors } from "../../../../data/colors";
+import BlockButton from "../../../../components/BlockButton";
 import useContent from "../../../../hooks/useContent";
 import useCaseSensitive from "../../../../hooks/useCaseSensitive";
 import useAttempts from "../../../../hooks/useAttempts";
@@ -92,10 +93,11 @@ const InnerTranslate = ({ block, blockJump }) => {
                     </div>
                 </div>
 
-                <button
+                <BlockButton
                     ref={continueButton}
                     onClick={continueFunction}
-                >{buttonContent}</button>
+                    content={buttonContent}
+                />
             </div>
         </div>
     );

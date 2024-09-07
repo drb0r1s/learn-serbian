@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import BlockButton from "../../../../components/BlockButton";
 import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
 import useAttempts from "../../../../hooks/useAttempts";
@@ -73,11 +74,12 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
                     })}
                 </div>
 
-                <button
+                <BlockButton
                     className="button-disabled"
+                    content={buttonContent}
                     ref={continueButton}
                     onClick={continueButtonFunction}
-                >{buttonContent}</button>
+                />
             </div>
 
             <img src={image} alt="IMAGE" />

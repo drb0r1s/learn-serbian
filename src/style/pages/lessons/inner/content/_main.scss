@@ -28,6 +28,10 @@
             @include learn-serbian-button;
             font-size: set-size(md);
         }
+
+        .button-locked {
+            @include learn-serbian-disabled-button;
+        }
     }
 
     img {

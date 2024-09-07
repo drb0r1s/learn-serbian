@@ -1,4 +1,5 @@
 import React from "react";
+import BlockButton from "../../../../components/BlockButton";
 import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
 import { Language } from "../../../../functions/Language";
@@ -13,7 +14,10 @@ const InnerDefault = ({ block, blockJump }) => {
                 <h3>{Language.inject(block.title)}</h3>
                 <p>{Language.inject(block.description)}</p>
                 
-                <button onClick={blockJump}>{buttonContent}</button>
+                <BlockButton
+                    content={buttonContent}
+                    blockJump={blockJump}
+                />
             </div>
 
             <img src={image} alt="IMAGE" />

@@ -7,5 +7,6 @@ export const content = {
     BUTTON_CONVERSATION_CONTINUE: "Continue",
     P_CONVERSATION_TYPING: "<name> is typing...",
     INPUT_CONVERSATION_WAIT_FOR_REPLY: "Wait for <name>'s reply...",
+    BUTTON_CONNECT_CONTINUE: "Continue",
     BUTTON_END_EXIT: "Exit"
 };

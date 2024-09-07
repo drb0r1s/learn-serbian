@@ -8,7 +8,7 @@ import checkAnswer from "../../../../functions/checkAnswer";
 import { Language } from "../../../../functions/Language";
 import buttonTimer from "../../../../functions/buttonTimer";
 
-const InnerMultipleChoice = ({ block, blockJump }) => {
+const InnerMultipleChoice = ({ id, block, blockJump }) => {    
     const buttonContent = useContent("lessonsInner.button_multiple_choice_continue");
     const image = useImage(block.image);
     
@@ -79,6 +79,7 @@ const InnerMultipleChoice = ({ block, blockJump }) => {
                     content={buttonContent}
                     ref={continueButton}
                     onClick={continueButtonFunction}
+                    blockId={id}
                 />
             </div>
 

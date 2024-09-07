@@ -209,6 +209,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
                     className="disabled-button"
                     content={buttonContent}
                     blockJump={blockJump}
+                    blockId={id}
                 />
             </div>
         </div>

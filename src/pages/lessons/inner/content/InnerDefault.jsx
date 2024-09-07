@@ -4,7 +4,7 @@ import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
 import { Language } from "../../../../functions/Language";
 
-const InnerDefault = ({ block, blockJump }) => {
+const InnerDefault = ({ id, block, blockJump }) => {
     const buttonContent = useContent("lessonsInner.button_default_continue");
     const image = useImage(block.image);
     
@@ -17,6 +17,7 @@ const InnerDefault = ({ block, blockJump }) => {
                 <BlockButton
                     content={buttonContent}
                     blockJump={blockJump}
+                    blockId={id}
                 />
             </div>
 

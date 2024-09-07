@@ -6,13 +6,13 @@ import checkAnswer from "../../../../functions/checkAnswer";
 import { ExtendedArray } from "../../../../functions/ExtendedArray";
 import { Language } from "../../../../functions/Language";
 
-const InnerConnect = ({ block, blockJump }) => {
+const InnerConnect = ({ id, block, blockJump }) => {
     const [buttons, setButtons] = useState({ left: [], right: [] });
     const [defaultButtons, setDefaultButtons] = useState({ left: [], right: [] });
     const [correctButtons, setCorrectButtons] = useState({ left: [], right: [] });
     const [activeButtons, setActiveButtons] = useState({ left: null, right: null });
 
-    const buttonElements = useRef({ left: [], right: [] });
+    const buttonElements = useRef({ left: [], right: [] })
 
     const buttonContent = useContent("lessonsInner.button_connect_continue");
     const { noAttempts, newAttempt } = useAttempts(block);
@@ -197,6 +197,7 @@ const InnerConnect = ({ block, blockJump }) => {
                 <BlockButton
                     content={buttonContent}
                     blockJump={blockJump}
+                    blockId={id}
                 />
             </div>
         </div>

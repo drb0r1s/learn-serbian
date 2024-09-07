@@ -11,7 +11,7 @@ import buttonTimer from "../../../../functions/buttonTimer";
 import handType from "../../../../functions/handType";
 import { ExtendedArray } from "../../../../functions/ExtendedArray";
 
-const InnerTranslate = ({ block, blockJump }) => {
+const InnerTranslate = ({ id, block, blockJump }) => {
     const [textareaValue, setTextareaValue] = useState("");
     
     const textareaElement = useRef(null);
@@ -97,6 +97,7 @@ const InnerTranslate = ({ block, blockJump }) => {
                     ref={continueButton}
                     onClick={continueFunction}
                     content={buttonContent}
+                    blockId={id}
                 />
             </div>
         </div>

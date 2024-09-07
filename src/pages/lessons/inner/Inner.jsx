@@ -37,11 +37,15 @@ const Inner = () => {
         ProgressBar.update(progressBar.current, progressBarMovement, true);
     }, []);
 
-    const blockJump = useSnapScroll({
+    const { externalSnapScroll: blockJump, blockSnapScroll } = useSnapScroll({
         element: innerElement,
         additionalMovement: innerHeaderHeight * -1,
+        blocked: lessonsReducer.activeLesson.content[0].locked,
         
         onScroll: direction => {
+            const followingLessonBlock = lessonsReducer.activeLesson.content[lessonsReducer.lessonBlock + (direction === "up" ? -1 : 1)];
+            blockSnapScroll(followingLessonBlock.locked ? followingLessonBlock.locked : false);
+            
             if(direction === "up") {
                 dispatch(lessonsActions.updateLessonBlock(-1));
                 ProgressBar.update(progressBar.current, progressBarMovement * -1);

@@ -9,6 +9,7 @@ import InnerConversation from "./content/InnerConversation";
 import InnerConnect from "./content/InnerConnect";
 import InnerEnd from "./content/InnerEnd";
 import useSnapScroll from "../../../hooks/useSnapScroll";
+import getPageComponent from "../../../functions/getPageComponent";
 import { ProgressBar } from "../../../functions/ProgressBar";
 import { ExtendedMath } from "../../../functions/ExtendedMath";
 
@@ -78,45 +79,16 @@ const Inner = () => {
 
             <div className="lessons-inner-lesson">
                 {lessonsReducer.activeLesson.content.map((block, index) => {
-                    switch(block.type) {
-                        case "default": return <InnerDefault
-                            id={index}
-                            block={block}
-                            blockJump={() => blockJump(inner.current, "down")}
-                            key={index}
-                        />
-                        case "multipleChoice": return <InnerMultipleChoice
-                            id={index}
-                            block={block}
-                            blockJump={() => blockJump(inner.current, "down")}
-                            key={index}
-                        />
-                        case "translate": return <InnerTranslate
-                            id={index}
-                            block={block}
-                            blockJump={() => blockJump(inner.current, "down")}
-                            key={index}
-                        />
-                        case "conversation": return <InnerConversation
-                            id={index}
-                            block={block}
-                            blockJump={() => blockJump(inner.current, "down")}
-                            key={index}
-                        />
-                        case "connect": return <InnerConnect
-                            id={index}
-                            block={block}
-                            blockJump={() => blockJump(inner.current, "down")}
-                            key={index}
-                        />
-                        case "end": return <InnerEnd
-                            id={index}
-                            block={block}
-                            stopLesson={stopLesson}
-                            key={index}
-                        />
-                        default:
-                    }
+                    const Component = getPageComponent(block.type);
+
+                    return <Component
+                        id={index}
+                        block={block}
+                        blockJump={() => blockJump(inner.current, "down")}
+                        blockSnapScroll={blockSnapScroll}
+                        stopLesson={stopLesson}
+                        key={index}
+                    />
                 })}
             </div>
         </div>

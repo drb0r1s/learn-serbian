@@ -62,7 +62,12 @@ const InnerTranslate = ({ id, block, blockJump }) => {
 
     function typeAnswer() {
         textareaElement.current.value = "";
-        handType(textareaElement.current, ExtendedArray.getRandom(Language.inject(block.answers)), true);
+        
+        handType({
+            element: textareaElement.current,
+            content: ExtendedArray.getRandom(Language.inject(block.answers)),
+            isInput: true
+        });
     }
     
     return(

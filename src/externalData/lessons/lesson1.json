@@ -33,8 +33,7 @@
             "type": "default",
             "title": "The Something Thing",
             "description": "Ae videcemo banda, cemu to. Najjaci programer ikada.",
-            "image": "xIcon",
-            "locked": "both"
+            "image": "xIcon"
         },
 
         {
@@ -156,7 +155,9 @@
                         "Okej sam"
                     ]
                 }
-            ]
+            ],
+
+            "attempts": 2
         },
 
         {

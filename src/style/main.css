@@ -1076,6 +1076,7 @@ footer .footer-copyright span {
   border-bottom-left-radius: 0;
   position: relative;
   overflow: hidden;
+  transition: 300ms;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-user-holder {
   width: 100%;

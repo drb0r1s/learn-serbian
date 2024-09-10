@@ -1,8 +1,11 @@
 import { useEffect, useRef } from "react";
 
-const useSnapScroll = ({ element, additionalMovement, onScroll, blocked }) => {
+const useSnapScroll = ({
+    element, additionalMovement, onScroll,
+    locked, blockedOver
+}) => {
     const onScrollFunction = useRef(null);
-    const blockedType = useRef(blocked ? blocked : false);
+    const lockedType = useRef(locked ? locked : false);
     const scrollPoint = useRef(0);
     const touchStartY = useRef(0);
     const scrollHappened = useRef(false);
@@ -67,7 +70,7 @@ const useSnapScroll = ({ element, additionalMovement, onScroll, blocked }) => {
     }
 
     function isScrollingAllowed(direction) {
-        if(blockedType.current === direction || blockedType.current === "both") return false;
+        if(lockedType.current === direction || lockedType.current === "both") return false;
         
         let status = false;
         let elementScrollTop = element.scrollTop;
@@ -127,12 +130,12 @@ const useSnapScroll = ({ element, additionalMovement, onScroll, blocked }) => {
         onScrollListener(direction);
     }
 
-    function blockSnapScroll(value) {
-        if(blockedType.current === value) return;
-        blockedType.current = value;
+    function lockSnapScroll(value) {
+        if(lockedType.current === value) return;
+        lockedType.current = value;
     }
 
-    return { externalSnapScroll, blockSnapScroll };
+    return { externalSnapScroll, lockSnapScroll };
 }
 
 export default useSnapScroll;

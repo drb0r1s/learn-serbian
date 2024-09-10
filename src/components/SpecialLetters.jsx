@@ -1,7 +1,7 @@
 import React from "react";
 import useCaseSensitive from "../hooks/useCaseSensitive";
 
-const SpecialLetters = ({ inputValue, setInputValue }) => {
+const SpecialLetters = ({ inputValue, setInputValue, isDisabled }) => {
     const specialLetters = useCaseSensitive(["č", "ć", "š", "đ", "ž"], inputValue);
     
     function writeSpecialLetter(e) {
@@ -13,6 +13,8 @@ const SpecialLetters = ({ inputValue, setInputValue }) => {
         <div className="special-letters-holder">
             {specialLetters.map((specialLetter, index) => {
                 return <button
+                    className={isDisabled ? "button-disabled" : ""}
+                    disabled={isDisabled}
                     onClick={writeSpecialLetter}
                     key={index}
                 >{specialLetter}</button>

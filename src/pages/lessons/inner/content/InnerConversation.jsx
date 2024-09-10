@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import SpecialLetters from "../../../../components/SpecialLetters";
 import BlockButton from "../../../../components/BlockButton";
 import useContent from "../../../../hooks/useContent";
 import useAttempts from "../../../../hooks/useAttempts";
@@ -92,8 +93,10 @@ const InnerConversation = ({ id, block, blockJump }) => {
     }
 
     function disableTyping(key) {
-        messageInfo.current.style.opacity = "";
-        messageInfo.current.style.top = "";
+        if(messageInfo.current) {
+            messageInfo.current.style.opacity = "";
+            messageInfo.current.style.top = "";
+        }
 
         setTimeout(() => { setTyping(prevTyping => { return {...prevTyping, [key]: false} }) }, 300);
     }
@@ -242,6 +245,12 @@ const InnerConversation = ({ id, block, blockJump }) => {
                         <button onClick={sendUserMessage}><img src={images.sendIcon} alt="SEND" /></button>
                     </div>
                 </div>
+
+                <SpecialLetters
+                    inputValue={inputValue}
+                    setInputValue={setInputValue}
+                    isDisabled={!isKeyboardActive}
+                />
                 
                 <BlockButton
                     className="disabled-button"

@@ -405,6 +405,16 @@ footer .footer-copyright span {
   background-color: #282088;
   border: 1px solid white;
 }
+.special-letters-holder .button-disabled {
+  background-color: #2d2a38;
+  border: none;
+  cursor: default;
+}
+.special-letters-holder .button-disabled:hover {
+  background-color: #2d2a38;
+  border: none;
+  cursor: default;
+}
 
 .home-section {
   display: flex;
@@ -1281,12 +1291,12 @@ footer .footer-copyright span {
   background-color: #282088;
   border: 1px solid white;
 }
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder button {
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .block-button {
   background-color: #2d2a38;
   border: none;
   cursor: default;
 }
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder button:hover {
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .block-button:hover {
   background-color: #2d2a38;
   border: none;
   cursor: default;

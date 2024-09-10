@@ -11,4 +11,8 @@
         border-radius: 7px;
         padding: 5px 7px;
     }
+
+    .button-disabled {
+        @include learn-serbian-disabled-button;
+    }
 }

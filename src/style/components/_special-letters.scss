@@ -1,0 +1,14 @@
+.special-letters-holder {
+    @include center;
+    gap: 10px;
+
+    button {
+        height: 35px;
+        width: 35px;
+        @include learn-serbian-button;
+        font-size: set-size(sm);
+        background-color: $transparent-blue;
+        border-radius: 7px;
+        padding: 5px 7px;
+    }
+}

@@ -377,6 +377,35 @@ footer .footer-copyright span {
   font-size: 15px;
 }
 
+.special-letters-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.special-letters-holder button {
+  height: 35px;
+  width: 35px;
+  color: white;
+  font-family: learn-serbian-medium;
+  font-size: 25px;
+  background-color: #1466c7;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 15px;
+  transition: 300ms;
+  font-size: 15px;
+  background-color: rgba(20, 102, 199, 0.5);
+  border-radius: 7px;
+  padding: 5px 7px;
+}
+.special-letters-holder button:hover {
+  background-color: #282088;
+  border: 1px solid white;
+}
+
 .home-section {
   display: flex;
   align-items: center;
@@ -838,7 +867,7 @@ footer .footer-copyright span {
   font-size: 20px;
   margin: 0;
 }
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-block .lessons-inner-block-holder button {
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-block .lessons-inner-block-holder .block-button {
   color: white;
   font-family: learn-serbian-medium;
   font-size: 25px;
@@ -850,7 +879,7 @@ footer .footer-copyright span {
   transition: 300ms;
   font-size: 20px;
 }
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-block .lessons-inner-block-holder button:hover {
+#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-block .lessons-inner-block-holder .block-button:hover {
   background-color: #282088;
   border: 1px solid white;
 }
@@ -1026,34 +1055,6 @@ footer .footer-copyright span {
   font-family: learn-serbian-medium;
   font-size: 20px;
   padding: 10px 5px;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder .lessons-inner-translate-textarea-holder .lessons-inner-translate-letters-holder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 10px;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder .lessons-inner-translate-textarea-holder .lessons-inner-translate-letters-holder button {
-  height: 35px;
-  width: 35px;
-  color: white;
-  font-family: learn-serbian-medium;
-  font-size: 25px;
-  background-color: #1466c7;
-  border: 1px solid transparent;
-  border-radius: 15px;
-  cursor: pointer;
-  padding: 15px;
-  transition: 300ms;
-  font-size: 15px;
-  background-color: rgba(20, 102, 199, 0.5);
-  border-radius: 7px;
-  padding: 5px 7px;
-}
-#lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder .lessons-inner-translate-textarea-holder .lessons-inner-translate-letters-holder button:hover {
-  background-color: #282088;
-  border: 1px solid white;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-translate .lessons-inner-translate-holder .button-disabled {
   background-color: #2d2a38;

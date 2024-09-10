@@ -14,7 +14,7 @@ const BlockButton = forwardRef(({ className, onClick, content, blockJump, blockI
     
     return(
         <button
-            className={`${className} ${isLocked ? "button-locked" : ""}`}
+            className={`block-button ${className ? className : ""} ${isLocked ? "button-locked" : ""}`}
             disabled={isLocked}
             ref={ref}
             onClick={onClick ? onClick : blockJump}

@@ -24,7 +24,7 @@
             margin: 0;
         }
 
-        button {
+        .block-button {
             @include learn-serbian-button;
             font-size: set-size(md);
         }

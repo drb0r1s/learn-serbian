@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { images } from "../../../../data/images";
 import { colors } from "../../../../data/colors";
+import SpecialLetters from "../../../../components/SpecialLetters";
 import BlockButton from "../../../../components/BlockButton";
 import useContent from "../../../../hooks/useContent";
-import useCaseSensitive from "../../../../hooks/useCaseSensitive";
 import useAttempts from "../../../../hooks/useAttempts";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { Language } from "../../../../functions/Language";
@@ -20,7 +20,7 @@ const InnerTranslate = ({ id, block, blockJump }) => {
     const buttonContent = useContent("lessonsInner.button_translate_continue");
     const placeholderContent = useContent("lessonsInner.textarea_placeholder");
     
-    const specialLetters = useCaseSensitive(["č", "ć", "š", "đ", "ž"], textareaValue);
+    
     const { noAttempts, newAttempt } = useAttempts(block);
 
     useEffect(() => { if(noAttempts) typeAnswer() }, [noAttempts]);
@@ -91,11 +91,10 @@ const InnerTranslate = ({ id, block, blockJump }) => {
                         onKeyDown={continueFunctionEnter}
                     ></textarea>
 
-                    <div className="lessons-inner-translate-letters-holder">
-                        {specialLetters.map((specialLetter, index) => {
-                            return <button key={index}>{specialLetter}</button>
-                        })}
-                    </div>
+                    <SpecialLetters
+                        inputValue={textareaValue}
+                        setInputValue={setTextareaValue}
+                    />
                 </div>
 
                 <BlockButton

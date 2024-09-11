@@ -36,6 +36,7 @@ const Inner = () => {
         element: innerElement,
         additionalMovement: innerHeaderHeight * -1,
         locked: lessonsReducer.activeLesson.content[0].locked,
+        blocked: ["lessons-inner-conversation-display-messages-holder"],
         
         onScroll: direction => {
             const followingLessonBlock = lessonsReducer.activeLesson.content[lessonsReducer.lessonBlock + (direction === "up" ? -1 : 1)];

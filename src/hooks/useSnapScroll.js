@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 const useSnapScroll = ({
     element, additionalMovement, onScroll,
-    locked, blockedOver
+    locked, blocked
 }) => {
     const onScrollFunction = useRef(null);
     const lockedType = useRef(locked ? locked : false);
@@ -29,6 +29,8 @@ const useSnapScroll = ({
     useEffect(() => { if(onScroll) onScrollFunction.current = onScroll }, [onScroll]);
 
     function wheelScrolling(e) {
+        if(isScrollingBlocked(e.target)) return;
+
         e.preventDefault();
         if(!isScrollingAllowed(e.deltaY > 0 ? "down" : "up")) return;
 
@@ -71,7 +73,7 @@ const useSnapScroll = ({
 
     function isScrollingAllowed(direction) {
         if(lockedType.current === direction || lockedType.current === "both") return false;
-        
+
         let status = false;
         let elementScrollTop = element.scrollTop;
 
@@ -83,6 +85,23 @@ const useSnapScroll = ({
         if(scrollPoint.current === elementScrollTop) status = true;
 
         return status;
+    }
+
+    function isScrollingBlocked(target) {
+        if(!blocked || !blocked.length) return false;
+
+        let status = false;
+
+        blocked.forEach(blockedElement => { checkParentElement(target, blockedElement) });
+
+        return status;
+
+        function checkParentElement(element, className) {
+            if(element.classList.contains(className)) return status = true;
+            if(element.tagName === "BODY") return status;
+
+            return checkParentElement(element.parentElement, className);
+        }
     }
     
     function snapScroll(direction, externalElement = null) {

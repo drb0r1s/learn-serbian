@@ -54,7 +54,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
     }, [lessonBlock]);
 
     useEffect(() => {
-        if(typing.user || typing.participant) setTimeout(() => {
+        if(typing.user || typing.participant) setTimeout(() => {    
             messageInfo.current.style.opacity = "1";
             messageInfo.current.style.top = "100%";
 
@@ -101,7 +101,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
         setTimeout(() => { setTyping(prevTyping => { return {...prevTyping, [key]: false} }) }, 300);
     }
 
-    function sendMessage() {
+    function sendMessage() {    
         setTimeout(() => {
             if(noMessagesElement.current) noMessagesElement.current.style.opacity = "0";
 
@@ -113,8 +113,6 @@ const InnerConversation = ({ id, block, blockJump }) => {
                 setIsKeyboardActive(true);
 
                 if(isAnswerCorrect) {
-                    if(currentMessage + 1 === block.questions.length) return finishConversation(true);
-                    
                     setCurrentMessage(prevCurrentMessage => prevCurrentMessage + 1);
                     inputElement.current.placeholder = block.questions[currentMessage + 1].translation;
                 }
@@ -146,9 +144,12 @@ const InnerConversation = ({ id, block, blockJump }) => {
         setIsKeyboardActive(false);
         setInputValue("");
 
-        inputElement.current.placeholder = placeholderContent;
+        if(isCorrect && currentMessage + 1 === block.questions.length) setTimeout(() => { finishConversation(true) }, 300);
 
-        enableTyping("participant");
+        else {
+            inputElement.current.placeholder = placeholderContent;
+            enableTyping("participant");
+        }
     }
 
     function sendUserMessageEnter(e) {
@@ -192,6 +193,8 @@ const InnerConversation = ({ id, block, blockJump }) => {
 
     function colorUserMessage() {
         const lastUserMessage = messageElements.current[messageElements.current.length - 2];
+        if(!lastUserMessage.classList.contains("lessons-inner-conversation-display-message-user")) return;
+        
         const lastUserMessageP = lastUserMessage.firstChild;
 
         lastUserMessageP.style.border = `2px solid ${isAnswerCorrect ? colors.green : colors.red}`;

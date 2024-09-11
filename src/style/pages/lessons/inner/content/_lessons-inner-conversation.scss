@@ -38,6 +38,7 @@
             height: 400px;
             width: 100%;
             position: relative;
+            padding-top: 10px;
             padding-bottom: 30px;
             overflow: scroll;
             overflow-x: hidden;
@@ -130,7 +131,7 @@
         .lessons-inner-conversation-display-messages-holder-active {
             @include center(column);
             align-items: flex-start;
-            justify-content: flex-end;
+            justify-content: flex-start;
         }
 
         .lessons-inner-conversation-display-keyboard-holder {

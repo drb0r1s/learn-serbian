@@ -97,7 +97,7 @@ const useSnapScroll = ({
         return status;
 
         function checkParentElement(element, className) {
-            if(element.classList.contains(className)) return status = true;
+            if(element.classList.contains(className) && element.scrollHeight > element.clientHeight) return status = true;
             if(element.tagName === "BODY") return status;
 
             return checkParentElement(element.parentElement, className);

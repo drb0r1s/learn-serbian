@@ -23,6 +23,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
     const [isAnswerCorrect, setIsAnswerCorrect] = useState(true);
 
     const conversationDisplay = useRef(null);
+    const messagesHolder = useRef(null);
     const noMessagesElement = useRef(null);
     const messageElements = useRef([]);
     const messageInfo = useRef(null);
@@ -71,6 +72,8 @@ const InnerConversation = ({ id, block, blockJump }) => {
 
     useEffect(() => {
         if(!conversation.length) return;
+
+        messagesHolder.current.scrollTop = messagesHolder.current.scrollHeight;
         
         const lastMessage = messageElements.current[messageElements.current.length - 1];
 
@@ -212,7 +215,10 @@ const InnerConversation = ({ id, block, blockJump }) => {
                         <strong>{Language.inject(block.conversationWith)}</strong>
                     </div>
 
-                    <div className={`lessons-inner-conversation-display-messages-holder ${currentMessage > -1 ? "lessons-inner-conversation-display-messages-holder-active" : ""}`}>
+                    <div
+                        className={`lessons-inner-conversation-display-messages-holder ${currentMessage > -1 ? "lessons-inner-conversation-display-messages-holder-active" : ""}`}
+                        ref={messagesHolder}
+                    >
                         {currentMessage === -1 ? <strong className="lessons-inner-conversation-display-no-messages" ref={noMessagesElement}>{`${noMessagesContent} ${Language.inject(block.conversationWith)}.`}</strong> : <></>}
                         
                         {conversation.map((message, index) => {

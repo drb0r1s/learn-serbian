@@ -72,8 +72,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
 
     useEffect(() => {
         if(!conversation.length) return;
-
-        messagesHolder.current.scrollTop = messagesHolder.current.scrollHeight;
+        if(messagesHolder.current.scrollHeight > messagesHolder.current.clientHeight) messagesHolder.current.scrollTop = messagesHolder.current.scrollHeight;
         
         const lastMessage = messageElements.current[messageElements.current.length - 1];
 
@@ -81,7 +80,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
             lastMessage.style.top = "0";
             lastMessage.style.opacity = "1";
 
-            if(conversation.length > 2) colorUserMessage();
+            if(conversation.length > 2) colorUserMessage(false);
         }, 100);
     }, [conversation]);
 
@@ -173,9 +172,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
         
         setIsKeyboardActive(false);
 
-        if(isSuccessful) {
-
-        }
+        if(isSuccessful) colorUserMessage(true);
         
         else setTimeout(() => {
             handType({
@@ -194,8 +191,8 @@ const InnerConversation = ({ id, block, blockJump }) => {
         setInputValue(e.target.value);
     }
 
-    function colorUserMessage() {
-        const lastUserMessage = messageElements.current[messageElements.current.length - 2];
+    function colorUserMessage(isLast) {
+        const lastUserMessage = messageElements.current[messageElements.current.length - (isLast ? 1 : 2)];
         if(!lastUserMessage.classList.contains("lessons-inner-conversation-display-message-user")) return;
         
         const lastUserMessageP = lastUserMessage.firstChild;
@@ -244,6 +241,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
                         <input
                             type="text"
                             placeholder={currentMessage > -1 ? block.questions[currentMessage].translation : ""}
+                            maxLength="100"
                             disabled={!isKeyboardActive}
                             ref={inputElement}
                             value={inputValue}

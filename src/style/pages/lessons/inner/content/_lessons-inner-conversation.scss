@@ -69,6 +69,7 @@
                 transition: 300ms;
 
                 p {
+                    max-width: 300px;
                     @include center;
                     color: white;
                     font-family: learn-serbian-medium;
@@ -76,6 +77,8 @@
                     border: 2px solid white;
                     border-radius: 15px;
                     box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, .5);
+                    text-wrap: wrap;
+                    word-break: break-all;
                     margin: 0;
                     padding: 5px 10px;
                     transition: 300ms;

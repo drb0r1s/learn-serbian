@@ -1155,6 +1155,7 @@ footer .footer-copyright span {
   transition: 300ms;
 }
 #lessons .lessons-inner .lessons-inner-lesson .lessons-inner-conversation .lessons-inner-conversation-holder .lessons-inner-conversation-display .lessons-inner-conversation-display-messages-holder .lessons-inner-conversation-display-message p {
+  max-width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1165,6 +1166,8 @@ footer .footer-copyright span {
   border: 2px solid white;
   border-radius: 15px;
   box-shadow: 5px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  text-wrap: wrap;
+  word-break: break-all;
   margin: 0;
   padding: 5px 10px;
   transition: 300ms;

@@ -4,6 +4,7 @@ import { colors } from "../../../../data/colors";
 import SpecialLetters from "../../../../components/SpecialLetters";
 import BlockButton from "../../../../components/BlockButton";
 import useContent from "../../../../hooks/useContent";
+import useLock from "../../../../hooks/useLock";
 import useAttempts from "../../../../hooks/useAttempts";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { Language } from "../../../../functions/Language";
@@ -11,16 +12,16 @@ import buttonTimer from "../../../../functions/buttonTimer";
 import handType from "../../../../functions/handType";
 import { ExtendedArray } from "../../../../functions/ExtendedArray";
 
-const InnerTranslate = ({ id, block, blockJump }) => {
+const InnerTranslate = ({ id, block, blockJump, lockSnapScroll }) => {
     const [textareaValue, setTextareaValue] = useState("");
     
     const textareaElement = useRef(null);
-    const continueButton = useRef(null);
+    const blockButton = useRef(null);
     
     const buttonContent = useContent("lessonsInner.button_translate_continue");
     const placeholderContent = useContent("lessonsInner.textarea_placeholder");
     
-    
+    const { lock } = useLock({ lockSnapScroll, blockId: id, locked: "down", blockButton: blockButton.current });
     const { noAttempts, newAttempt } = useAttempts(block);
 
     useEffect(() => { if(noAttempts) typeAnswer() }, [noAttempts]);
@@ -33,7 +34,7 @@ const InnerTranslate = ({ id, block, blockJump }) => {
     }
 
     function continueFunction() {
-        if(continueButton.current.classList.contains("button-disabled")) return;
+        if(blockButton.current.classList.contains("button-disabled")) return;
         
         if(!textareaValue) return textareaElement.current.focus();
         const { isCorrect } = checkAnswer(block, textareaValue);
@@ -43,17 +44,18 @@ const InnerTranslate = ({ id, block, blockJump }) => {
             textareaElement.current.style.border = `3px solid ${colors.green}`;
             
             blockJump();
+            lock(false);
         }
         
         else {
             textareaElement.current.style.border = `3px solid ${colors.red}`;
-            continueButton.current.classList.add("button-disabled");
+            blockButton.current.classList.add("button-disabled");
             
             const delay = block.incorrectDelay ? block.incorrectDelay : 5;
             
-            buttonTimer(continueButton.current, delay, () => {
+            buttonTimer(blockButton.current, delay, () => {
                 textareaElement.current.style.border = "";
-                continueButton.current.classList.remove("button-disabled");
+                blockButton.current.classList.remove("button-disabled");
             });
 
             newAttempt();
@@ -66,7 +68,8 @@ const InnerTranslate = ({ id, block, blockJump }) => {
         handType({
             element: textareaElement.current,
             content: ExtendedArray.getRandom(Language.inject(block.answers)),
-            isInput: true
+            isInput: true,
+            onFinish: () => lock(false)
         });
     }
     
@@ -98,7 +101,7 @@ const InnerTranslate = ({ id, block, blockJump }) => {
                 </div>
 
                 <BlockButton
-                    ref={continueButton}
+                    ref={blockButton}
                     onClick={continueFunction}
                     content={buttonContent}
                     blockId={id}

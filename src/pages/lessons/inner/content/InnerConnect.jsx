@@ -1,20 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import BlockButton from "../../../../components/BlockButton";
 import useContent from "../../../../hooks/useContent";
+import useLock from "../../../../hooks/useLock";
 import useAttempts from "../../../../hooks/useAttempts";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { ExtendedArray } from "../../../../functions/ExtendedArray";
 import { Language } from "../../../../functions/Language";
 
-const InnerConnect = ({ id, block, blockJump }) => {
+const InnerConnect = ({ id, block, blockJump, lockSnapScroll }) => {
     const [buttons, setButtons] = useState({ left: [], right: [] });
     const [defaultButtons, setDefaultButtons] = useState({ left: [], right: [] });
     const [correctButtons, setCorrectButtons] = useState({ left: [], right: [] });
     const [activeButtons, setActiveButtons] = useState({ left: null, right: null });
 
-    const buttonElements = useRef({ left: [], right: [] })
+    const buttonElements = useRef({ left: [], right: [] });
+    const blockButton = useRef(null);
 
     const buttonContent = useContent("lessonsInner.button_connect_continue");
+
+    const { lock } = useLock({ lockSnapScroll, blockId: id, locked: "down", blockButton: blockButton.current });
     const { noAttempts, newAttempt } = useAttempts(block);
     
     useEffect(() => {
@@ -27,6 +31,15 @@ const InnerConnect = ({ id, block, blockJump }) => {
     useEffect(() => {
         if(activeButtons.left && activeButtons.right) checkConnection();
     }, [activeButtons.left, activeButtons.right]);
+
+    useEffect(() => {
+        if(!buttons.left.length || !buttons.right.length) return;
+        
+        if(
+            buttons.left.length === correctButtons.left.length &&
+            buttons.right.length === correctButtons.right.length
+        ) lock(false);
+    }, [correctButtons.left, correctButtons.right]);
 
     useEffect(() => { if(noAttempts) makeCorrectConnections() }, [noAttempts]);
     useEffect(() => { if(noAttempts) connectionsPositionAnimation() }, [buttons]);
@@ -104,6 +117,8 @@ const InnerConnect = ({ id, block, blockJump }) => {
 
         setDefaultButtons(buttons);
         setButtons({ left: correctLeft, right: correctRight });
+
+        lock(false);
     }
 
     function connectionsPositionAnimation() {
@@ -195,6 +210,7 @@ const InnerConnect = ({ id, block, blockJump }) => {
                 </div>
 
                 <BlockButton
+                    ref={blockButton}
                     content={buttonContent}
                     blockJump={blockJump}
                     blockId={id}

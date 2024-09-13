@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import SpecialLetters from "../../../../components/SpecialLetters";
 import BlockButton from "../../../../components/BlockButton";
 import useContent from "../../../../hooks/useContent";
+import useLock from "../../../../hooks/useLock";
 import useAttempts from "../../../../hooks/useAttempts";
 import useImage from "../../../../hooks/useImage";
 import checkAnswer from "../../../../functions/checkAnswer";
@@ -13,7 +14,7 @@ import { Language } from "../../../../functions/Language";
 import { ExtendedMath } from "../../../../functions/ExtendedMath";
 import { ExtendedArray } from "../../../../functions/ExtendedArray";
 
-const InnerConversation = ({ id, block, blockJump }) => {
+const InnerConversation = ({ id, block, blockJump, lockSnapScroll }) => {
     const [isShown, setIsShown] = useState(false);
     const [typing, setTyping] = useState({ user: false, participant: false });
     const [currentMessage, setCurrentMessage] = useState(-1);
@@ -28,6 +29,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
     const messageElements = useRef([]);
     const messageInfo = useRef(null);
     const inputElement = useRef(null);
+    const blockButton = useRef(null);
 
     const lessonBlock = useSelector(state => state.lessons.lessonBlock);
     
@@ -37,6 +39,8 @@ const InnerConversation = ({ id, block, blockJump }) => {
     const placeholderContent = useContent("lessonsInner.input_conversation_wait_for_reply", { parameters: { name: block.conversationWith } });
 
     const avatar = useImage(block.avatar);
+    
+    const { lock } = useLock({ lockSnapScroll, blockId: id, locked: "down", blockButton: blockButton.current });
     const { noAttempts, newAttempt } = useAttempts(block);
 
     const incorrectAnswerMessages = [
@@ -164,6 +168,8 @@ const InnerConversation = ({ id, block, blockJump }) => {
     function sendLastMessage() {
         const message = { content: inputElement.current.value, isUser: true };
         setConversation(prevConversation => [...prevConversation, message]);
+
+        lock(false);
     }
 
     function finishConversation(isSuccessful) {
@@ -172,7 +178,10 @@ const InnerConversation = ({ id, block, blockJump }) => {
         
         setIsKeyboardActive(false);
 
-        if(isSuccessful) colorUserMessage(true);
+        if(isSuccessful) {
+            colorUserMessage(true);
+            lock(false);
+        }
         
         else setTimeout(() => {
             handType({
@@ -260,7 +269,7 @@ const InnerConversation = ({ id, block, blockJump }) => {
                 />
                 
                 <BlockButton
-                    className="disabled-button"
+                    ref={blockButton}
                     content={buttonContent}
                     blockJump={blockJump}
                     blockId={id}

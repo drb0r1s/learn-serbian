@@ -2,24 +2,26 @@ import React, { useState, useEffect, useRef } from "react";
 import BlockButton from "../../../../components/BlockButton";
 import useContent from "../../../../hooks/useContent";
 import useImage from "../../../../hooks/useImage";
+import useLock from "../../../../hooks/useLock";
 import useAttempts from "../../../../hooks/useAttempts";
 import { ExtendedArray } from "../../../../functions/ExtendedArray";
 import checkAnswer from "../../../../functions/checkAnswer";
 import { Language } from "../../../../functions/Language";
 import buttonTimer from "../../../../functions/buttonTimer";
 
-const InnerMultipleChoice = ({ id, block, blockJump }) => {    
+const InnerMultipleChoice = ({ id, block, blockJump, lockSnapScroll }) => {    
     const buttonContent = useContent("lessonsInner.button_multiple_choice_continue");
     const image = useImage(block.image);
-    
-    const { noAttempts, newAttempt } = useAttempts(block);
 
     const languageBlockQuestions = Language.inject(block.questions);
     
     const [blockQuestions, setBlockQuestions] = useState([]);
 
     const buttonElements = useRef([]);
-    const continueButton = useRef(null);
+    const blockButton = useRef(null);
+
+    const { lock } = useLock({ lockSnapScroll, blockId: id, locked: "down", blockButton: blockButton.current });
+    const { noAttempts, newAttempt } = useAttempts(block);
 
     useEffect(() => {
         setBlockQuestions(block.randomize ? ExtendedArray.randomize(languageBlockQuestions, true) : languageBlockQuestions);
@@ -37,14 +39,16 @@ const InnerMultipleChoice = ({ id, block, blockJump }) => {
             correctButton.classList.add("button-correct");
             if(!isCorrect) button.classList.add("button-wrong");
 
-            continueButton.current.classList.remove("button-disabled");
+            blockButton.current.classList.remove("button-disabled");
+
+            lock(false);
         }
         
         else {
             button.classList.add("button-wrong");
             const delay = block.incorrectDelay ? block.incorrectDelay : 5;
             
-            buttonTimer(continueButton.current, delay, () => {
+            buttonTimer(blockButton.current, delay, () => {
                 buttonElements.current.forEach(buttonElement => { buttonElement.classList.remove("button-neutral") });
                 button.classList.remove("button-wrong");
             });
@@ -53,7 +57,7 @@ const InnerMultipleChoice = ({ id, block, blockJump }) => {
         }
     }
 
-    function continueButtonFunction(e) {
+    function blockButtonFunction(e) {
         if(e.target.classList.contains("button-disabled")) return;
         blockJump();
     }
@@ -77,8 +81,8 @@ const InnerMultipleChoice = ({ id, block, blockJump }) => {
                 <BlockButton
                     className="button-disabled"
                     content={buttonContent}
-                    ref={continueButton}
-                    onClick={continueButtonFunction}
+                    ref={blockButton}
+                    onClick={blockButtonFunction}
                     blockId={id}
                 />
             </div>
